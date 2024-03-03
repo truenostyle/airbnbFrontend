@@ -1,0 +1,36 @@
+<a class="login" (click)="toggleLoginBox()">log in</a> 
+
+
+
+<div class="login-box" [class.hidden]="loginBoxHidden">
+  <div class="logo"></div>
+  <h1>Log in</h1>
+  <div class="signup-label">
+    <p>Don’t have an ccount? </p>
+    <a href="register" (click)="goRegister">Sign up</a>
+  </div>
+  <a href="#" class="social-google">
+    <img src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png">
+    <h2>Log in with Google</h2>
+  </a>
+
+  <div class="or-box"><hr><p>OR</p><hr></div>
+  
+  <div class="log-info">
+    <div class="email">
+      <p>Your email</p>
+      <input type="text" class="styled-input" [(ngModel)]="email">
+    </div>
+  
+    <div class="password">
+      <p>Your password</p>
+      <a href="#"><img src="../assets/eye-hide.svg"><p>Hide</p></a>
+      <input type="password" class="styled-input" [(ngModel)]="password">
+    </div>
+  </div>
+  
+  <a class="login-btn" href="#" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
+    <p>Log in</p>
+  </a>
+
+</div>
