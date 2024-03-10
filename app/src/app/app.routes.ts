@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { RegisterComponent } from './register/register.component'; // Импортируйте компонент register
-import { MainComponent } from './main/main.component';
+import { MainComponent } from './components/main/main.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'main', pathMatch: 'full'},
