@@ -135,7 +135,7 @@
   height: 24px;
 }
 .register-box .reg-info .main-input {
-  width: 528px;
+  width: 600px;
   height: 56px;
   border-radius: 12px;
   border: 1px solid rgba(102, 102, 102, 0.3490196078); /* Чтобы добавить рамку, укажите толщину и цвет */
@@ -272,7 +272,7 @@
   margin-top: 40px;
 }
 .register-box .reg-info .register-btn p {
-  color: white;
-  position: absolute;
-  left: 900px;
+  font-size: 22px;
+  color: red;
+  margin-top: 3px;
 }/*# sourceMappingURL=register.component.css.map */

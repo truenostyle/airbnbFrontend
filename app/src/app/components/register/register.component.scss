@@ -150,7 +150,7 @@
         }
 
         .main-input {
-            width: 528px;
+            width: 600px;
             height: 56px;
             border-radius: 12px;
             border: 1px solid #66666659; /* Чтобы добавить рамку, укажите толщину и цвет */
@@ -321,9 +321,11 @@
             margin-top: 40px;
            
             p {
-                color: white;
-                position: absolute;
-                left: 900px;
+                font-size: 22px;
+                color: red;
+                margin-top: 3px;
+               
+               
             }
         }
     
