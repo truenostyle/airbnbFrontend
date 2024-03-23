@@ -2,7 +2,8 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth-response.model';
 import { HttpClient } from '@angular/common/http';
-import { ListItem } from 'src/app/models/list-item.model';
+import { StaysService } from 'src/app/services/stays.service';
+import { StayItem } from 'src/app/models/stay-item.model';
 
 @Component({
   selector: 'app-main-page',
@@ -10,22 +11,11 @@ import { ListItem } from 'src/app/models/list-item.model';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent {
-  items: ListItem[] = [];
+  items: StayItem[] = [];
   constructor(
-    private router: Router, private http: HttpClient
+    private router: Router, private http: HttpClient, private staysService: StaysService
   ){
-
-    for (let i = 0; i < 100; i++) {
-      this.items.push({
-        imageUrl: 'https://static.leonardo-hotels.com/image/leonardohotelbucharestcitycenter_room_comfortdouble2_2022_4000x2600_7e18f254bc75491965d36cc312e8111f_1200x780_mobile_3.jpeg',
-        name: 'Grovland, California',
-        starImageUrl: '../assets/images/icons/star.svg',
-        rating: 4.91,
-        place: 'Yosemite National Park',
-        time: 'Oct 23 - 28',
-        price: 289
-      });
-    }
+    this.loadStays();
   }
 
   async goRegister() {
@@ -88,6 +78,13 @@ export class MainPageComponent {
     if (this.count > 1) { // Проверяем, что счетчик больше 1
       this.count--; // Уменьшаем счетчик на 1
     }
+  }
+
+  loadStays() {
+    this.staysService.getStays()
+    .subscribe({
+      next: (stays) => (this.items = stays),
+    });
   }
  
   
