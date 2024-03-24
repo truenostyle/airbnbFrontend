@@ -164,11 +164,11 @@
         <img class="main-img" [src]="item.imageUrl">
         <div class="row">
           <p class="name">{{ item.name }}</p>
-          <img class="star-img" [src]="item.starImageUrl">
+          <img class="star-img" src="/assets/images/icons/star.svg">
           <p class="rating">{{ item.rating }}</p>
         </div>
         <p class="place">{{ item.place }}</p>
-        <p class="time">{{ item.time }}</p>
+        <p class="time">{{ item.duration }}</p>
         <p class="price"><b>{{ item.price }}</b> night</p>
       </a>
     </ng-container>
