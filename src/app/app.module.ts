@@ -6,10 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { HeaderComponent } from './pages/header/header.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProductPageComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
