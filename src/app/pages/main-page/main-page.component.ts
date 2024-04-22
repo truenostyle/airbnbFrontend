@@ -102,11 +102,11 @@ export class MainPageComponent {
       0: {
         items: 1
       },
-      600: {
-        items: 4
+      300: {
+        items: 5
       },
-      1200: {
-        items: 12
+      400: {
+        items: 6
       }
     }
   };
