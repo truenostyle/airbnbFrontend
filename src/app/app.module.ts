@@ -8,6 +8,7 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { HeaderComponent } from './pages/header/header.component';
+import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { HeaderComponent } from './pages/header/header.component';
     AppComponent,
     ProductPageComponent,
     HeaderComponent,
+    HelpcenterComponent,
   ],
   imports: [
     BrowserModule,

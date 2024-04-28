@@ -1,0 +1,195 @@
+
+.main {
+    font-family: 'Montserrat', sans-serif; 
+    h1 {
+        font-family: 'Montserrat', sans-serif; 
+        font-size: 32px;
+        font-weight: 500;
+    
+        margin-top: 10rem;
+        margin-left: 7.8rem;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            font-size: 50px;
+            line-height: 60px;
+        }
+        .search-box {
+            width: 23.5rem;
+            height: 4.5rem;
+            background-color: #F7F7F7;
+            border: 1px solid #E0E0E0;
+            border-radius: 48px;
+            
+            p {
+                font-size: 18px;
+                margin: 0;
+                font-weight: 600;
+                margin-left: 2rem;
+                margin-top: 1.5rem;
+            }
+
+            .search-btn {
+                background-color: #2288E6;
+                width: 3.3rem;
+                height: 3.3rem;
+                border-radius: 34px;
+                margin-left: auto;
+                margin-top: -2.2rem;
+                margin-right: 0.5rem;
+
+                img {
+                    width: 22px;
+                    height: 22px;
+                    margin-top: 15px;
+                    margin-left: 15px;
+                }
+            }
+            
+
+        }
+    }
+
+    .recommended {
+        font-family: 'Montserrat', sans-serif; 
+        margin-left: 29.6rem;
+        
+        h2 {
+            margin: 0;
+            margin-top: 9.5rem;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .items {
+            display: flex;
+            flex-direction: row;
+            
+            .item {
+                width: 100%;
+                max-width: 19.2rem;
+                height: 21.8rem;
+                border-radius: 10px;
+                border: 1px solid #ACACAC;
+                background-color: white;
+                margin-top: 1.5rem;
+                padding-left: 1rem;
+                padding-top: 1rem;
+                margin-right: 1rem;
+    
+                .status {
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: #C13515;
+                }
+    
+                .name {
+                    font-size: 22px;
+                    font-weight: 500;
+                }
+    
+                .description {
+                    color: #717171;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+    
+                a {
+                    font-size: 14px;
+                    font-weight: 700;
+                    position: relative;
+                    top: 5rem;
+                }
+            }
+        }
+
+      
+    }
+}
+
+
+.info {
+
+    margin-top: 91px;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: row;
+    font-family: "Montserrat", sans-serif;
+    div {
+        
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 18px;
+        }
+
+        p {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 18px;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 18px;
+    }
+    .support {
+        margin-left: 150px;
+    }
+
+    .hosting {
+        margin-left: 240px;
+    }
+
+    .airbnb {
+        margin-left: 240px;
+    }
+}
+    
+footer {
+    margin-top: 100px;
+    margin-left: 149px;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: row;
+
+     a {
+        text-decoration: none;
+        color: black;
+        margin: 0;
+        font-size: 22px;
+        line-height: 18px;
+        font-weight: 400;
+        margin-right: 35px;
+     }
+
+     p {
+    
+        margin: 0;
+        margin-right: 35px;
+        font-size: 22px;
+        line-height: 18px;
+        font-weight: 400;
+     }
+
+     .temp {
+        margin-left: auto;
+        margin-right: 160px;
+        display: flex;
+        flex-direction: row;
+     }
+}
+    
+    

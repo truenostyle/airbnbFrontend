@@ -47,11 +47,21 @@ export class MainPageComponent {
 
   loginBoxHidden: boolean = true;
 
+
   toggleLoginBox(): void {
     this.loginBoxHidden = !this.loginBoxHidden;
     const overlay = document.querySelector('.overlay');
     if (overlay) {
       this.loginBoxHidden ? overlay.classList.add('hidden') : overlay.classList.remove('hidden');
+    }
+  }
+
+  filterBoxHidden: boolean = true;
+  toggleFilterBox(): void {
+    this.filterBoxHidden = !this.filterBoxHidden;
+    const overlay = document.querySelector('.overlay');
+    if (overlay) {
+      this.filterBoxHidden? overlay.classList.add('hidden') : overlay.classList.remove('hidden');
     }
   }
 
@@ -102,17 +112,48 @@ export class MainPageComponent {
       0: {
         items: 1
       },
-      300: {
-        items: 5
-      },
-      400: {
+      700: {
         items: 6
+      },
+      1000: {
+        items: 12
       }
     }
   };
 
+
+  activeButtonIndex: number = 1; // По умолчанию первая кнопка активна
+  bedroomsActiveButtonIndex: number = 1;
+  bedsActiveButtonIndex: number = 1;
+  bathroomsActiveButtonIndex: number = 1;
+
+
+  setActiveButton(index: number): void {
+    this.activeButtonIndex = index;
+  }
+
+  bedroomsSetActiveButton(index: number): void {
+    this.bedroomsActiveButtonIndex = index;
+  }
+
+  bedsSetActiveButton(index: number): void {
+    this.bedsActiveButtonIndex = index;
+  }
+
+  bathroomsSetActiveButton(index: number): void {
+    this.bathroomsActiveButtonIndex = index;
+  }
+  
+  clearAll() {
+    this.bathroomsActiveButtonIndex = 1;
+    this.bedsActiveButtonIndex = 1;
+    this.bedroomsActiveButtonIndex = 1;
+    this.activeButtonIndex = 1;
+    console.log("text");
+  }
   
 
   ngOnInit(): void {
+    
   }
 }

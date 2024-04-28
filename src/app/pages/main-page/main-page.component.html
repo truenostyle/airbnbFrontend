@@ -151,7 +151,7 @@
         </ng-template>
         <!-- Добавьте другие слайды по аналогии -->
       </owl-carousel-o>
-      <a href="#" class="btn-filters">
+      <a class="btn-filters" (click)="toggleFilterBox()">
         <img src="../assets/images/icons/settings.svg">
         <p>Filters</p>
       </a>
@@ -335,6 +335,109 @@
    
          
        </div>
+<!--[ngClass]="{ 'hidden': filterBoxHidden }"-->
+<div class="filters-btn"  [ngClass]="{ 'hidden': filterBoxHidden }">
+  <div class="filter-header">
+    <a class="close-btn" (click)="toggleFilterBox()"><img src="/assets/images/icons/close.svg"></a>
+    <h3>Filters</h3>
+  </div>
+  <div class="type-place">
+    <h3>Type of place</h3>
+    <p>Search rooms, entire homes, or any type of place</p>
+    <div class="radio-buttons">
+      <a class="radio-button item1" name="option" value="option1" [class.active]="activeButtonIndex === 1" (click)="setActiveButton(1)">Any type</a>
+      <a class="radio-button item2" name="option" value="option2" [class.active]="activeButtonIndex === 2" (click)="setActiveButton(2)">Room</a>
+      <a class="radio-button item3" name="option" value="option3" [class.active]="activeButtonIndex === 3" (click)="setActiveButton(3)">Entire home</a>
+    </div>
+  </div>
+
+  <div class="price-range">
+    <h3>Price range</h3>
+    <p>Nightly prices before fees and taxes</p>
+    <hr>
+  </div>
+
+  <div class="rooms-beds">
+    <h2>Rooms and Beds</h2>
+    <div class="bedrooms">
+      <p>Bedrooms</p>
+      <div class="radio-buttons">
+        <a class="radio-button item1" name="option" value="option1" [class.active]="bedroomsActiveButtonIndex === 1" (click)="bedroomsSetActiveButton(1)">Any</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 2" (click)="bedroomsSetActiveButton(2)">1</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 4" (click)="bedroomsSetActiveButton(4)">2</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 5" (click)="bedroomsSetActiveButton(5)">3</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 6" (click)="bedroomsSetActiveButton(6)">4</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 7" (click)="bedroomsSetActiveButton(7)">5</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 8" (click)="bedroomsSetActiveButton(8)">6</a>
+        <a class="radio-button item3" name="option" value="option3" [class.active]="bedroomsActiveButtonIndex === 3" (click)="bedroomsSetActiveButton(3)">7+</a>
+      </div>
+    </div>
+
+    <div class="beds">
+      <p>Beds</p>
+      <div class="radio-buttons">
+        <a class="radio-button item1" name="option" value="option1" [class.active]="bedsActiveButtonIndex === 1" (click)="bedsSetActiveButton(1)">Any</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 2" (click)="bedsSetActiveButton(2)">1</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 4" (click)="bedsSetActiveButton(4)">2</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 5" (click)="bedsSetActiveButton(5)">3</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 6" (click)="bedsSetActiveButton(6)">4</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 7" (click)="bedsSetActiveButton(7)">5</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 8" (click)="bedsSetActiveButton(8)">6</a>
+        <a class="radio-button item3" name="option" value="option3" [class.active]="bedsActiveButtonIndex === 3" (click)="bedsSetActiveButton(3)">7+</a>
+      </div>
+    </div>
+
+    <div class="bathrooms">
+      <p>Bathrooms</p>
+      <div class="radio-buttons">
+        <a class="radio-button item1" name="option" value="option1" [class.active]="bathroomsActiveButtonIndex === 1" (click)="bathroomsSetActiveButton(1)">Any</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 2" (click)="bathroomsSetActiveButton(2)">1</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 4" (click)="bathroomsSetActiveButton(4)">2</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 5" (click)="bathroomsSetActiveButton(5)">3</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 6" (click)="bathroomsSetActiveButton(6)">4</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 7" (click)="bathroomsSetActiveButton(7)">5</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 8" (click)="bathroomsSetActiveButton(8)">6</a>
+        <a class="radio-button item3" name="option" value="option3" [class.active]="bathroomsActiveButtonIndex   === 3" (click)="bathroomsSetActiveButton(3)">7+</a>
+      </div>
+    </div>
+
+    <hr>
+  </div>
+
+  <div class="language">
+    <h2>Host language</h2>
+    <div class="checkbox-container">
+      <div class="row">
+        <label>
+          <input type="checkbox" name="option1"> English
+        </label>
+        <label>
+          <input type="checkbox" name="option2"> French
+        </label>
+      </div>
+      <div class="row">
+        <label>
+          <input type="checkbox" name="option3"> German
+        </label>
+        <label>
+          <input type="checkbox" name="option4"> Japanese
+        </label>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="filter-footer">
+    <a class="clear" (click)="clearAll()"> Clear all</a>
+
+    <a class="show">Show 536 places</a>
+  </div>
+
+
+  </div>
+
+
+
 
 <div class="footer">
   <div class="explore">
