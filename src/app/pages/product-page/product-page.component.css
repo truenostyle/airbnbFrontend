@@ -1,0 +1,653 @@
+@charset "UTF-8";
+.overview {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 83px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 149px;
+  margin-top: 100px;
+  margin-right: 156px;
+  align-items: flex-end;
+}
+.overview a {
+  color: black;
+  margin-left: 24px;
+}
+.overview h1 {
+  margin: 0;
+}
+.overview .links {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  margin-left: auto;
+}
+.overview .links img {
+  width: 28px;
+  height: 28px;
+  margin-top: 0;
+  position: relative;
+  top: 5px;
+}
+
+.parent {
+  margin-left: 149px;
+  margin-top: 20px;
+  width: 1600px;
+  height: 617px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.parent div {
+  background-color: black;
+  margin: 2px;
+}
+.parent div img {
+  width: 100%; /* Ширина изображения равна ширине блока */
+  height: 100%; /* Автоматическая высота для сохранения пропорций */
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.parent .div1 {
+  width: 807px;
+  height: 606px;
+  grid-area: 1/1/3/3;
+}
+.parent .div2 {
+  width: 393px;
+  height: 297px;
+  grid-area: 1/3/2/4;
+}
+.parent .div3 {
+  width: 393px;
+  height: 297px;
+  grid-area: 1/4/2/5;
+}
+.parent .div4 {
+  width: 393px;
+  height: 297px;
+  grid-area: 2/3/3/4;
+}
+.parent .div5 {
+  width: 393px;
+  height: 297px;
+  grid-area: 2/4/3/5;
+}
+
+.main {
+  margin-top: 51px;
+  width: 100%;
+  max-width: 890px;
+  height: 850px;
+  margin-left: 149px;
+}
+.main hr {
+  background-color: #CDC4C4;
+  width: 890px;
+  margin-top: 30px;
+}
+.main .name {
+  font-family: "Montserrat", sans-serif;
+}
+.main .name .hotel-name {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 44px;
+  margin: 0;
+}
+.main .name .copacity {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 34px;
+  margin: 0;
+  margin-top: 5px;
+}
+.main .name .rating {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+}
+.main .name .rating img {
+  width: 24px;
+  height: 24px;
+}
+.main .name .rating p {
+  font-size: 22px;
+  margin: 0;
+}
+.main .host {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: row;
+}
+.main .host img {
+  width: 70px;
+  height: 70px;
+}
+.main .host .column {
+  margin-left: 20px;
+  margin-top: 7px;
+}
+.main .host .column p {
+  margin: 0;
+}
+.main .host .column h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 600;
+}
+.main .activity {
+  margin-top: 48px;
+  font-family: "Montserrat", sans-serif;
+}
+.main .activity .item {
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: row;
+}
+.main .activity .item img {
+  width: 46px;
+  height: 46px;
+}
+.main .activity .item .column {
+  margin-left: 34px;
+}
+.main .activity .item .column h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+.main .activity .item .column p {
+  margin: 0;
+  font-size: 18px;
+  color: #717171;
+}
+.main .hr-3 {
+  margin-top: 46px;
+}
+.main .hr-4 {
+  margin-top: 60px;
+}
+.main .description {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+.main .description p {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 34px;
+}
+.main .booking {
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  width: 566px;
+  height: 808px;
+  border-radius: 18px;
+  border: 1px solid #DDDDDD;
+  background-color: white;
+  top: 994px;
+  right: 155px;
+  box-shadow: 0px 3px 32px 0px rgba(0, 0, 0, 0.75);
+}
+.main .booking .first-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.main .booking .first-line .price {
+  font-size: 33px;
+  font-weight: 600;
+  margin-left: 36px;
+  margin-top: 36px;
+}
+.main .booking .first-line .price p {
+  font-size: 24px;
+  font-weight: 400;
+  color: #222222;
+  display: inline-block;
+  margin: 0;
+}
+.main .booking .first-line .rating {
+  margin-left: auto;
+  margin-top: 46px;
+  display: flex;
+  flex-direction: row;
+}
+.main .booking .first-line .rating img {
+  width: 24px;
+  height: 24px;
+}
+.main .booking .first-line .rating p {
+  font-size: 21px;
+  margin: 0;
+}
+.main .booking .first-line .reviews {
+  margin-left: 15px;
+  margin-top: 46px;
+  margin-right: 42px;
+  font-size: 22px;
+  color: #5E5E5E;
+}
+.main .booking .date-picker {
+  width: 500px;
+  height: 170px;
+  margin-left: 36px;
+  margin-top: 36px;
+}
+.main .booking .date-picker div {
+  cursor: pointer;
+}
+.main .booking .date-picker div .label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+}
+.main .booking .date-picker div .date {
+  font-size: 21px;
+  font-weight: 400;
+  color: #5E5E5E;
+}
+.main .booking .date-picker div p {
+  margin: 0;
+  position: relative;
+  top: 18px;
+  left: 18px;
+}
+.main .booking .date-picker .line {
+  display: flex;
+  flex-direction: row;
+}
+.main .booking .date-picker .line .div1 {
+  width: 250px;
+  height: 85px;
+  border-radius: 10px 0 0 0px;
+  border: 1px solid #717171;
+}
+.main .booking .date-picker .line .div2 {
+  width: 250px;
+  height: 85px;
+  border-radius: 0px 10px 0 0px;
+  border-top: 1px solid #717171;
+  border-bottom: 1px solid #717171;
+  border-right: 1px solid #717171;
+}
+.main .booking .date-picker .div3 {
+  width: 498px;
+  height: 85px;
+  border-radius: 0px 0px 10px 10px;
+  border-left: 1px solid #717171;
+  border-bottom: 1px solid #717171;
+  border-right: 1px solid #717171;
+}
+.main .booking .btn-reserve {
+  margin-left: 39px;
+  margin-top: 30px;
+  width: 493px;
+  height: 78px;
+  background-color: #2288E6;
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+  border-radius: 12.15px;
+  line-height: 80px;
+  cursor: pointer;
+}
+.main .booking .charged {
+  font-size: 22px;
+  font-weight: 400;
+  color: #5E5E5E;
+  text-align: center;
+  margin-top: 32px;
+}
+.main .booking .total-price {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin-top: 37px;
+  margin-left: 37px;
+}
+.main .booking .total-price .item {
+  display: flex;
+  flex-direction: row;
+}
+.main .booking .total-price .item p {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 24px;
+}
+.main .booking .total-price .item .sum {
+  margin-left: auto;
+}
+.main hr {
+  width: 500px;
+  margin-left: 37px;
+  margin-top: 10px;
+  background-color: #DDDDDD;
+}
+.main .total-before {
+  width: 500px;
+  margin-top: 36px;
+  margin-left: 37px;
+  display: flex;
+  flex-direction: row;
+}
+.main .total-before p {
+  margin: 0;
+}
+.main .total-before .label {
+  font-size: 24px;
+  font-weight: 600;
+}
+.main .total-before .sum {
+  margin-left: auto;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.other {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 130px;
+  margin-left: 149px;
+}
+.other .rooms h2 {
+  font-size: 34px;
+  line-height: 42px;
+  font-weight: 600;
+}
+.other .rooms .item {
+  width: 356px;
+  height: 190px;
+  border-radius: 16px;
+  border: 1px solid #CDC4C4;
+}
+.other .rooms .item img {
+  width: 46px;
+  height: 46px;
+  margin-top: 32px;
+  margin-left: 24px;
+}
+.other .rooms .item h3 {
+  margin: 0;
+  margin-top: 16px;
+  margin-left: 24px;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 600;
+}
+.other .rooms .item p {
+  margin: 0;
+  margin-top: 10px;
+  margin-left: 24px;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 400;
+  color: #717171;
+}
+.other .hr-5 {
+  margin-top: 86px;
+  margin-left: 0;
+  width: 890px;
+  background-color: #CDC4C4;
+}
+.other .hr-6 {
+  margin-top: 70px;
+  margin-left: 0;
+  width: 890px;
+  background-color: #CDC4C4;
+}
+.other .amenities h2 {
+  font-size: 34px;
+  line-height: 42px;
+}
+.other .amenities .row {
+  display: flex;
+  flex-direction: row;
+}
+.other .amenities .row .column {
+  display: flex;
+  flex-direction: column;
+  width: 370px;
+}
+.other .amenities .row .column .item {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  align-items: center;
+}
+.other .amenities .row .column .item img {
+  width: 46px;
+  height: 46px;
+}
+.other .amenities .row .column .item p {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  margin-left: 18px;
+}
+.other .amenities .show {
+  margin-top: 60px;
+  width: 100%;
+  max-width: 311px;
+  height: 75px;
+  border-radius: 16px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.other .amenities .show p {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 27px;
+  margin-left: 32px;
+}
+
+.reviews {
+  margin-top: 80px;
+  margin-left: 149px;
+  font-family: "Montserrat", sans-serif;
+}
+.reviews .head {
+  display: flex;
+  flex-direction: row;
+}
+.reviews .head img {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+}
+.reviews .head h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 39.01px;
+  margin-top: -5px;
+}
+.reviews .reviews-row {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+.reviews .reviews-row .row {
+  display: flex;
+  flex-direction: row;
+}
+.reviews .reviews-row .row .overall-rating h2 {
+  font-size: 20px;
+  line-height: 25px;
+}
+.reviews .reviews-row .row .overall-rating .item {
+  margin: 0;
+  width: 190px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.reviews .reviews-row .row .overall-rating .item hr {
+  margin-left: 11px;
+  width: 166px;
+  height: 5px;
+  background-color: #000000;
+  border-radius: 15px;
+  margin-left: auto;
+}
+.reviews .reviews-row .row .overall-rating .item .none {
+  background-color: #D9D9D9;
+}
+.reviews .reviews-row .category {
+  display: flex;
+  flex-direction: row;
+}
+.reviews .reviews-row .category .item {
+  width: 190px;
+  border-left: 1px solid #CDC4C4;
+  margin-left: 50px;
+}
+.reviews .reviews-row .category .item p {
+  margin-left: 32px;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 600;
+}
+.reviews .reviews-row .category .item img {
+  margin-left: 32px;
+  width: 56px;
+  height: 56px;
+}
+.reviews .hr-review {
+  width: 1621px;
+  margin-top: 50px;
+  margin-left: 0;
+}
+.reviews .main2 {
+  width: 1700px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 0;
+}
+.reviews .main2 .item {
+  width: 620px;
+  height: 175px;
+  margin-top: 60px;
+  margin-left: 134px;
+}
+.reviews .main2 .item .temp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.reviews .main2 .item .temp img {
+  width: 70px;
+  height: 70px;
+}
+.reviews .main2 .item .temp .name {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-left: 20px;
+}
+.reviews .main2 .item .temp .location {
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 500;
+  color: #A1A0A0;
+  margin-left: 20px;
+  margin-top: -20px;
+}
+.reviews .main2 .item .row {
+  display: flex;
+  flex-direction: row;
+}
+.reviews .main2 .item .row .stars {
+  display: flex;
+  flex-direction: row;
+}
+.reviews .main2 .item .row .stars img {
+  width: 16px;
+  height: 16px;
+}
+.reviews .main2 .item .row .time {
+  margin: 0;
+  margin-left: 16px;
+  margin-top: -2px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.reviews .main2 .item .text {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 400;
+}
+.reviews .hr-review2 {
+  width: 1621px;
+  margin-top: 100px;
+  margin-left: 0;
+}
+
+.info {
+  margin-top: 91px;
+  display: flex;
+  flex-direction: row;
+  font-family: "Montserrat", sans-serif;
+}
+.info div {
+  display: flex;
+  flex-direction: column;
+}
+.info div h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 18px;
+}
+.info div p {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.info .support {
+  margin-left: 150px;
+}
+.info .hosting {
+  margin-left: 240px;
+}
+.info .airbnb {
+  margin-left: 240px;
+}
+
+footer {
+  margin-top: 300px;
+  margin-left: 149px;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: row;
+}
+footer a {
+  text-decoration: none;
+  color: black;
+  margin: 0;
+  font-size: 22px;
+  line-height: 18px;
+  font-weight: 400;
+  margin-right: 35px;
+}
+footer p {
+  margin: 0;
+  margin-right: 35px;
+  font-size: 22px;
+  line-height: 18px;
+  font-weight: 400;
+}
+footer .temp {
+  margin-left: auto;
+  margin-right: 160px;
+  display: flex;
+  flex-direction: row;
+}/*# sourceMappingURL=product-page.component.css.map */
