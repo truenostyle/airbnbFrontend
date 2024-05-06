@@ -4,6 +4,7 @@ import { AuthResponse } from 'src/app/models/auth-response.model';
 import { HttpClient } from '@angular/common/http';
 import { StaysService } from 'src/app/services/stays.service';
 import { StayItem } from 'src/app/models/stay-item.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-page',
@@ -11,11 +12,11 @@ import { StayItem } from 'src/app/models/stay-item.model';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent {
-  items: StayItem[] = [];
+  items: Observable<StayItem[]>;
   constructor(
     private router: Router, private http: HttpClient, private staysService: StaysService
   ){
-    this.loadStays();
+    this.items = staysService.getStays();
   }
 
   async goRegister() {
@@ -80,14 +81,6 @@ export class MainPageComponent {
     }
   }
 
-  loadStays() {
-    this.staysService.getStays()
-    .subscribe({
-      next: (stays) => (this.items = stays),
-    });
-  }
- 
-  
   customOptions: any = {
     loop: true,
     margin: 5,

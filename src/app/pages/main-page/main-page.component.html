@@ -159,7 +159,7 @@
   
     <div class="main">
      <!-- app.component.html -->
-     <ng-container *ngFor="let item of items">
+     <ng-container *ngFor="let item of (items | async)">
       <a href="#" class="item">
         <img class="main-img" [src]="item.imageUrl">
         <div class="row">
