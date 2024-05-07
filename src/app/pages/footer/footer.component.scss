@@ -1,0 +1,78 @@
+.info {
+
+    margin-top: 91px;
+    display: flex;
+    flex-direction: row;
+    font-family: "Montserrat", sans-serif;
+    div {
+        
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 18px;
+        }
+
+        p {
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 18px;
+        }
+    }
+
+    .support {
+        margin-left: 150px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 18px;
+        margin-top: 30px;
+    }
+    .hosting {
+        margin-left: 240px;
+    }
+
+    .airbnb {
+        margin-left: 240px;
+    }
+}
+    
+footer {
+    margin-top: 150px;
+    margin-left: 149px;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: row;
+
+     a {
+        text-decoration: none;
+        color: black;
+        margin: 0;
+        font-size: 22px;
+        line-height: 18px;
+        font-weight: 400;
+        margin-right: 35px;
+     }
+
+     p {
+    
+        margin: 0;
+        margin-right: 35px;
+        font-size: 22px;
+        line-height: 18px;
+        font-weight: 400;
+     }
+
+     .temp {
+        margin-left: auto;
+        margin-right: 160px;
+        display: flex;
+        flex-direction: row;
+     }
+}

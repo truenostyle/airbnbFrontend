@@ -544,6 +544,106 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
       
 }
 
+.wishlist-add {
+    z-index: 9999;
+    position: absolute;
+    left: 565px;
+    top: 244px;
+    width:806px;
+    height: 600px;
+    border-radius: 22px;
+    background-color: white;
+    border: 1px solid black;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        height: 64px;
+        border-bottom: 1px solid #D9D9D9;
+    
+        .close-btn { 
+            cursor: pointer;
+            margin-top: 19px;
+            margin-left: 24px;
+            width: 32px;
+            height: 32px;
+            flex-grow: 0; 
+            flex-shrink: 0;
+            
+           
+           img {
+            width: 32px;
+            height: 32px;
+        
+           }
+        }
+    
+        h1 {
+            flex-grow: 1; 
+            text-align: center; 
+            margin: 0; 
+            margin-left: -80px;
+
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+    
+
+    .items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 85%;
+        margin-top: 0px;
+        margin-left: 29px;
+        .item {
+            width: 303px;
+            height: 343px;
+            margin-right:33px;
+            margin-top: 36px;
+            img {
+                width: 100%;
+                height: 287px;
+                border-radius: 21px;
+            }
+
+            .name {
+                font-size: 16px;
+                font-weight: 500;
+                margin: 0;
+                margin-top: 16px;
+            }
+
+            .saved-count {
+                font-size: 14px;
+                color: #3C3C3C;
+
+                margin: 0;
+                margin-top: 3px;
+            }
+        }
+    }
+
+    .create-btn {
+        cursor: pointer;
+        margin-left: 29px;
+        margin-top: 75px;
+        width: 748px;
+        height: 56px;
+        background-color: #222222;
+        text-align: center;
+        border-radius: 9px;
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+        line-height: 60px;
+    }
+}
+
 .main {
     margin-top: 48px;
     max-width: 1700px;
@@ -559,6 +659,7 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
         margin-left: 0;
        }
     .item {
+        position: relative;
         width: 303px;
         height: 387px;
         margin: 15px;
@@ -577,6 +678,21 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
             @media (max-width: 766px) {
                 height: 175px;
                }
+        }
+
+        .add-to-wishlist {
+            z-index: 9999;
+            cursor: pointer;
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+           
+            top: 16px;
+            right: 16px;
         }
 
         .row {

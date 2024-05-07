@@ -32,7 +32,7 @@
     </a>
   
   </div>
-  <div class="overlay" [ngClass]="{ 'hidden': loginBoxHidden }" (click)="toggleLoginBox()"></div>
+  <div class="overlay" [ngClass]="{ 'hidden': loginBoxHidden }" (click)="toggleAllBoxes()"></div>
   
   <header>
     <h1>logo</h1>
@@ -270,11 +270,29 @@
     </div>
 
 
+    <div class="wishlist-add" [ngClass]="{ 'hidden': wishlistBoxHidden }">
+      <div class="header">
+        <a class="close-btn" (click)="toggleWishlistBox()"><img src="/assets/images/icons/close.svg"></a>
+        <h1>Add to wishlist</h1>
+      </div>
+      
+      <div class="items">
+        <div class="item">
+            <img src="https://s3-alpha-sig.figma.com/img/85ad/e62c/8b2a1deacb05bc0d7368ad836cc54a1a?Expires=1716163200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JF9tesZ72KXhxHYflxzZH-HDxizPf1hk15fgpmqrKpuVAE6rWStcse5hJy-1Fx4ph52XIpIWKsr3SZ2vNni9dPlXcYFLsvc6trHSNZgu03JUGyikeks5w410c9-fuEF4lZ30bxJUC-Ys9qX0QLH49MflwWVYYRQW0YqvMtQfqA7PGjo-1qI3Bu5QnqPLw1NtirDM4hVNDKMCxBPPq-T81x60W9kS91d5ebRBNtZBCm7Z1-29jPvu6nXQ2Q0cKEzyFq-JEXjyms6cpoauramCppE1D2x7engnokK8vLycjYba9Vi9vnEUW0fgGYnMOT5PDNNzLpZqdmw2y0SZEv41Eg__">
+            <p class="name">Name Hotel</p>
+            <p class="saved-count">5 saved</p>
+        </div>
+    </div>
+    <a class="create-btn">Create new whishlist</a>
+    </div>
+
     <div class="main">
       <!-- app.component.html -->
      <!-- <ng-container *ngFor="let item of items">-->
-       <a href="#" class="item">
+      
+       <a  class="item">
          <img class="main-img" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg">
+         <a class="add-to-wishlist" (click)="toggleWishlistBox()"><img src="/assets/images/icons/heart.svg"></a>
          <div class="row">
            <p class="name">Hotel</p>
            <img class="star-img" src="/assets/images/icons/star.svg">

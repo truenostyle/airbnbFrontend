@@ -9,6 +9,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
+import { ForguestsComponent } from './pages/forguests/forguests.component';
+import { SecondHeaderComponent } from './pages/second-header/second-header.component';
+import { FooterComponent } from './pages/footer/footer.component';
+import { WishlistsComponent } from './pages/wishlists/wishlists.component';
 
 
 @NgModule({
@@ -17,6 +21,10 @@ import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
     ProductPageComponent,
     HeaderComponent,
     HelpcenterComponent,
+    ForguestsComponent,
+    SecondHeaderComponent,
+    FooterComponent,
+    WishlistsComponent,
   ],
   imports: [
     BrowserModule,

@@ -45,6 +45,17 @@ export class MainPageComponent {
     }
   }
 
+  toggleAllBoxes(): void {
+    this.loginBoxHidden = true;
+    this.filterBoxHidden = true;
+    this.wishlistBoxHidden = true;
+
+    const overlay = document.querySelector('.overlay');
+    if (overlay) {
+        overlay.classList.add('hidden');
+    }
+}
+
   loginBoxHidden: boolean = true;
 
 
@@ -62,6 +73,16 @@ export class MainPageComponent {
     const overlay = document.querySelector('.overlay');
     if (overlay) {
       this.filterBoxHidden? overlay.classList.add('hidden') : overlay.classList.remove('hidden');
+    }
+  }
+
+  wishlistBoxHidden: boolean = true;
+  toggleWishlistBox(): void {
+    console.log('test')
+    this.wishlistBoxHidden = !this.wishlistBoxHidden;
+    const overlay = document.querySelector('.overlay');
+    if (overlay) {
+      this.wishlistBoxHidden? overlay.classList.add('hidden') : overlay.classList.remove('hidden');
     }
   }
 
