@@ -13,6 +13,7 @@ import { ForguestsComponent } from './pages/forguests/forguests.component';
 import { SecondHeaderComponent } from './pages/second-header/second-header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { WishlistsComponent } from './pages/wishlists/wishlists.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { WishlistsComponent } from './pages/wishlists/wishlists.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

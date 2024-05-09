@@ -11,11 +11,9 @@ import { StayItem } from 'src/app/models/stay-item.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  items: StayItem[] = [];
   constructor(
     private router: Router, private http: HttpClient, private staysService: StaysService
   ){
-    this.loadStays();
   }
 
   async goRegister() {
@@ -58,12 +56,5 @@ export class HeaderComponent {
     if (!targetElement.closest('.login-box') && !targetElement.closest('.login')) {
       this.loginBoxHidden = true;
     }
-  }
-
-  loadStays() {
-    this.staysService.getStays()
-    .subscribe({
-      next: (stays) => (this.items = stays),
-    });
   }
 }

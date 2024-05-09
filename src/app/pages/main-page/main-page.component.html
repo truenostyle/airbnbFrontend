@@ -1,360 +1,319 @@
 <div class="login-box" [ngClass]="{ 'hidden': loginBoxHidden }">
 
 
-    <div class="logo"></div>
-    <h1>Log in</h1>
-    <div class="signup-label">
-      <p>Don’t have an ccount? </p>
-      <a href="register" (click)="goRegister">Sign up</a>
-    </div>
-    <a href="#" class="social-google">
-      <img src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png">
-      <h2>Log in with Google</h2>
-    </a>
-  
-    <div class="or-box"><hr><p>OR</p><hr></div>
-    
-    <div class="log-info">
-      <div class="email">
-        <p>Your email</p>
-        <input type="text" class="styled-input" [(ngModel)]="email">
-      </div>
-    
-      <div class="password">
-        <p>Your password</p>
-        <a href="#"><img src="../assets/images/icons/eye-hide.svg"><p>Hide</p></a>
-        <input type="password" class="styled-input" [(ngModel)]="password">
-      </div>
-    </div>
-    
-    <a class="login-btn" href="#" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
-      <p>Log in</p>
-    </a>
-  
+  <div class="logo"></div>
+  <h1>Log in</h1>
+  <div class="signup-label">
+    <p>Don’t have an ccount? </p>
+    <a href="register" (click)="goRegister">Sign up</a>
   </div>
-  <div class="overlay" [ngClass]="{ 'hidden': loginBoxHidden }" (click)="toggleAllBoxes()"></div>
-  
-  <header>
-    <h1>logo</h1>
-    <select>
-      <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
-    </select>
-    <a class="login" (click)="toggleLoginBox()"><p>Log In</p></a> 
-  </header>
-  
-  <div class="search-box">
-    <h2>Looking for?</h2>
-    <div class="search-menu">
-      <img class="search-img" src="../assets/images/icons/search.svg">
-      <input type="text" class="search-input" placeholder="Select a city">
-      <hr class="vertical-hr">
-      <img class="search-calendar" src="../assets/images/icons/calendar.svg">
-      <a href="#">Check-in</a>
-      <img class="search-arrow" src="../assets/images/icons/arrow-right.svg">
-      <a href="#">Check-out</a>
-      <hr class="vertical-hr2">
-      <img class="search-people" src="../assets/images/icons/people.svg">
-      <p>Guests</p>
-      <div class="people-count">
-        <button (click)="decrement()">-</button>
-        <span>{{ count }}</span>
-        <button (click)="increment()">+</button>
-      </div>
-      <a class="btn-search"><p>Search</p></a>
+  <a href="#" class="social-google">
+    <img src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png">
+    <h2>Log in with Google</h2>
+  </a>
+
+  <div class="or-box">
+    <hr>
+    <p>OR</p>
+    <hr>
+  </div>
+
+  <div class="log-info">
+    <div class="email">
+      <p>Your email</p>
+      <input type="text" class="styled-input" [(ngModel)]="email">
     </div>
-  
-    <div class="filters-carousel">
-      <owl-carousel-o [options]="customOptions">
-        <ng-template carouselSlide>
-          <div class="item">
-           <img src="../assets/images/icons/house-tree.svg">
-           <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-tree.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-wifi.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <ng-template carouselSlide>
-          <div class="item">
-            <img src="../assets/images/icons/house-wifi.svg">
-            <p>Cabins</p>
-          </div>
-        </ng-template>
-        <!-- Добавьте другие слайды по аналогии -->
-      </owl-carousel-o>
-      <a class="btn-filters" (click)="toggleFilterBox()">
-        <img src="../assets/images/icons/settings.svg">
-        <p>Filters</p>
+
+    <div class="password">
+      <p>Your password</p>
+      <a href="#"><img src="../assets/images/icons/eye-hide.svg">
+        <p>Hide</p>
       </a>
+      <input type="password" class="styled-input" [(ngModel)]="password">
     </div>
-  
-  
+  </div>
+
+  <a class="login-btn" href="#" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
+    <p>Log in</p>
+  </a>
+
+</div>
+<div class="overlay" [ngClass]="{ 'hidden': loginBoxHidden }" (click)="toggleAllBoxes()"></div>
+
+<header>
+  <h1>logo</h1>
+  <select>
+    <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+  </select>
+  <a class="login" (click)="toggleLoginBox()">
+    <p>Log In</p>
+  </a>
+</header>
+
+<div class="search-box">
+  <h2>Looking for?</h2>
+  <div class="search-menu">
+    <img class="search-img" src="../assets/images/icons/search.svg">
+    <input type="text" [(ngModel)]="filters.location" class="search-input" placeholder="Select a city">
+    <hr class="vertical-hr">
+    <img class="search-calendar" src="../assets/images/icons/calendar.svg">
+    <a href="#">Check-in</a>
+    <img class="search-arrow" src="../assets/images/icons/arrow-right.svg">
+    <a href="#">Check-out</a>
+    <hr class="vertical-hr2">
+    <img class="search-people" src="../assets/images/icons/people.svg">
+    <p>Guests</p>
+    <div class="people-count">
+      <button (click)="decrement()">-</button>
+      <span>{{ filters.minGuests }}</span>
+      <button (click)="increment()">+</button>
     </div>
+    <a (click)="refreshStays()" class="btn-search">
+      <p>Search</p>
+    </a>
+  </div>
 
-    <div class="search-box-mobile">
-      <div class="search">
-        <img src="/assets/images/icons/search.svg">
-        <div class="text">
-          <h3>Anywhere</h3>
-          <p>Any week · Add guests</p>
-        </div>
-        
-      </div>
-
-      <div class="setting">
-        <img src="/assets/images/icons/setting.svg">
-      </div>
-
-      <div class="filters-carousel">
-        <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide>
-            <div class="item">
-             <img src="../assets/images/icons/house-tree.svg">
-             <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-tree.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-wifi.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <ng-template carouselSlide>
-            <div class="item">
-              <img src="../assets/images/icons/house-wifi.svg">
-              <p>Cabins</p>
-            </div>
-          </ng-template>
-          <!-- Добавьте другие слайды по аналогии -->
-        </owl-carousel-o>
-        
-      </div>
-    
-
-      
-    </div>
-
-
-    <div class="wishlist-add" [ngClass]="{ 'hidden': wishlistBoxHidden }">
-      <div class="header">
-        <a class="close-btn" (click)="toggleWishlistBox()"><img src="/assets/images/icons/close.svg"></a>
-        <h1>Add to wishlist</h1>
-      </div>
-      
-      <div class="items">
+  <div class="filters-carousel">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide>
         <div class="item">
-            <img src="https://s3-alpha-sig.figma.com/img/85ad/e62c/8b2a1deacb05bc0d7368ad836cc54a1a?Expires=1716163200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JF9tesZ72KXhxHYflxzZH-HDxizPf1hk15fgpmqrKpuVAE6rWStcse5hJy-1Fx4ph52XIpIWKsr3SZ2vNni9dPlXcYFLsvc6trHSNZgu03JUGyikeks5w410c9-fuEF4lZ30bxJUC-Ys9qX0QLH49MflwWVYYRQW0YqvMtQfqA7PGjo-1qI3Bu5QnqPLw1NtirDM4hVNDKMCxBPPq-T81x60W9kS91d5ebRBNtZBCm7Z1-29jPvu6nXQ2Q0cKEzyFq-JEXjyms6cpoauramCppE1D2x7engnokK8vLycjYba9Vi9vnEUW0fgGYnMOT5PDNNzLpZqdmw2y0SZEv41Eg__">
-            <p class="name">Name Hotel</p>
-            <p class="saved-count">5 saved</p>
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
         </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-wifi.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-wifi.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <!-- Добавьте другие слайды по аналогии -->
+    </owl-carousel-o>
+    <a class="btn-filters" (click)="toggleFilterBox()">
+      <img src="../assets/images/icons/settings.svg">
+      <p>Filters</p>
+    </a>
+  </div>
+
+
+</div>
+
+<div class="search-box-mobile">
+  <div class="search">
+    <img src="/assets/images/icons/search.svg">
+    <div class="text">
+      <h3>Anywhere</h3>
+      <p>Any week · Add guests</p>
     </div>
-    <a class="create-btn">Create new whishlist</a>
+
+  </div>
+
+  <div class="setting">
+    <img src="/assets/images/icons/setting.svg">
+  </div>
+
+  <div class="filters-carousel">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-tree.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-wifi.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="item">
+          <img src="../assets/images/icons/house-wifi.svg">
+          <p>Cabins</p>
+        </div>
+      </ng-template>
+      <!-- Добавьте другие слайды по аналогии -->
+    </owl-carousel-o>
+
+  </div>
+
+
+
+</div>
+
+
+<div class="wishlist-add" [ngClass]="{ 'hidden': wishlistBoxHidden }">
+  <div class="header">
+    <a class="close-btn" (click)="toggleWishlistBox()"><img src="/assets/images/icons/close.svg"></a>
+    <h1>Add to wishlist</h1>
+  </div>
+
+  <div class="items">
+    <div class="item">
+      <img
+        src="https://s3-alpha-sig.figma.com/img/85ad/e62c/8b2a1deacb05bc0d7368ad836cc54a1a?Expires=1716163200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JF9tesZ72KXhxHYflxzZH-HDxizPf1hk15fgpmqrKpuVAE6rWStcse5hJy-1Fx4ph52XIpIWKsr3SZ2vNni9dPlXcYFLsvc6trHSNZgu03JUGyikeks5w410c9-fuEF4lZ30bxJUC-Ys9qX0QLH49MflwWVYYRQW0YqvMtQfqA7PGjo-1qI3Bu5QnqPLw1NtirDM4hVNDKMCxBPPq-T81x60W9kS91d5ebRBNtZBCm7Z1-29jPvu6nXQ2Q0cKEzyFq-JEXjyms6cpoauramCppE1D2x7engnokK8vLycjYba9Vi9vnEUW0fgGYnMOT5PDNNzLpZqdmw2y0SZEv41Eg__">
+      <p class="name">Name Hotel</p>
+      <p class="saved-count">5 saved</p>
     </div>
+  </div>
+  <a class="create-btn">Create new whishlist</a>
+</div>
 
-    <div class="main">
-      <!-- app.component.html -->
-     <!-- <ng-container *ngFor="let item of items">-->
-      
-       <a  class="item">
-         <img class="main-img" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg">
-         <a class="add-to-wishlist" (click)="toggleWishlistBox()"><img src="/assets/images/icons/heart.svg"></a>
-         <div class="row">
-           <p class="name">Hotel</p>
-           <img class="star-img" src="/assets/images/icons/star.svg">
-           <p class="rating">4.95</p>
-         </div>
-         <p class="place">Florida</p>
-         <p class="time">555</p>
-         <p class="price"><b>200</b> night</p>
-       </a>
-       <a href="#" class="item">
-        <img class="main-img" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg">
-        <div class="row">
-          <p class="name">Hotel</p>
-          <img class="star-img" src="/assets/images/icons/star.svg">
-          <p class="rating">4.95</p>
-        </div>
-        <p class="place">Florida</p>
-        <p class="time">555</p>
-        <p class="price"><b>200</b> night</p>
-      </a>
-      <a href="#" class="item">
-        <img class="main-img" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg">
-        <div class="row">
-          <p class="name">Hotel</p>
-          <img class="star-img" src="/assets/images/icons/star.svg">
-          <p class="rating">4.95</p>
-        </div>
-        <p class="place">Florida</p>
-        <p class="time">555</p>
-        <p class="price"><b>200</b> night</p>
-      </a>
-
-      <a href="#" class="item">
-        <img class="main-img" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg">
-        <div class="row">
-          <p class="name">Hotel</p>
-          <img class="star-img" src="/assets/images/icons/star.svg">
-          <p class="rating">4.95</p>
-        </div>
-        <p class="place">Florida</p>
-        <p class="time">555</p>
-        <p class="price"><b>200</b> night</p>
-      </a>
-
-      <a href="#" class="item">
-        <img class="main-img" src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg">
-        <div class="row">
-          <p class="name">Hotel</p>
-          <img class="star-img" src="/assets/images/icons/star.svg">
-          <p class="rating">4.95</p>
-        </div>
-        <p class="place">Florida</p>
-        <p class="time">555</p>
-        <p class="price"><b>200</b> night</p>
-      </a>
-     <!--</ng-container>-->
-     
-   
-         
-       </div>
-<!--[ngClass]="{ 'hidden': filterBoxHidden }"-->
-<div class="filters-btn"  [ngClass]="{ 'hidden': filterBoxHidden }">
+<div class="main">
+  <ng-container *ngFor="let item of items | async">
+    <a class="item">
+      <img class="main-img" [src]="item.imageUrl">
+      <a class="add-to-wishlist" (click)="toggleWishlistBox()"><img src="/assets/images/icons/heart.svg"></a>
+      <div class="row">
+        <p class="name">{{ item.name }}</p>
+        <img class="star-img" src="/assets/images/icons/star.svg">
+        <p class="rating">{{ item.rating }}</p>
+      </div>
+      <p class="place">{{ item.place }}</p>
+      <p class="time">{{ item.duration }}</p>
+      <p class="price"><b>{{ item.price }}$</b> / night</p>
+    </a>
+  </ng-container>
+</div>
+<div class="filters-btn" [ngClass]="{ 'hidden': filterBoxHidden }">
   <div class="filter-header">
     <a class="close-btn" (click)="toggleFilterBox()"><img src="/assets/images/icons/close.svg"></a>
     <h3>Filters</h3>
@@ -363,9 +322,12 @@
     <h3>Type of place</h3>
     <p>Search rooms, entire homes, or any type of place</p>
     <div class="radio-buttons">
-      <a class="radio-button item1" name="option" value="option1" [class.active]="activeButtonIndex === 1" (click)="setActiveButton(1)">Any type</a>
-      <a class="radio-button item2" name="option" value="option2" [class.active]="activeButtonIndex === 2" (click)="setActiveButton(2)">Room</a>
-      <a class="radio-button item3" name="option" value="option3" [class.active]="activeButtonIndex === 3" (click)="setActiveButton(3)">Entire home</a>
+      <a class="radio-button item1" name="option" value="option1" [class.active]="filters.roomType === RoomType.Any"
+        (click)="setActiveButton(RoomType.Any)">Any type</a>
+      <a class="radio-button item2" name="option" value="option2" [class.active]="filters.roomType === RoomType.Room"
+        (click)="setActiveButton(RoomType.Room)">Room</a>
+      <a class="radio-button item3" name="option" value="option3" [class.active]="filters.roomType === RoomType.EntireHome"
+        (click)="setActiveButton(RoomType.EntireHome)">Entire home</a>
     </div>
   </div>
 
@@ -380,42 +342,66 @@
     <div class="bedrooms">
       <p>Bedrooms</p>
       <div class="radio-buttons">
-        <a class="radio-button item1" name="option" value="option1" [class.active]="bedroomsActiveButtonIndex === 1" (click)="bedroomsSetActiveButton(1)">Any</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 2" (click)="bedroomsSetActiveButton(2)">1</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 4" (click)="bedroomsSetActiveButton(4)">2</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 5" (click)="bedroomsSetActiveButton(5)">3</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 6" (click)="bedroomsSetActiveButton(6)">4</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 7" (click)="bedroomsSetActiveButton(7)">5</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedroomsActiveButtonIndex === 8" (click)="bedroomsSetActiveButton(8)">6</a>
-        <a class="radio-button item3" name="option" value="option3" [class.active]="bedroomsActiveButtonIndex === 3" (click)="bedroomsSetActiveButton(3)">7+</a>
+        <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBedrooms === 0"
+          (click)="bedroomsSetActiveButton(0)">Any</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 1"
+          (click)="bedroomsSetActiveButton(1)">1</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 2"
+          (click)="bedroomsSetActiveButton(2)">2</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 3"
+          (click)="bedroomsSetActiveButton(3)">3</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 4"
+          (click)="bedroomsSetActiveButton(4)">4</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 5"
+          (click)="bedroomsSetActiveButton(5)">5</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 6"
+          (click)="bedroomsSetActiveButton(6)">6</a>
+        <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBedrooms === 7"
+          (click)="bedroomsSetActiveButton(7)">7+</a>
       </div>
     </div>
 
     <div class="beds">
       <p>Beds</p>
       <div class="radio-buttons">
-        <a class="radio-button item1" name="option" value="option1" [class.active]="bedsActiveButtonIndex === 1" (click)="bedsSetActiveButton(1)">Any</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 2" (click)="bedsSetActiveButton(2)">1</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 4" (click)="bedsSetActiveButton(4)">2</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 5" (click)="bedsSetActiveButton(5)">3</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 6" (click)="bedsSetActiveButton(6)">4</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 7" (click)="bedsSetActiveButton(7)">5</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bedsActiveButtonIndex === 8" (click)="bedsSetActiveButton(8)">6</a>
-        <a class="radio-button item3" name="option" value="option3" [class.active]="bedsActiveButtonIndex === 3" (click)="bedsSetActiveButton(3)">7+</a>
+        <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBeds === 0"
+          (click)="bedsSetActiveButton(0)">Any</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 1"
+          (click)="bedsSetActiveButton(1)">1</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 2"
+          (click)="bedsSetActiveButton(2)">2</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 3"
+          (click)="bedsSetActiveButton(3)">3</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 4"
+          (click)="bedsSetActiveButton(4)">4</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 5"
+          (click)="bedsSetActiveButton(5)">5</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 6"
+          (click)="bedsSetActiveButton(6)">6</a>
+        <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBeds === 7"
+          (click)="bedsSetActiveButton(7)">7+</a>
       </div>
     </div>
 
     <div class="bathrooms">
       <p>Bathrooms</p>
       <div class="radio-buttons">
-        <a class="radio-button item1" name="option" value="option1" [class.active]="bathroomsActiveButtonIndex === 1" (click)="bathroomsSetActiveButton(1)">Any</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 2" (click)="bathroomsSetActiveButton(2)">1</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 4" (click)="bathroomsSetActiveButton(4)">2</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 5" (click)="bathroomsSetActiveButton(5)">3</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 6" (click)="bathroomsSetActiveButton(6)">4</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 7" (click)="bathroomsSetActiveButton(7)">5</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="bathroomsActiveButtonIndex === 8" (click)="bathroomsSetActiveButton(8)">6</a>
-        <a class="radio-button item3" name="option" value="option3" [class.active]="bathroomsActiveButtonIndex   === 3" (click)="bathroomsSetActiveButton(3)">7+</a>
+        <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBathrooms === 0"
+          (click)="bathroomsSetActiveButton(0)">Any</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 1"
+          (click)="bathroomsSetActiveButton(1)">1</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 2"
+          (click)="bathroomsSetActiveButton(2)">2</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 3"
+          (click)="bathroomsSetActiveButton(3)">3</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 4"
+          (click)="bathroomsSetActiveButton(4)">4</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 5"
+          (click)="bathroomsSetActiveButton(5)">5</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 6"
+          (click)="bathroomsSetActiveButton(6)">6</a>
+        <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBathrooms   === 7"
+          (click)="bathroomsSetActiveButton(7)">7+</a>
       </div>
     </div>
 
@@ -442,20 +428,16 @@
         </label>
       </div>
     </div>
-    
+
   </div>
 
   <div class="filter-footer">
     <a class="clear" (click)="clearAll()"> Clear all</a>
 
-    <a class="show">Show 536 places</a>
+    <a (click)="toggleFilterBox(); refreshStays()"class="show">Search</a>
   </div>
 
-
-  </div>
-
-
-
+</div>
 
 <div class="footer">
   <div class="explore">
@@ -471,6 +453,3 @@
     <p>Log in</p>
   </div>
 </div>
-  
-  
-  

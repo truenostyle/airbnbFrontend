@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { StayBrief } from '../models/stay-brief.model';
 import { StayItem } from '../models/stay-item.model';
+import { StayFilter } from '../models/stay-filter.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,17 +11,20 @@ import { StayItem } from '../models/stay-item.model';
 export class StaysService {
   constructor(private http: HttpClient) {}
 
-  public getStays(): Observable<StayItem[]> {
-    return this.http.get<StayBrief[]>('http://localhost:5098/api/stays').pipe(
+  public getStays(filter: StayFilter): Observable<StayItem[]> {
+    let params = new HttpParams();
+    params = params.append('MinGuests', filter.minGuests.toString());
+    params = params.append('MinBathrooms', filter.minBathrooms.toString());
+    params = params.append('MinBedrooms', filter.minBedrooms.toString());
+    params = params.append('MinBeds', filter.minBeds.toString());
+    params = params.append('PlaceType', filter.roomType.toString());
+    params = filter.location !== '' ? params.append('Location', filter.location) : params;
+
+    return this.http.get<StayBrief[]>('http://localhost:5098/api/stays', { params } ).pipe(
       map((staysBrief: StayBrief[]) =>
         staysBrief.map((stay: StayBrief) => ({
-          id: stay.id,
-          name: stay.name,
-          imageUrl: stay.imageUrl,
-          place: stay.place,
+          ...stay,
           duration: this.formatDuration(stay.startDate, stay.endDate),
-          rating: stay.rating,
-          price: stay.price,
         }))
       )
     );

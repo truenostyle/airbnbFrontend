@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { StaysService } from 'src/app/services/stays.service';
 import { StayItem } from 'src/app/models/stay-item.model';
 import { Observable } from 'rxjs';
+import { StayFilter } from 'src/app/models/stay-filter.model';
+import { RoomType } from 'src/app/enums/room-type.enum';
 
 @Component({
   selector: 'app-main-page',
@@ -12,11 +14,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent {
-  items: Observable<StayItem[]>;
+  RoomType = RoomType;
+  items!: Observable<StayItem[]>;
+  filters = new StayFilter;
   constructor(
     private router: Router, private http: HttpClient, private staysService: StaysService
   ){
-    this.items = staysService.getStays();
+    this.refreshStays();
   }
 
   async goRegister() {
@@ -92,23 +96,19 @@ export class MainPageComponent {
     }
   }
 
-  
-
   options = [
     { value: 1, label: 'USD' },
     { value: 2, label: 'EUR' },
     { value: 3, label: 'UAH' }
   ];
 
-  count: number = 1; // Начальное значение счетчика
-
   increment(): void {
-    this.count++; // Увеличиваем счетчик на 1
+    this.filters.minGuests++; // Увеличиваем счетчик на 1
   }
 
   decrement(): void {
-    if (this.count > 1) { // Проверяем, что счетчик больше 1
-      this.count--; // Уменьшаем счетчик на 1
+    if (this.filters.minGuests > 1) { // Проверяем, что счетчик больше 1
+      this.filters.minGuests--; // Уменьшаем счетчик на 1
     }
   }
 
@@ -132,34 +132,31 @@ export class MainPageComponent {
   };
 
 
-  activeButtonIndex: number = 1; // По умолчанию первая кнопка активна
-  bedroomsActiveButtonIndex: number = 1;
-  bedsActiveButtonIndex: number = 1;
-  bathroomsActiveButtonIndex: number = 1;
-
-
   setActiveButton(index: number): void {
-    this.activeButtonIndex = index;
+    this.filters.roomType = index;
   }
 
   bedroomsSetActiveButton(index: number): void {
-    this.bedroomsActiveButtonIndex = index;
+    this.filters.minBedrooms = index;
   }
 
   bedsSetActiveButton(index: number): void {
-    this.bedsActiveButtonIndex = index;
+    this.filters.minBeds = index;
   }
 
   bathroomsSetActiveButton(index: number): void {
-    this.bathroomsActiveButtonIndex = index;
+    this.filters.minBathrooms = index;
   }
   
   clearAll() {
-    this.bathroomsActiveButtonIndex = 1;
-    this.bedsActiveButtonIndex = 1;
-    this.bedroomsActiveButtonIndex = 1;
-    this.activeButtonIndex = 1;
-    console.log("text");
+    this.filters.minBathrooms = 0;
+    this.filters.minBeds = 0;
+    this.filters.minBedrooms = 0;
+    this.filters.roomType = RoomType.Any;
+  }
+
+  refreshStays() {
+    this.items = this.staysService.getStays(this.filters);
   }
   
 
