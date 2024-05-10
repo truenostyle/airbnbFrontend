@@ -14,6 +14,15 @@ import { SecondHeaderComponent } from './pages/second-header/second-header.compo
 import { FooterComponent } from './pages/footer/footer.component';
 import { WishlistsComponent } from './pages/wishlists/wishlists.component';
 import { FormsModule } from '@angular/forms';
+import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DatepickerComponent } from './pages/datepicker/datepicker.component';
+
 
 
 @NgModule({
@@ -26,6 +35,9 @@ import { FormsModule } from '@angular/forms';
     SecondHeaderComponent,
     FooterComponent,
     WishlistsComponent,
+    AccountSettingsComponent,
+    DatepickerComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +47,12 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     SocialLoginModule,
     CarouselModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatSlideToggleModule,
   ],
   providers: [
     {

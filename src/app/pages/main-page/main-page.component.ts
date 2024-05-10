@@ -1,10 +1,12 @@
-import { Component, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth-response.model';
 import { HttpClient } from '@angular/common/http';
 import { StaysService } from 'src/app/services/stays.service';
 import { StayItem } from 'src/app/models/stay-item.model';
 import { Observable } from 'rxjs';
+import { NativeDateAdapter } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { StayFilter } from 'src/app/models/stay-filter.model';
 import { RoomType } from 'src/app/enums/room-type.enum';
 import { WhishlistsService } from 'src/app/services/whishlists.service';
@@ -13,7 +15,8 @@ import { WhishlistCategory } from 'src/app/models/whistlist-category.model';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  styleUrls: ['./main-page.component.scss'],
+  providers: [NativeDateAdapter], 
 })
 export class MainPageComponent {
   RoomType = RoomType;
@@ -21,7 +24,7 @@ export class MainPageComponent {
   filters = new StayFilter;
   whishlistCategories?: Observable<WhishlistCategory[]>;
   constructor(
-    private router: Router, private http: HttpClient, private staysService: StaysService, private whishlistsService: WhishlistsService
+    private router: Router, private http: HttpClient, private staysService: StaysService, private elementRef: ElementRef, private whishlistsService: WhishlistsService
   ){
     this.refreshWhishlistCategories()
     this.refreshStays();
@@ -106,6 +109,8 @@ export class MainPageComponent {
     { value: 3, label: 'UAH' }
   ];
 
+  count: number = 0; // Начальное значение счетчика
+
   increment(): void {
     this.filters.minGuests++; // Увеличиваем счетчик на 1
   }
@@ -115,6 +120,44 @@ export class MainPageComponent {
       this.filters.minGuests--; // Уменьшаем счетчик на 1
     }
   }
+
+  adults_count: number = 0; // Начальное значение счетчика взрослых
+  children_count: number = 0;
+  infants_count: number = 0;
+  pets_count: number = 0; // Начальное значение счетчика детей
+
+  // Функция для увеличения счетчика
+  incrementCounter(counter: string): void {
+    if (counter === 'adults') {
+      this.adults_count++;
+    } else if (counter === 'children') {
+      this.children_count++;
+    } else if (counter === 'infants') {
+      this.infants_count++;
+    } else if (counter === 'pets') {
+      this.pets_count++;
+    }
+    this.resultCount(this.adults_count, this.children_count, this.infants_count, this.pets_count )
+  }
+
+  // Функция для уменьшения счетчика
+  decrementCounter(counter: string): void {
+    if (counter === 'adults' && this.adults_count > 0) {
+      this.adults_count--;
+    } else if (counter === 'children' && this.children_count > 0) {
+      this.children_count--;
+    } else if (counter === 'infants' && this.infants_count > 0) {
+      this.infants_count--;
+    } else if (counter === 'pets' && this.pets_count > 0) {
+      this.pets_count--;
+    }
+    this.resultCount(this.adults_count, this.children_count, this.infants_count, this.pets_count )
+  }
+
+  resultCount(adults: number, children: number, infants: number, pets: number) {
+    this.count = adults + children + infants + pets;
+  }
+
 
   customOptions: any = {
     loop: true,
@@ -170,7 +213,45 @@ export class MainPageComponent {
   addWhishlistCategory() {
     this.whishlistsService.add("New category").subscribe(() => this.refreshWhishlistCategories());
   }
+ 
+
+  dropdownOpen: boolean = false;
+  dropdownOpen2: boolean = false;
+  selectedCity: string = ''; // Переменная для хранения выбранного города
+
+  toggleDropdown() {
+    this.dropdownOpen = true;
+    if ( this.dropdownOpen2 != false) 
+      {
+        this.dropdownOpen2 = false;
+      }
+   
+  }
   
+  toggleDropdown2() {
+    this.dropdownOpen2 = true;
+    if ( this.dropdownOpen != false) 
+      {
+        this.dropdownOpen = false;
+      }
+  }
+
+  selectCity(city: string) {
+    this.selectedCity = city; // Устанавливаем значение выбранного города
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.closeDropdown();
+    }
+  }
+
+  closeDropdown() {
+    this.dropdownOpen = false;
+    this.dropdownOpen2 = false;
+  }
+
 
   ngOnInit(): void {
     
