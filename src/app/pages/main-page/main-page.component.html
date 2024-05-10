@@ -1,6 +1,4 @@
 <div class="login-box" [ngClass]="{ 'hidden': loginBoxHidden }">
-
-
   <div class="logo"></div>
   <h1>Log in</h1>
   <div class="signup-label">
@@ -39,6 +37,10 @@
 
 </div>
 <div class="overlay" [ngClass]="{ 'hidden': loginBoxHidden }" (click)="toggleAllBoxes()"></div>
+
+<input matInput [matDatepicker]="picker">
+<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+<mat-datepicker #picker></mat-datepicker>
 
 <header>
   <h1>logo</h1>

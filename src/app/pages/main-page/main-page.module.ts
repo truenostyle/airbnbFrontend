@@ -5,6 +5,7 @@ import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FormsModule } from '@angular/forms';
 import { MainPageRoutingModule } from './main-page-routing.module';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -17,7 +18,8 @@ import { MainPageRoutingModule } from './main-page-routing.module';
     MainPageRoutingModule,
     GoogleSigninButtonModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+    MatDatepickerModule
   ],
   exports: [
     MainPageComponent
