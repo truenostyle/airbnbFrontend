@@ -46,22 +46,100 @@
     <h2>Looking for?</h2>
     <div class="search-menu">
       <img class="search-img" src="../assets/images/icons/search.svg">
-      <input type="text" class="search-input" placeholder="Select a city">
+      <input type="text" class="search-input" placeholder="Select a city" (click)="toggleDropdown()" [(ngModel)]="selectedCity">
+      
       <hr class="vertical-hr">
       <img class="search-calendar" src="../assets/images/icons/calendar.svg">
       <a href="#">Check-in</a>
       <img class="search-arrow" src="../assets/images/icons/arrow-right.svg">
       <a href="#">Check-out</a>
       <hr class="vertical-hr2">
-      <img class="search-people" src="../assets/images/icons/people.svg">
-      <p>Guests</p>
-      <div class="people-count">
-        <button (click)="decrement()">-</button>
-        <span>{{ count }}</span>
-        <button (click)="increment()">+</button>
+      <div class="guests" (click)="toggleDropdown2()">
+        <img class="search-people" src="../assets/images/icons/people.svg">
+        <p>Guests</p>
+        <div class="people-count">
+          <button (click)="decrement()">-</button>
+          <span>{{ count }}</span>
+          <button (click)="increment()">+</button>
+        </div>
       </div>
-      <a class="btn-search"><p>Search</p></a>
+      
+      <a class="btn-search"><img src="../assets/images/icons/search2.svg"></a>
     </div>
+    
+  
+
+    <div class="dropdown-menu" *ngIf="dropdownOpen">
+      <h2>Popular nearby destinations</h2>
+      <ul>
+          <li (click)="selectCity('Odessa')"><h3>Odessa</h3><p>Ukraine</p></li>
+          <li (click)="selectCity('Lion')"><h3>Lion</h3><p>France</p></li>
+          <li (click)="selectCity('Lviv')"><h3>Lviv</h3><p>Ukraine</p></li>
+          <li (click)="selectCity('Bukovel')"><h3>Bukovel</h3><p>Ukraine</p></li>
+          <li (click)="selectCity('Paris')"> <h3>Paris</h3><p>France</p></li>
+          <li (click)="selectCity('London')"><h3>London</h3><p>England</p></li>
+      </ul>
+  </div>
+
+  <div class="dropdown-guests" *ngIf="dropdownOpen2">
+    <div class="item">
+      <div class="column">
+        <h3>Adults</h3>
+        <p>Ages 13 or above</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('adults')">-</a>
+        <span>{{ adults_count }}</span>
+        <a (click)="incrementCounter('adults')">+</a>
+      </div>
+        
+    </div>
+    <hr>
+
+    <div class="item">
+      <div class="column">
+        <h3>Children</h3>
+        <p>Ages 2 - 12</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('children')">-</a>
+        <span>{{ children_count }}</span>
+        <a (click)="incrementCounter('children')">+</a>
+      </div>
+        
+    </div>
+    <hr>
+
+    <div class="item">
+      <div class="column">
+        <h3>Infants</h3>
+        <p>Under 2</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('infants')">-</a>
+        <span>{{ infants_count }}</span>
+        <a (click)="incrementCounter('infants')">+</a>
+      </div>
+        
+    </div>
+    <hr>
+
+    <div class="item">
+      <div class="column">
+        <h3>Pets</h3>
+        <p>Bringing a servise animal</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('pets')">-</a>
+        <span>{{ pets_count }}</span>
+        <a (click)="incrementCounter('pets')">+</a> 
+      </div>
+        
+    </div>
+  
+    
+</div>
+
   
     <div class="filters-carousel">
       <owl-carousel-o [options]="customOptions">
@@ -372,6 +450,21 @@
   <div class="price-range">
     <h3>Price range</h3>
     <p>Nightly prices before fees and taxes</p>
+   
+    <div class="inputs">
+      <div class="input-wrapper">
+        <input id="minPrice" type="number" >
+        <div class="placeholder">Minimum</div>
+      </div>
+      <hr class="hr-price">
+      <div class="input-wrapper">
+        <input id="maxPrice" type="number" >
+        <div class="placeholder">Maximum</div>
+      </div>
+      
+    </div>
+    
+    
     <hr>
   </div>
 

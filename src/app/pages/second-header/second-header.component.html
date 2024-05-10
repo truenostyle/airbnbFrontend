@@ -4,9 +4,23 @@
     <div class="right">
         <div class="currency">USD ($)</div>
         <div class="language">English</div>
-        <div class="profile">
-            <img class="settings" src="../assets/images/icons/more-btn.svg">
+        <div class="profile" (click)="toggleDropdown()">
+            <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
             <img class="avatar" src="../assets/images/icons/man-user.svg">
+
         </div>
     </div>
+</div>
+
+<!-- Меню профиля -->
+<div class="dropdown-menu" *ngIf="dropdownOpen">
+    <ul>
+        <li><a>Messages</a></li>
+        <li><a>Trips</a></li>
+        <li><a [routerLink]="'/wishlists'">Wishlists</a></li>
+        <li><a [routerLink]="'/account-settings'">Account</a></li>
+        <li><a>Gift card</a></li>
+        <li><a [routerLink]="'/helpcenter'">Help center</a></li>
+        <li><a>Log out</a></li>
+    </ul>
 </div>

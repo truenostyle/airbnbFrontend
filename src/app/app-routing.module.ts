@@ -6,6 +6,9 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
 import { ForguestsComponent } from './pages/forguests/forguests.component';
 import { WishlistsComponent } from './pages/wishlists/wishlists.component';
+import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+
+
 
 
 const routes: Routes = [
@@ -16,6 +19,7 @@ const routes: Routes = [
   {path: 'helpcenter', component: HelpcenterComponent},
   {path: 'forguests', component: ForguestsComponent},
   {path: 'wishlists', component: WishlistsComponent},
+  {path: 'account-settings', component: AccountSettingsComponent}
 ];
 
 @NgModule({

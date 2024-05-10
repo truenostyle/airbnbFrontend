@@ -13,6 +13,15 @@ import { ForguestsComponent } from './pages/forguests/forguests.component';
 import { SecondHeaderComponent } from './pages/second-header/second-header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { WishlistsComponent } from './pages/wishlists/wishlists.component';
+import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DatepickerComponent } from './pages/datepicker/datepicker.component';
+
 
 
 @NgModule({
@@ -25,6 +34,9 @@ import { WishlistsComponent } from './pages/wishlists/wishlists.component';
     SecondHeaderComponent,
     FooterComponent,
     WishlistsComponent,
+    AccountSettingsComponent,
+    DatepickerComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,6 +45,12 @@ import { WishlistsComponent } from './pages/wishlists/wishlists.component';
     HttpClientModule,
     SocialLoginModule,
     CarouselModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatSlideToggleModule,
   ],
   providers: [
     {
