@@ -7,6 +7,8 @@ import { StayItem } from 'src/app/models/stay-item.model';
 import { Observable } from 'rxjs';
 import { StayFilter } from 'src/app/models/stay-filter.model';
 import { RoomType } from 'src/app/enums/room-type.enum';
+import { WhishlistsService } from 'src/app/services/whishlists.service';
+import { WhishlistCategory } from 'src/app/models/whistlist-category.model';
 
 @Component({
   selector: 'app-main-page',
@@ -15,11 +17,13 @@ import { RoomType } from 'src/app/enums/room-type.enum';
 })
 export class MainPageComponent {
   RoomType = RoomType;
-  items!: Observable<StayItem[]>;
+  items?: Observable<StayItem[]>;
   filters = new StayFilter;
+  whishlistCategories?: Observable<WhishlistCategory[]>;
   constructor(
-    private router: Router, private http: HttpClient, private staysService: StaysService
+    private router: Router, private http: HttpClient, private staysService: StaysService, private whishlistsService: WhishlistsService
   ){
+    this.refreshWhishlistCategories()
     this.refreshStays();
   }
 
@@ -40,7 +44,7 @@ export class MainPageComponent {
         email: this.email,
         password: this.password,
       })
-        .subscribe((token) => console.log(token));
+        .subscribe((result) => localStorage.setItem("Authorization", result.token));
     } else {
       console.log('Пожалуйста, заполните все поля');
     }
@@ -157,6 +161,14 @@ export class MainPageComponent {
 
   refreshStays() {
     this.items = this.staysService.getStays(this.filters);
+  }
+
+  refreshWhishlistCategories() {
+    this.whishlistCategories = this.whishlistsService.get()
+  }
+
+  addWhishlistCategory() {
+    this.whishlistsService.add("New category").subscribe(() => this.refreshWhishlistCategories());
   }
   
 

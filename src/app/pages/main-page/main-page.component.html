@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <a class="login-btn" href="#" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
+  <a class="login-btn" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
     <p>Log in</p>
   </a>
 
@@ -287,14 +287,14 @@
   </div>
 
   <div class="items">
-    <div class="item">
+    <div class="item" *ngFor="let category of whishlistCategories | async">
       <img
         src="https://s3-alpha-sig.figma.com/img/85ad/e62c/8b2a1deacb05bc0d7368ad836cc54a1a?Expires=1716163200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JF9tesZ72KXhxHYflxzZH-HDxizPf1hk15fgpmqrKpuVAE6rWStcse5hJy-1Fx4ph52XIpIWKsr3SZ2vNni9dPlXcYFLsvc6trHSNZgu03JUGyikeks5w410c9-fuEF4lZ30bxJUC-Ys9qX0QLH49MflwWVYYRQW0YqvMtQfqA7PGjo-1qI3Bu5QnqPLw1NtirDM4hVNDKMCxBPPq-T81x60W9kS91d5ebRBNtZBCm7Z1-29jPvu6nXQ2Q0cKEzyFq-JEXjyms6cpoauramCppE1D2x7engnokK8vLycjYba9Vi9vnEUW0fgGYnMOT5PDNNzLpZqdmw2y0SZEv41Eg__">
-      <p class="name">Name Hotel</p>
-      <p class="saved-count">5 saved</p>
+      <p class="name">{{ category.name }}</p>
+      <p class="saved-count">{{ category.count }} saved</p>
     </div>
   </div>
-  <a class="create-btn">Create new whishlist</a>
+  <a (click)="addWhishlistCategory()" class="create-btn">Create new whishlist</a>
 </div>
 
 <div class="main">
