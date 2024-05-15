@@ -11,14 +11,23 @@ import { StayFilter } from 'src/app/models/stay-filter.model';
 import { RoomType } from 'src/app/enums/room-type.enum';
 import { WhishlistsService } from 'src/app/services/whishlists.service';
 import { WhishlistCategory } from 'src/app/models/whistlist-category.model';
+import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
   providers: [NativeDateAdapter], 
+ 
 })
 export class MainPageComponent {
+  
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
   RoomType = RoomType;
   items?: Observable<StayItem[]>;
   filters = new StayFilter;

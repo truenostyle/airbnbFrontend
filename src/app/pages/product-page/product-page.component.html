@@ -70,63 +70,76 @@
 
     <div class="booking">
         <div class="first-line">
-            <div class="price">500 <p>night</p></div>
-            <div class="rating"><img src="../assets/images/icons/star-fill.svg"><p>4.99</p></div>
-            <div class="reviews">337 reviews</div>
+            <div class="price">$500 <p>per night</p></div>
+         
+        </div>
+        <div class="row">
+            <div class="calendar"></div>
+            <div class="guests" (click)="toggleDropdown2()">{{count}} guest</div>
         </div>
 
-        <div class="date-picker">
-            <div class="line">
-                <div class="div1">
-                    <p class="label">CHECK-IN</p>
-                    <p class="date">2/6/2024</p>    
-                </div>
-                <div class="div2">
-                    <p class="label">CHECKOUT</p>
-                    <p class="date">2/11/2024</p>      
-                </div>
-            </div>
-            <div class="div3"> 
-                <p class="label">GUESTS</p>
-                <p class="date">1 guest</p> 
-            </div>
-        </div>
+        <div class="btn-reserve">Check availability</div>
 
-        <div class="btn-reserve">Reserve</div>
-
-        <p class="charged">You won’t be charged yet</p>
-
-        <div class="total-price">
-            <div class="item">
-                <p class="label">500 x 5 nights</p>
-                <p class="sum">$2,500</p>
-            </div>
-
-            <div class="item">
-                <p class="label">Long stay discount</p>
-                <p class="sum">-$300</p>
-            </div>
-
-            <div class="item">
-                <p class="label">Cleaning fee</p>
-                <p class="sum">$200</p>
-            </div>
-
-            <div class="item">
-                <p class="label">Service fee</p>
-                <p class="sum">$0</p>
-            </div>
-
-        </div>
-
-        <hr>
-
-        <div class="total-before">
-            <p class="label">Total before taxes</p>
-            <p class="sum">$2,400</p>
-        </div>
+        
+<div class="dropdown-guests" *ngIf="dropdownOpen2">
+    <div class="item">
+      <div class="column">
+        <h3>Adults</h3>
+        <p>Ages 13 or above</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('adults')">-</a>
+        <span>{{ adults_count }}</span>
+        <a (click)="incrementCounter('adults')">+</a>
+      </div>
+        
     </div>
-</div>
+    <hr>
+  
+    <div class="item">
+      <div class="column">
+        <h3>Children</h3>
+        <p>Ages 2 - 12</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('children')">-</a>
+        <span>{{ children_count }}</span>
+        <a (click)="incrementCounter('children')">+</a>
+      </div>
+        
+    </div>
+    <hr>
+  
+    <div class="item">
+      <div class="column">
+        <h3>Infants</h3>
+        <p>Under 2</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('infants')">-</a>
+        <span>{{ infants_count }}</span>
+        <a (click)="incrementCounter('infants')">+</a>
+      </div>
+        
+    </div>
+    <hr>
+  
+    <div class="item">
+      <div class="column">
+        <h3>Pets</h3>
+        <p>Bringing a servise animal</p>
+      </div>
+      <div class="count">
+        <a (click)="decrementCounter('pets')">-</a>
+        <span>{{ pets_count }}</span>
+        <a (click)="incrementCounter('pets')">+</a> 
+      </div>
+        
+    </div>
+  
+    
+  </div>
+    </div>
 
 <div class="other">
     <div class="rooms">

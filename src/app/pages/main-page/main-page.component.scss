@@ -449,10 +449,12 @@ header {
             background-color: #E0E0E0; /* Цвет линии */
           }
 
-          .search-calendar {
-            width: 24px;
-            height: 24px;
-            margin-left: 75px;
+          .calendar {
+           margin-top: 20px;
+            margin-left: 50px;
+            .mat-form-field {
+                background-color: #ffffff; /* Белый фон */
+              }
           }
           a {
             font-size:20px;
@@ -481,10 +483,15 @@ header {
             width: 400px;
             display: flex;
             flex-direction: row;
+            img {
+                width: 24px;
+                height: 24px;
+            }
             .search-people {
                 width: 24px;
                 height: 24px;
                 margin-left: 75px;
+            
               }
     
               p {
@@ -493,6 +500,7 @@ header {
                 font-family: 'Montserrat', sans-serif; 
                 color: #757575;
                 margin-left: 12px;
+                margin-top: 3px;
               }
     
               .people-count {

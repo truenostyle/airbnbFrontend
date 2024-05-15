@@ -7,6 +7,7 @@ import { HelpcenterComponent } from './pages/helpcenter/helpcenter.component';
 import { ForguestsComponent } from './pages/forguests/forguests.component';
 import { WishlistsComponent } from './pages/wishlists/wishlists.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+import { BookingComponent } from './pages/booking/booking.component';
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'helpcenter', component: HelpcenterComponent},
   {path: 'forguests', component: ForguestsComponent},
   {path: 'wishlists', component: WishlistsComponent},
-  {path: 'account-settings', component: AccountSettingsComponent}
+  {path: 'account-settings', component: AccountSettingsComponent},
+  {path: 'booking', component: BookingComponent}
 ];
 
 @NgModule({

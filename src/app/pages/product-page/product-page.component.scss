@@ -187,8 +187,8 @@
     .booking {
         font-family: "Montserrat", sans-serif;
         position: absolute;
-        width: 566px;
-        height:808px;
+        width: 620px;
+        height:300px;
         border-radius: 18px;
         border: 1px solid #DDDDDD;
         background-color: white;
@@ -242,70 +242,109 @@
             }
         }
 
-        .date-picker {
-            width: 500px;
-            height: 170px;
-            margin-left: 36px;
-            margin-top: 36px;
-            
-            div {
-                cursor: pointer;
-                .label {
-                    font-size: 15px;
-                    font-weight: 600;
-                    color: #222222;
-                }
+        .row {
 
-                .date {
-                    font-size: 21px;
-                    font-weight: 400;
-                    color: #5E5E5E;
-                }
-                p {
-                    margin: 0;
-                    position: relative;
-                    top: 18px;
-                    left: 18px;
-                }
+            display: flex;
+            flex-direction: row;
+            margin-left: 36px;
+            margin-top: 30px;
+            div {
+                width: 262px;
+                height: 77px;
+                border-radius: 42px;
+                border: 1px solid #DDDDDD;
+                margin-left: 6px;
+                margin-right: 6px;
             }
+
+            .guests {
+                cursor: pointer;
+                font-family: "Montserrat", sans-serif;
+                font-size: 24px;
+                font-weight: 400;
+                text-align: center;
+                line-height: 75px;
+            }
+        }
+
+        .dropdown-guests {
+        
+            font-family: 'Montserrat', sans-serif;
+            position: absolute;
+            top: 180px; /* Регулируйте положение меню здесь */
+            right: 30px;
+            width: 489px;
+            height: 450px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 38px;
+            box-shadow: 0px 0px 10px 0px #0000004D;
+            z-index: 9999;
+            padding-top: 67px;
+            padding-left: 36px;
             
-            .line {
+            hr {
+                width: 449px;
+                margin: 0;
+                margin-top: 31px;
+                margin-bottom: 31px;
+            }
+            .item {
+                width: 449px;
                 display: flex;
                 flex-direction: row;
-                .div1 { 
+                .column {
+                    display: flex;
+                    flex-direction: column;
+                    h3 {
+                        margin: 0;
+                        font-size:20px;
+                        font-weight: 500;
+                    }
+                    p {
+                        margin: 0;
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: #808080;
+                    }
+                }
+    
+                .count {
+                    margin-left: auto;
+                   
+                    display: flex;
+                    flex-direction: row; 
+    
+                    span {
+                        width: 50px;
+                        text-align: center;
+                        line-height: 40px;
+                        font-size: 18px;
+                        font-weight: 400;
+                    }
+                    a {
+                        cursor: pointer;
+                        text-align: center;
+                        line-height: 40px;
+                        font-size: 50px;
+                        width: 40px;
+                        height: 40px;
+                        border: 1px solid #BABABA;
+                        border-radius: 50%;
+                        background-color: white;
                     
-                    width: 250px;
-                    height: 85px;
-                    border-radius: 10px 0 0 0px;
-                    border: 1px solid #717171;
-                }
-                .div2 { 
-
-                    width: 250px;
-                    height: 85px;
-                    border-radius: 0px 10px 0 0px;
-                    border-top: 1px solid #717171;
-                    border-bottom: 1px solid #717171;
-                    border-right: 1px solid #717171;
+                    }
                 }
             }
-            
-            .div3 { 
-
-                width: 498px;
-                height: 85px;
-                border-radius: 0px 0px 10px 10px;
-                border-left: 1px solid #717171;
-                border-bottom: 1px solid #717171;
-                border-right: 1px solid #717171;
-            }
-            
         }
+        
+
+       
         
         .btn-reserve {
             margin-left: 39px;
             margin-top: 30px;
-            width: 493px;
+            width: 536px;
             height: 78px;
             background-color: #2288E6;
             color: white;
@@ -317,62 +356,7 @@
             cursor: pointer;
         }
 
-        .charged {
-            font-size: 22px;
-            font-weight: 400;
-            color: #5E5E5E;
-            text-align: center;
-            margin-top: 32px;
-        }
-        
-        .total-price {
-            display: flex;
-            flex-direction: column;
-            width: 500px;
-            margin-top: 37px;
-            margin-left: 37px;
-            .item {
-                display: flex;
-                flex-direction: row;
-                p 
-                {
-                    font-size: 24px;
-                    margin: 0;
-                    margin-bottom: 24px;
-                }
-                .sum {
-                    margin-left: auto;
-                }
-            }
-        }
-    }
-
-    hr {
-        width: 500px;
-        margin-left: 37px;
-        margin-top: 10px;
-        background-color: #DDDDDD;
-    }
-
-    .total-before {
-        width: 500px;
-        margin-top: 36px;
-        margin-left: 37px;
-        display: flex;
-        flex-direction: row;
-        p {
-            margin: 0;
-        }
-        .label {
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .sum {
-            margin-left: auto;
-            font-size: 24px;
-            font-weight: 400;
-        }
+       
     }
 }
 

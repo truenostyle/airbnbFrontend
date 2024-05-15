@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DatepickerComponent } from './pages/datepicker/datepicker.component';
+import { BookingComponent } from './pages/booking/booking.component';
 
 
 
@@ -37,6 +38,7 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
     WishlistsComponent,
     AccountSettingsComponent,
     DatepickerComponent,
+    BookingComponent,
 
   ],
   imports: [
