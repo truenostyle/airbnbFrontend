@@ -1,32 +1,25 @@
-import { Component, ElementRef, HostListener} from '@angular/core';
-
-
+import { Component, HostListener} from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss'],
-
-  
 })
 export class ProductPageComponent {
-  constructor(
-    private elementRef: ElementRef
-  ){
-  }
   count: number = 0;
 
-
   dropdownOpen2: boolean = false;
-
 
   adults_count: number = 0; // Начальное значение счетчика взрослых
   children_count: number = 0;
   infants_count: number = 0;
   pets_count: number = 0; // Начальное значение счетчика детей
 
-
- 
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
 
   // Функция для увеличения счетчика
   incrementCounter(counter: string): void {

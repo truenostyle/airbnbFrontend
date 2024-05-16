@@ -13,7 +13,7 @@ import { ForguestsComponent } from './pages/forguests/forguests.component';
 import { SecondHeaderComponent } from './pages/second-header/second-header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { WishlistsComponent } from './pages/wishlists/wishlists.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -44,6 +44,7 @@ import { BookingComponent } from './pages/booking/booking.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

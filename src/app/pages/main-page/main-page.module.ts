@@ -20,7 +20,6 @@ import {MatNativeDateModule} from '@angular/material/core';
     CommonModule,
     MainPageRoutingModule,
     GoogleSigninButtonModule,
-    FormsModule,
     CarouselModule,
     MatDatepickerModule,
     MatFormFieldModule,
