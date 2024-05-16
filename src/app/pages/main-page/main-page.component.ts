@@ -28,6 +28,10 @@ export class MainPageComponent {
     end: new FormControl<Date | null>(null),
   });
 
+  dropdownOpen: boolean = false;
+  dropdownOpen2: boolean = false;
+  selectedCity: string = ''; 
+
   RoomType = RoomType;
   items?: Observable<StayItem[]>;
   filters = new StayFilter;
@@ -105,11 +109,38 @@ export class MainPageComponent {
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-    // Проверяем, был ли клик вне модального окна
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const dropdownGuests = document.querySelector('.dropdown-guests');
+    if (dropdownMenu !== null) {
+      if (!dropdownMenu.contains(event.target as Node)) {
+        this.dropdownOpen = false;
+      }
+    }
+
+    if (dropdownGuests !== null) {
+      if (!dropdownGuests.contains(event.target as Node)) {
+        this.dropdownOpen2 = false;
+      }
+    }
+
     const targetElement = event.target as HTMLElement;
     if (!targetElement.closest('.login-box') && !targetElement.closest('.login')) {
       this.loginBoxHidden = true;
     }
+
+   
+  }
+
+  toggleDropdown() {
+    setTimeout(() => {
+      this.dropdownOpen = !this.dropdownOpen;
+    }, 0);
+  }
+  
+  toggleDropdown2() {
+    setTimeout(() => {
+      this.dropdownOpen2 = !this.dropdownOpen2;
+    }, 0);
   }
 
   options = [
@@ -224,42 +255,13 @@ export class MainPageComponent {
   }
  
 
-  dropdownOpen: boolean = false;
-  dropdownOpen2: boolean = false;
-  selectedCity: string = ''; // Переменная для хранения выбранного города
-
-  toggleDropdown() {
-    this.dropdownOpen = true;
-    if ( this.dropdownOpen2 != false) 
-      {
-        this.dropdownOpen2 = false;
-      }
-   
-  }
   
-  toggleDropdown2() {
-    this.dropdownOpen2 = true;
-    if ( this.dropdownOpen != false) 
-      {
-        this.dropdownOpen = false;
-      }
-  }
 
   selectCity(city: string) {
     this.selectedCity = city; // Устанавливаем значение выбранного города
   }
 
-  @HostListener('document:click', ['$event'])
-  clickOutside(event: Event) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.closeDropdown();
-    }
-  }
 
-  closeDropdown() {
-    this.dropdownOpen = false;
-    this.dropdownOpen2 = false;
-  }
 
 
   ngOnInit(): void {

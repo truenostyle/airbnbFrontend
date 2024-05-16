@@ -26,10 +26,7 @@ export class ProductPageComponent {
   pets_count: number = 0; // Начальное значение счетчика детей
 
 
-  toggleDropdown2() {
-    this.dropdownOpen2 = true;
-  
-  }
+ 
 
   // Функция для увеличения счетчика
   incrementCounter(counter: string): void {
@@ -64,14 +61,27 @@ export class ProductPageComponent {
   }
 
   @HostListener('document:click', ['$event'])
-  clickOutside(event: Event) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.closeDropdown();
+  onDocumentClick(event: MouseEvent) {
+    const dropdownMenu = document.querySelector('.dropdown-guests');
+    
+    if (dropdownMenu !== null) {
+      if (!dropdownMenu.contains(event.target as Node)) {
+
+        this.dropdownOpen2 = false;
+      }
     }
+  }
+  toggleDropdown2() {
+    setTimeout(() => {
+      this.dropdownOpen2 = !this.dropdownOpen2;
+    }, 0);
   }
 
   closeDropdown() {
     this.dropdownOpen2 = false;
   }
 
+  ngOnInit(): void {
+    
+  }
 }
