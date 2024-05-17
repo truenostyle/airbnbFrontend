@@ -1,17 +1,13 @@
-
-.hidden {
-    visibility: hidden;
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+body {
+    overflow-x:hidden;
+}
+  
+@media only screen and (max-width: 400px) {
+  body {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* полупрозрачный цвет фона */
-    z-index: 999; /* устанавливаем поверх всех других элементов */
   }
+}
+
   
 
 .login-box {
@@ -452,9 +448,9 @@ header {
           .calendar {
            margin-top: 20px;
             margin-left: 50px;
-            .mat-form-field {
-                background-color: #ffffff; /* Белый фон */
-              }
+            
+             
+              
           }
           a {
             font-size:20px;
@@ -608,19 +604,20 @@ header {
 
     .filters-carousel {
         font-family: 'Montserrat', sans-serif; 
-        width:90%;
-        margin-left: 5%;
-        margin-top: 20px;
+        width:100%;
+        margin-left: 0;
+        margin-top: 40px;
         z-index: 0;
        .item {
         display: flex;
         flex-direction: column;
         align-items: center;
         cursor: pointer;
+        
     
         img {
-                width: 46px;
-                height: 46px;
+                width: 30px;
+                height: 30px;
            }
     
         p {
@@ -694,6 +691,7 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
 }
 
 .wishlist-add {
+    visibility: hidden;
     z-index: 999;
     position: absolute;
     left: 565px;
@@ -895,308 +893,375 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
     }
 }
 
-.filters-btn {
+.background-filters {
     position: absolute;
-    top: 133px;
-    left: 437px;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 65.3rem;
-    height: 105rem;
-    background-color: white;
-    z-index: 9999;
-    font-family: 'Montserrat', sans-serif; 
-  
-    .filter-header {
-        border-bottom: 2px solid #E0E0E0;
-        .close-btn {
-            cursor: pointer;
-        }
-        a {
-          
-            img {
-                width: 32px;
-                height: 32px;
-                margin-top: 2rem;
-                margin-left: 2rem;
+    height:95rem;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный цвет */
+    z-index: 999; /* Поднимаем поверх контента */
+    overflow-y: auto;
+    @media (max-width: 766px) {
+        background-color: rgba(0, 0, 0, 0);
+        overflow-y: hidden;
+       }
+    .filters-btn {
+        position: absolute;
+        top: 133px;
+        left: 437px;
+        width: 100%;
+        max-width: 65.3rem;
+        height: 95rem;
+        background-color: white;
+        z-index: 9999;
+        font-family: 'Montserrat', sans-serif; 
+        @media (max-width: 766px) {
+            width: 99%;
+            top:0;
+            left:0;
+           }
+        .filter-header {
+            border-bottom: 2px solid #E0E0E0;
+            .close-btn {
+                cursor: pointer;
+            }
+            a {
+              
+                img {
+                    width: 32px;
+                    height: 32px;
+                    margin-top: 2rem;
+                    margin-left: 2rem;
+                }
+            }
+    
+            h3{
+                font-size:22px;
+                font-weight: 700;
+                text-align: center;
+                margin-top: -2rem;
             }
         }
-
-        h3{
-            font-size:22px;
-            font-weight: 700;
-            text-align: center;
-            margin-top: -2rem;
-        }
-    }
-   
-    .type-place {
-       width: 100%;
-       max-width: 54rem;
-       display: flex;
-       flex-direction: column;
-      margin-left: 2.2rem;
-
-      h3 {
-        font-size: 28px;
-        font-weight: 600;
-        margin: 0;
-        margin-top: 2.4rem;
-        margin-bottom: 0.8rem;
-      }
-
-      p {
-        font-size: 20px;
-        font-weight: 400;
-        margin: 0;
-        margin-bottom: 2.4rem;
-      }
-        .radio-buttons {
-            display: flex;
-            margin-left: 5.8rem;
-          
-          .item1 {
-            border-top-left-radius: 1rem;
-            border-bottom-left-radius: 1rem;
-          }
-
-          .item3 {
-            border-top-right-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-          }
-          .radio-button {
-            flex: 1;
-            max-width: 18rem;
-            width: 100%;
-            height: 4rem;
-            
-            border-color: #DBDBDB;
-            border-style: solid;
-            border-width: 0.1rem;
-            background-color: #fff;
-            padding: 10px;
-            cursor: pointer;
-            
-
-            text-align: center;
-            line-height: 4rem;
-            font-size: 20px;
-            font-weight: 600;
-          }
-          
-          .radio-button:hover {
-            background-color: #f0f0f0;
-          }
-          
-          .radio-button.active {
-            background-color: #000;
-            color: #fff;
-          }
-        }
-          
-    }
-
-
-    .price-range {
-        margin-left: 2.2rem;
-        h3 {
+       
+        .type-place {
+           width: 100%;
+           max-width: 54rem;
+           display: flex;
+           flex-direction: column;
+          margin-left: 2.2rem;
+          @media (max-width: 766px) {
+            margin-left: 24px;
+            width:95%;
+           }
+          h3 {
             font-size: 28px;
-            font-weight:600;
+            font-weight: 600;
             margin: 0;
-            margin-top: 4.25rem;
+            margin-top: 2.4rem;
             margin-bottom: 0.8rem;
-        }
-
-        p {
+          }
+    
+          p {
             font-size: 20px;
+            font-weight: 400;
             margin: 0;
-            margin-bottom: 69px;
+            margin-bottom: 2.4rem;
+          }
+            .radio-buttons {
+                display: flex;
+                margin-left: 5.8rem;
+                @media (max-width: 766px) {
+                    margin-left: 0px;
+                   width: 95%;
+                   
+                   }
+              
+              .item1 {
+                border-top-left-radius: 1rem;
+                border-bottom-left-radius: 1rem;
+              }
+    
+              .item3 {
+                border-top-right-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+              }
+              .radio-button {
+                flex: 1;
+                max-width: 18rem;
+                width: 100%;
+                height: 4rem;
+                
+                border-color: #DBDBDB;
+                border-style: solid;
+                border-width: 0.1rem;
+                background-color: #fff;
+                padding: 10px;
+                cursor: pointer;
+                
+    
+                text-align: center;
+                line-height: 4rem;
+                font-size: 20px;
+                font-weight: 600;
+                @media (max-width: 766px) {
+                   height: 3rem;
+                   line-height: 3rem;
+                   font-size: 14px;
+                   
+                   }
+              }
+              
+              .radio-button:hover {
+                background-color: #f0f0f0;
+              }
+              
+              .radio-button.active {
+                background-color: #000;
+                color: #fff;
+              }
+            }
+              
         }
-        .inputs {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            width: 93%;
-            margin-bottom: 47px;
-
-            .hr-price {
-                height: 1px;
-                width: 40px;
+    
+    
+        .price-range {
+            margin-left: 2.2rem;
+            @media (max-width: 766px) {
+                margin-left: 24px;
+               }
+            h3 {
+                font-size: 28px;
+                font-weight:600;
                 margin: 0;
-                margin-left: 25px;
-                margin-right: 25px;
+                margin-top: 4.25rem;
+                margin-bottom: 0.8rem;
+            }
+    
+            p {
+                font-size: 20px;
+                margin: 0;
+                margin-bottom: 69px;
+            }
+            .inputs {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 93%;
+                margin-bottom: 47px;
+    
+                .hr-price {
+                    height: 1px;
+                    width: 40px;
+                    margin: 0;
+                    margin-left: 25px;
+                    margin-right: 25px;
+                    background-color: #D9D9D9;
+                }
+                .input-wrapper {
+                    position: relative;
+                    
+                  }
+                  
+                  input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+                  input {
+                    width: 390px;
+                    height: 76px;
+                    padding-top: 20px;
+                    padding-left: 16px; /* выравнивание по вертикали */
+                    box-sizing: border-box; /* чтобы внутренние отступы не увеличивали ширину */
+                    border-radius: 16px;
+                    border: 1px solid #E0E0E0;
+                    font-size: 25px;
+                    @media (max-width: 766px) {
+                        width: 156px;
+                        height: 80px;
+                        
+                        }
+                  }
+                  
+                  .placeholder {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    margin-top: 15px;
+                    margin-left: 15px;
+                    width: 100%;
+                    height: 20px; /* высота первого ряда */
+                    line-height: 20px; /* выравнивание по вертикали */
+                    color: #999; /* цвет текста */
+                    pointer-events: none; /* чтобы плейсхолдер не мешал вводу текста */
+                  }
+            }
+    
+            hr {
+                width: 58.8rem;
+                margin-left: 0rem;
+                background-color: #D9D9D9;
+                @media (max-width: 766px) {
+                    margin-left: -24px;
+                   }
+            }
+        }
+    
+        .rooms-beds {
+            @media (max-width: 766px) {
+            width: 95%;
+            margin-left: 24px;
+                
+                }
+            h2 {
+                font-size: 28px;
+                font-weight: 600;
+                margin: 0;
+                margin-top: 2.5rem;
+                @media (max-width: 766px) {
+                    font-size: 24px;
+                   }
+            }
+    
+            margin-left: 2.2rem; 
+            p {
+                margin: 0;
+                margin-top: 1.9rem;
+                margin-bottom: 2.2rem;
+                @media (max-width: 766px) {
+                    font-size: 18px;
+                    margin-bottom: 16px;
+                   }
+            }
+    
+            .radio-buttons {
+                display: flex;
+              
+              
+              .radio-button {
+                box-shadow: 0px 1px 5.7px 0px #00000026;
+    
+                flex: 1;
+                max-width: 5rem;
+                width: 100%;
+                height: 3rem;
+                border-radius: 2rem;
+                margin-right: 1.2rem;
+                border-color: #DBDBDB;
+                border-style: solid;
+                border-width: 0.1rem;
+                background-color: #fff;
+                padding: 10px;
+                cursor: pointer;
+                
+    
+                text-align: center;
+                line-height: 3rem;
+                font-size: 20px;
+                font-weight: 600;
+              }
+              
+              .radio-button:hover {
+                background-color: #f0f0f0;
+              }
+              
+              .radio-button.active {
+                background-color: #000;
+                color: #fff;
+              }
+            }
+            hr {
+                width: 58.8rem;
+                margin-top: 3.5rem;
+                margin-left: 0rem;
                 background-color: #D9D9D9;
             }
-            .input-wrapper {
-                position: relative;
+    
+    
+        }
+    
+        .language {
+            margin-left: 2.2rem; 
+    
+            h2{
+                font-size: 28px;
+                font-weight: 600;
+            }
+            .checkbox-container {
+                display: flex;
+                flex-direction: column;
                 
               }
               
-              input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-              input {
-                width: 390px;
-                height: 76px;
-                padding-top: 20px;
-                padding-left: 16px; /* выравнивание по вертикали */
-                box-sizing: border-box; /* чтобы внутренние отступы не увеличивали ширину */
-                border-radius: 16px;
-                border: 1px solid #E0E0E0;
-                font-size: 25px;
+              .row {
+                display: flex;
+                align-items: center; /* Выравнивание элементов по вертикали */
+                margin-bottom: 10px; /* Отступ между рядами */
+                @media (max-width: 766px) {
+                    flex-direction: column;
+                    align-items: baseline;
+                    margin-bottom: 0;
+                    }
               }
               
-              .placeholder {
-                position: absolute;
-                top: 0;
-                left: 0;
-                margin-top: 15px;
-                margin-left: 15px;
-                width: 100%;
-                height: 20px; /* высота первого ряда */
-                line-height: 20px; /* выравнивание по вертикали */
-                color: #999; /* цвет текста */
-                pointer-events: none; /* чтобы плейсхолдер не мешал вводу текста */
+              label {
+                margin-right: 14rem;
+                
+                font-size: 24px; /* Увеличение размера текста опции */
+                @media (max-width: 766px) {
+                    margin-top: 10px;
+                     }
+              
               }
+              
+              input[type="checkbox"] {
+                transform: scale(1.8); /* Увеличение размера чекбокса */
+               
+              }
+              
+              
+              
         }
-
-        hr {
-            width: 58.8rem;
-            margin-left: 0rem;
-            background-color: #D9D9D9;
-        }
-    }
-
-    .rooms-beds {
-        h2 {
-            font-size: 28px;
-            font-weight: 600;
-            margin: 0;
-            margin-top: 2.5rem;
-        }
-
-        margin-left: 2.2rem; 
-        p {
-            margin: 0;
-            margin-top: 1.9rem;
-            margin-bottom: 2.2rem;
-        }
-
-        .radio-buttons {
-            display: flex;
-          
-          
-          .radio-button {
-            box-shadow: 0px 1px 5.7px 0px #00000026;
-
-            flex: 1;
-            max-width: 5rem;
+    
+        .filter-footer {
+            border-top: 2px solid #E0E0E0;
+            position: absolute;
             width: 100%;
-            height: 3rem;
-            border-radius: 2rem;
-            margin-right: 1.2rem;
-            border-color: #DBDBDB;
-            border-style: solid;
-            border-width: 0.1rem;
-            background-color: #fff;
-            padding: 10px;
-            cursor: pointer;
+            bottom: 0;
+            display: flex;
+            justify-content: space-between; /* Располагаем элементы вправо и влево */
             
-
-            text-align: center;
-            line-height: 3rem;
-            font-size: 20px;
-            font-weight: 600;
-          }
+            a {
+                cursor: pointer;
+            }
+            .clear {
+              font-size:22px;
+              font-weight: 500;
+              margin-left: 2.5rem;
+              margin-top: 2rem;
+            }
           
-          .radio-button:hover {
-            background-color: #f0f0f0;
+            .show {
+              font-size: 22px;
+              font-weight: 600;
+              width: 235px;
+              height: 55px;
+              background-color: #222222;
+              border-radius: 8px;
+              color: white;
+              text-align: center;
+              margin-bottom: 1rem;
+              margin-right: 1rem;
+              margin-top: 1.1rem;
+              line-height: 3.5rem;
+            }
           }
-          
-          .radio-button.active {
-            background-color: #000;
-            color: #fff;
-          }
-        }
-        hr {
-            width: 58.8rem;
-            margin-top: 3.5rem;
-            margin-left: 0rem;
-            background-color: #D9D9D9;
-        }
-
-
-    }
-
-    .language {
-        margin-left: 2.2rem; 
-
-        h2{
-            font-size: 28px;
-            font-weight: 600;
-        }
-        .checkbox-container {
-            display: flex;
-            flex-direction: column;
-          }
-          
-          .row {
-            display: flex;
-            align-items: center; /* Выравнивание элементов по вертикали */
-            margin-bottom: 10px; /* Отступ между рядами */
-          }
-          
-          label {
-            margin-right: 14rem;
-            font-size: 24px; /* Увеличение размера текста опции */
-          }
-          
-          input[type="checkbox"] {
-            transform: scale(1.8); /* Увеличение размера чекбокса */
-          }
-          
-          
           
     }
-
-    .filter-footer {
-        border-top: 2px solid #E0E0E0;
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-        display: flex;
-        justify-content: space-between; /* Располагаем элементы вправо и влево */
-        
-        a {
-            cursor: pointer;
-        }
-        .clear {
-          font-size:22px;
-          font-weight: 500;
-          margin-left: 2.5rem;
-          margin-top: 2rem;
-        }
-      
-        .show {
-          font-size: 22px;
-          font-weight: 600;
-          width: 235px;
-          height: 55px;
-          background-color: #222222;
-          border-radius: 8px;
-          color: white;
-          text-align: center;
-          margin-bottom: 1rem;
-          margin-right: 3.5rem;
-          margin-top: 1.1rem;
-          line-height: 3.5rem;
-        }
-      }
-      
+    
 }
-
 
 .footer {
     width: 430px;

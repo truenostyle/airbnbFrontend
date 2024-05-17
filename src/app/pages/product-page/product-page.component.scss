@@ -194,10 +194,12 @@
         background-color: white;
         top: 994px;
         right: 155px;
-
+        transition: height 0.3s ease;
         -webkit-box-shadow: 0px 3px 32px 0px rgba(0,0,0,0.75);
         -moz-box-shadow: 0px 3px 32px 0px rgba(0,0,0,0.75);
         box-shadow: 0px 3px 32px 0px rgba(0,0,0,0.75);
+        
+
         .first-line {
             display: flex;
             flex-direction: row;
@@ -241,6 +243,22 @@
                
             }
         }
+        
+        .total-cost { 
+            visibility: hidden;
+            display: flex;
+            flex-direction: row;
+            margin-right: 36px;
+            margin-left: 36px;
+            margin-top: 29px;
+            h3 {
+                font-size: 28px;
+                font-weight: 600;
+            }
+            .cost {
+                margin-left: auto;
+            }
+        }
 
         .row {
 
@@ -257,6 +275,14 @@
                 margin-right: 6px;
             }
 
+            
+            .calendar {
+                mat-form-field{
+                    margin-top: 10px;
+                    margin-left: 15px;
+                    width: 230px;
+                }
+            }
             .guests {
                 cursor: pointer;
                 font-family: "Montserrat", sans-serif;
@@ -343,7 +369,7 @@
         
         .btn-reserve {
             margin-left: 39px;
-            margin-top: 30px;
+            margin-top: -30px;
             width: 536px;
             height: 78px;
             background-color: #2288E6;
@@ -358,6 +384,11 @@
 
        
     }
+
+    .booking.expanded {
+        height: auto; /* or set a specific height */
+      }
+      
 }
 
 .other {

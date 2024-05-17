@@ -7,3 +7,18 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-text-field-wrapper {
+    background-color: white !important;
+    border-bottom: none !important;
+    --mdc-filled-text-field-active-indicator-height: 0px;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: white !important;
+  border-bottom: none !important;
+}
+
+.mdc-text-field--filled {
+    --mdc-filled-text-field-active-indicator-height: 0px;
+}

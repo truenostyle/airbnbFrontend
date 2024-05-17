@@ -1,4 +1,4 @@
-<div class="login-box" [ngClass]="{ 'hidden': loginBoxHidden }">
+<div class="login-box" *ngIf="loginModal">
   <div class="logo"></div>
   <h1>Log in</h1>
   <div class="signup-label">
@@ -36,7 +36,7 @@
   </a>
 
 </div>
-<div class="overlay" [ngClass]="{ 'hidden': loginBoxHidden }" (click)="toggleAllBoxes()"></div>
+
 
 
 
@@ -56,16 +56,16 @@
     <img class="search-img" src="../assets/images/icons/search.svg">
     <input type="text" class="search-input" placeholder="Select a city" (click)="toggleDropdown()" [(ngModel)]="selectedCity">
     <hr class="vertical-hr">
-    <div class="calendar">
-      <mat-form-field>
-        <mat-label>Check in - Check out</mat-label>
-        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+    <div class="calendar calendar-box">
+      <mat-form-field class="calendar-box">
+        <mat-label class="ligth">Check in - Check out</mat-label>
+        <mat-date-range-input class="calendar-box" [formGroup]="range" [rangePicker]="picker">
           <input matStartDate formControlName="start" placeholder="Start date">
           <input matEndDate formControlName="end" placeholder="End date">
         </mat-date-range-input>
       
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
+        <mat-datepicker-toggle class="calendar-box" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker class="calendar-box" #picker></mat-date-range-picker>
       
         <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
         <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
@@ -265,7 +265,7 @@
 
   </div>
 
-  <div class="setting">
+  <div class="setting" (click)="toggleFilterBox()">
     <img src="/assets/images/icons/setting.svg">
   </div>
 
@@ -398,144 +398,147 @@
     </a>
   </ng-container>
 </div>
-<div class="filters-btn" [ngClass]="{ 'hidden': filterBoxHidden }">
-  <div class="filter-header">
-    <a class="close-btn" (click)="toggleFilterBox()"><img src="/assets/images/icons/close.svg"></a>
-    <h3>Filters</h3>
-  </div>
-  <div class="type-place">
-    <h3>Type of place</h3>
-    <p>Search rooms, entire homes, or any type of place</p>
-    <div class="radio-buttons">
-      <a class="radio-button item1" name="option" value="option1" [class.active]="filters.roomType === RoomType.Any"
-        (click)="setActiveButton(RoomType.Any)">Any type</a>
-      <a class="radio-button item2" name="option" value="option2" [class.active]="filters.roomType === RoomType.Room"
-        (click)="setActiveButton(RoomType.Room)">Room</a>
-      <a class="radio-button item3" name="option" value="option3" [class.active]="filters.roomType === RoomType.EntireHome"
-        (click)="setActiveButton(RoomType.EntireHome)">Entire home</a>
+<div class="background-filters" *ngIf="filterModal">
+  <div class="filters-btn" >
+    <div class="filter-header">
+      <a class="close-btn" (click)="toggleFilterBox()"><img src="/assets/images/icons/close.svg"></a>
+      <h3>Filters</h3>
     </div>
-  </div>
-
-  <div class="price-range">
-    <h3>Price range</h3>
-    <p>Nightly prices before fees and taxes</p>
-    <div class="inputs">
-      <div class="input-wrapper">
-        <input id="minPrice" type="number" >
-        <div class="placeholder">Minimum</div>
+    <div class="type-place">
+      <h3>Type of place</h3>
+      <p>Search rooms, entire homes, or any type of place</p>
+      <div class="radio-buttons">
+        <a class="radio-button item1" name="option" value="option1" [class.active]="filters.roomType === RoomType.Any"
+          (click)="setActiveButton(RoomType.Any)">Any type</a>
+        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.roomType === RoomType.Room"
+          (click)="setActiveButton(RoomType.Room)">Room</a>
+        <a class="radio-button item3" name="option" value="option3" [class.active]="filters.roomType === RoomType.EntireHome"
+          (click)="setActiveButton(RoomType.EntireHome)">Entire home</a>
       </div>
-      <hr class="hr-price">
-      <div class="input-wrapper">
-        <input id="maxPrice" type="number" >
-        <div class="placeholder">Maximum</div>
-      </div>
-      
     </div>
   
-    <hr>
-  </div>
-
-  <div class="rooms-beds">
-    <h2>Rooms and Beds</h2>
-    <div class="bedrooms">
-      <p>Bedrooms</p>
-      <div class="radio-buttons">
-        <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBedrooms === 0"
-          (click)="bedroomsSetActiveButton(0)">Any</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 1"
-          (click)="bedroomsSetActiveButton(1)">1</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 2"
-          (click)="bedroomsSetActiveButton(2)">2</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 3"
-          (click)="bedroomsSetActiveButton(3)">3</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 4"
-          (click)="bedroomsSetActiveButton(4)">4</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 5"
-          (click)="bedroomsSetActiveButton(5)">5</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 6"
-          (click)="bedroomsSetActiveButton(6)">6</a>
-        <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBedrooms === 7"
-          (click)="bedroomsSetActiveButton(7)">7+</a>
+    <div class="price-range">
+      <h3>Price range</h3>
+      <p>Nightly prices before fees and taxes</p>
+      <div class="inputs">
+        <div class="input-wrapper">
+          <input id="minPrice" type="number" >
+          <div class="placeholder">Minimum</div>
+        </div>
+        <hr class="hr-price">
+        <div class="input-wrapper">
+          <input id="maxPrice" type="number" >
+          <div class="placeholder">Maximum</div>
+        </div>
+        
       </div>
+    
+      <hr>
     </div>
-
-    <div class="beds">
-      <p>Beds</p>
-      <div class="radio-buttons">
-        <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBeds === 0"
-          (click)="bedsSetActiveButton(0)">Any</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 1"
-          (click)="bedsSetActiveButton(1)">1</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 2"
-          (click)="bedsSetActiveButton(2)">2</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 3"
-          (click)="bedsSetActiveButton(3)">3</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 4"
-          (click)="bedsSetActiveButton(4)">4</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 5"
-          (click)="bedsSetActiveButton(5)">5</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 6"
-          (click)="bedsSetActiveButton(6)">6</a>
-        <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBeds === 7"
-          (click)="bedsSetActiveButton(7)">7+</a>
+  
+    <div class="rooms-beds">
+      <h2>Rooms and Beds</h2>
+      <div class="bedrooms">
+        <p>Bedrooms</p>
+        <div class="radio-buttons">
+          <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBedrooms === 0"
+            (click)="bedroomsSetActiveButton(0)">Any</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 1"
+            (click)="bedroomsSetActiveButton(1)">1</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 2"
+            (click)="bedroomsSetActiveButton(2)">2</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 3"
+            (click)="bedroomsSetActiveButton(3)">3</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 4"
+            (click)="bedroomsSetActiveButton(4)">4</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 5"
+            (click)="bedroomsSetActiveButton(5)">5</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBedrooms === 6"
+            (click)="bedroomsSetActiveButton(6)">6</a>
+          <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBedrooms === 7"
+            (click)="bedroomsSetActiveButton(7)">7+</a>
+        </div>
       </div>
+  
+      <div class="beds">
+        <p>Beds</p>
+        <div class="radio-buttons">
+          <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBeds === 0"
+            (click)="bedsSetActiveButton(0)">Any</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 1"
+            (click)="bedsSetActiveButton(1)">1</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 2"
+            (click)="bedsSetActiveButton(2)">2</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 3"
+            (click)="bedsSetActiveButton(3)">3</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 4"
+            (click)="bedsSetActiveButton(4)">4</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 5"
+            (click)="bedsSetActiveButton(5)">5</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBeds === 6"
+            (click)="bedsSetActiveButton(6)">6</a>
+          <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBeds === 7"
+            (click)="bedsSetActiveButton(7)">7+</a>
+        </div>
+      </div>
+  
+      <div class="bathrooms">
+        <p>Bathrooms</p>
+        <div class="radio-buttons">
+          <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBathrooms === 0"
+            (click)="bathroomsSetActiveButton(0)">Any</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 1"
+            (click)="bathroomsSetActiveButton(1)">1</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 2"
+            (click)="bathroomsSetActiveButton(2)">2</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 3"
+            (click)="bathroomsSetActiveButton(3)">3</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 4"
+            (click)="bathroomsSetActiveButton(4)">4</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 5"
+            (click)="bathroomsSetActiveButton(5)">5</a>
+          <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 6"
+            (click)="bathroomsSetActiveButton(6)">6</a>
+          <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBathrooms   === 7"
+            (click)="bathroomsSetActiveButton(7)">7+</a>
+        </div>
+      </div>
+  
+      <hr>
     </div>
-
-    <div class="bathrooms">
-      <p>Bathrooms</p>
-      <div class="radio-buttons">
-        <a class="radio-button item1" name="option" value="option1" [class.active]="filters.minBathrooms === 0"
-          (click)="bathroomsSetActiveButton(0)">Any</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 1"
-          (click)="bathroomsSetActiveButton(1)">1</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 2"
-          (click)="bathroomsSetActiveButton(2)">2</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 3"
-          (click)="bathroomsSetActiveButton(3)">3</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 4"
-          (click)="bathroomsSetActiveButton(4)">4</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 5"
-          (click)="bathroomsSetActiveButton(5)">5</a>
-        <a class="radio-button item2" name="option" value="option2" [class.active]="filters.minBathrooms === 6"
-          (click)="bathroomsSetActiveButton(6)">6</a>
-        <a class="radio-button item3" name="option" value="option3" [class.active]="filters.minBathrooms   === 7"
-          (click)="bathroomsSetActiveButton(7)">7+</a>
+  
+    <div class="language">
+      <h2>Host language</h2>
+      <div class="checkbox-container">
+        <div class="row">
+          <label>
+            <input type="checkbox" name="option1"> English
+          </label>
+          <label>
+            <input type="checkbox" name="option2"> French
+          </label>
+        </div>
+        <div class="row">
+          <label>
+            <input type="checkbox" name="option3"> German
+          </label>
+          <label>
+            <input type="checkbox" name="option4"> Japanese
+          </label>
+        </div>
       </div>
+  
     </div>
-
-    <hr>
-  </div>
-
-  <div class="language">
-    <h2>Host language</h2>
-    <div class="checkbox-container">
-      <div class="row">
-        <label>
-          <input type="checkbox" name="option1"> English
-        </label>
-        <label>
-          <input type="checkbox" name="option2"> French
-        </label>
-      </div>
-      <div class="row">
-        <label>
-          <input type="checkbox" name="option3"> German
-        </label>
-        <label>
-          <input type="checkbox" name="option4"> Japanese
-        </label>
-      </div>
+  
+    <div class="filter-footer">
+      <a class="clear" (click)="clearAll()"> Clear all</a>
+  
+      <a (click)="toggleFilterBox(); refreshStays()"class="show">Search</a>
     </div>
-
+  
   </div>
-
-  <div class="filter-footer">
-    <a class="clear" (click)="clearAll()"> Clear all</a>
-
-    <a (click)="toggleFilterBox(); refreshStays()"class="show">Search</a>
-  </div>
-
 </div>
+
 
 <div class="footer">
   <div class="explore">

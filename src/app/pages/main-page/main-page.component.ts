@@ -30,6 +30,8 @@ export class MainPageComponent {
 
   dropdownOpen: boolean = false;
   dropdownOpen2: boolean = false;
+  loginModal: boolean = false;
+  filterModal: boolean = false;
   selectedCity: string = ''; 
 
   RoomType = RoomType;
@@ -67,9 +69,8 @@ export class MainPageComponent {
   }
 
   toggleAllBoxes(): void {
-    this.loginBoxHidden = true;
-    this.filterBoxHidden = true;
-    this.wishlistBoxHidden = true;
+
+    this.wishlistBoxHidden = false;
 
     const overlay = document.querySelector('.overlay');
     if (overlay) {
@@ -77,25 +78,13 @@ export class MainPageComponent {
     }
 }
 
-  loginBoxHidden: boolean = true;
 
 
-  toggleLoginBox(): void {
-    this.loginBoxHidden = !this.loginBoxHidden;
-    const overlay = document.querySelector('.overlay');
-    if (overlay) {
-      this.loginBoxHidden ? overlay.classList.add('hidden') : overlay.classList.remove('hidden');
-    }
-  }
 
-  filterBoxHidden: boolean = true;
-  toggleFilterBox(): void {
-    this.filterBoxHidden = !this.filterBoxHidden;
-    const overlay = document.querySelector('.overlay');
-    if (overlay) {
-      this.filterBoxHidden? overlay.classList.add('hidden') : overlay.classList.remove('hidden');
-    }
-  }
+
+
+
+ 
 
   wishlistBoxHidden: boolean = true;
   toggleWishlistBox(): void {
@@ -111,6 +100,8 @@ export class MainPageComponent {
   onDocumentClick(event: MouseEvent) {
     const dropdownMenu = document.querySelector('.dropdown-menu');
     const dropdownGuests = document.querySelector('.dropdown-guests');
+    const loginModal = document.querySelector('.login-box');
+    const filterModal = document.querySelector('.filterModal');
     if (dropdownMenu !== null) {
       if (!dropdownMenu.contains(event.target as Node)) {
         this.dropdownOpen = false;
@@ -122,12 +113,22 @@ export class MainPageComponent {
         this.dropdownOpen2 = false;
       }
     }
-
-    const targetElement = event.target as HTMLElement;
-    if (!targetElement.closest('.login-box') && !targetElement.closest('.login')) {
-      this.loginBoxHidden = true;
+    
+    if (loginModal !== null) {
+      if (!loginModal.contains(event.target as Node)) {
+        this.loginModal = false;
+      }
+    }
+    
+    console.log(filterModal);
+    if (filterModal !== null) {
+      console.log("close");
+      if (!filterModal.contains(event.target as Node)) {
+        this.filterModal = false;
+      }
     }
 
+   
    
   }
 
@@ -140,6 +141,18 @@ export class MainPageComponent {
   toggleDropdown2() {
     setTimeout(() => {
       this.dropdownOpen2 = !this.dropdownOpen2;
+    }, 0);
+  }
+
+  toggleLoginBox(): void {
+    setTimeout(() => {
+      this.loginModal = !this.loginModal;
+    }, 0);
+  }
+
+  toggleFilterBox(): void {
+    setTimeout(() => {
+      this.filterModal = !this.filterModal;
     }, 0);
   }
 
@@ -209,7 +222,7 @@ export class MainPageComponent {
       0: {
         items: 1
       },
-      700: {
+      300: {
         items: 6
       },
       1000: {

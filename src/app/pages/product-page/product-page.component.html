@@ -68,32 +68,40 @@
     <hr class="hr-4">
 
 
-    <div class="booking">
+    <div class="booking" [class.expanded]="isAvailable" [style.height]="isAvailable ? '330px' : '300px'">
         <div class="first-line">
-            <div class="price">$500 <p>per night</p></div>
-         
+          <div class="price">$500 <p>per night</p></div>
         </div>
         <div class="row">
-            <div class="calendar">
-                <mat-form-field>
-                    <mat-label>Check in - Check out</mat-label>
-                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                      <input matStartDate formControlName="start" placeholder="Start date">
-                      <input matEndDate formControlName="end" placeholder="End date">
-                    </mat-date-range-input>
-                  
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
-                  
-                    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-                  </mat-form-field>
-            </div>
-            <div class="guests" (click)="toggleDropdown2()">{{count}} guest</div>
+          <div class="calendar">
+            <mat-form-field>
+              <mat-label>Check in - Check out</mat-label>
+              <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                <input matStartDate formControlName="start" placeholder="Start date">
+                <input matEndDate formControlName="end" placeholder="End date">
+              </mat-date-range-input>
+            
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            
+              <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
+<mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
+
+            </mat-form-field>
+          </div>
+          <div class="guests" (click)="toggleDropdown2()">{{count}} guest</div>
+        </div>
+        <div class="total-cost" [style.visibility]="isAvailable ? 'visible' : 'hidden'">
+          <h3>Total nights stay</h3>
+          <h3 class="cost">${{ cost }}</h3>
+        </div>
+        <div class="btn-reserve" 
+            (click)="onSubmit()" 
+            [style.margin-top]="isAvailable ? '-5px' : '-30px'">
+            {{ isAvailable ? 'Request to book' : 'Check availability' }}
         </div>
 
-        <div class="btn-reserve">Check availability</div>
-
+        
         
 <div class="dropdown-guests" *ngIf="dropdownOpen2">
     <div class="item">

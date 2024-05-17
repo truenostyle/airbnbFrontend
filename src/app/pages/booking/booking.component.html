@@ -4,14 +4,14 @@
     <h1>Confirm and pay</h1>
     <h2>Your trip</h2>
     <div class="dates">
-        <h3>Dates</h3>
-        <p>Aug 18 - 23</p>
+      <h3>Dates</h3>
+      <p>{{ startDate | date: 'MMM d' }} - {{ endDate | date: 'MMM d' }}</p>
     </div>
     <div class="guests">
-        <h3>Guests</h3>
-        <p>1 guest</p>
+      <h3>Guests</h3>
+      <p>{{ guestCount }} guest{{ guestCount > 1 ? 's' : '' }}</p>
     </div>
-</div>
+  </div>
 
 <div class="info-block">
     <div class="head">
@@ -27,8 +27,8 @@
     </div>
     <div class="price">
         <div class="sum">
-            <p class="nights">$440 x 9 nights</p>
-            <p class="res">$3960</p>
+            <p class="nights">$500 per night</p>
+            <p class="res">${{ cost }}</p>
         </div>
         <div class="services">
             <p class="fee">Cleaning and service fee</p>
@@ -41,7 +41,7 @@
         <hr>
         <div class="result">
             <p class="total">Total nights stay</p>
-            <p class="itog">$3960</p>
+            <p class="itog">${{ cost }}</p>
         </div>
     </div>
 </div>

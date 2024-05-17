@@ -1,5 +1,8 @@
-import { Component, HostListener} from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { StateService } from 'src/app/services/state.service';
+
 
 @Component({
   selector: 'app-product-page',
@@ -7,8 +10,10 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./product-page.component.scss'],
 })
 export class ProductPageComponent {
+  range: FormGroup;
   count: number = 0;
-
+  cost: number = 0;
+  isAvailable: boolean = false;
   dropdownOpen2: boolean = false;
 
   adults_count: number = 0; // Начальное значение счетчика взрослых
@@ -16,10 +21,69 @@ export class ProductPageComponent {
   infants_count: number = 0;
   pets_count: number = 0; // Начальное значение счетчика детей
 
-  range = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
-  });
+
+  constructor(
+    private fb: FormBuilder,
+    private stateService: StateService,
+    private router: Router
+  ) {
+    this.range = this.fb.group({
+      start: [null, Validators.required],
+      end: [null, Validators.required]
+    });
+  }
+
+  
+ 
+
+  checkConditions(): boolean {
+    const start = this.range.controls['start'].value;
+    const end = this.range.controls['end'].value;
+    if(start && end && this.count > 0) 
+      {
+        return true;
+      }
+      else return false;
+  }
+
+  onSubmit(): void {
+    if (this.checkConditions()) {
+      this.calculateCost();
+      
+      if (this.isRequestToBook()) {
+        this.saveState();
+      }
+      this.isAvailable = true;
+    } else {
+      this.isAvailable = false;
+    }
+  }
+  
+  isRequestToBook(): boolean {
+    return this.isAvailable && this.btnLabel === 'Request to book';
+  }
+  
+  get btnLabel(): string {
+    return this.isAvailable ? 'Request to book' : 'Check availability';
+  }
+  
+  saveState(): void {
+    this.stateService.changeDateRange(this.range.controls['start'].value, this.range.controls['end'].value);
+    this.stateService.changeGuestCount(this.count); 
+    this.stateService.changeCost(this.cost);
+    this.router.navigate(['/booking']);
+  }
+
+  calculateCost(): void {
+    const start = this.range.controls['start'].value;
+    const end = this.range.controls['end'].value;
+    const oneDay = 24 * 60 * 60 * 1000;
+    if (end !== null && start !== null) {
+      const diffDays = Math.round(Math.abs((end.getTime() - start.getTime()) / oneDay));
+      const pricePerNight = 500;
+      this.cost = diffDays * pricePerNight;
+    }
+  }
 
   // Функция для увеличения счетчика
   incrementCounter(counter: string): void {
