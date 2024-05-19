@@ -5,30 +5,30 @@
     <h2>Your trip</h2>
     <div class="dates">
       <h3>Dates</h3>
-      <p>{{ stateService.dateStart$ | async | date: 'MMM d' }} - {{ stateService.dateEnd$ | async | date: 'MMM d' }}</p>
+      <p>{{ state.dateStart | date: 'MMM d' }} - {{ state.dateEnd | date: 'MMM d' }}</p>
     </div>
     <div class="guests">
       <h3>Guests</h3>
-      <p *ngIf="stateService.guests$ | async as guests">{{ guests }} guest{{ guests > 1 ? 's' : '' }}</p>
+      <p>{{ state.guests }} guest{{ state.guests > 1 ? 's' : '' }}</p>
     </div>
   </div>
 
-<div *ngIf="stateService.stay$ | async as stay" class="info-block">
+<div class="info-block">
     <div class="head">
         <img src="https://s3-alpha-sig.figma.com/img/d4f1/d0cd/2c2ce5f8ac7fc67f76f23ebe29911435?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=a69FFH--Aa-yegYWUlcCcBz3G5xAIZWPqai07T2nri5xeNFJ94fgjL3FNbUzMghy8i3iLH7AzgNQlwz0sZa2my5R~AhZQz8sj-GzhGIFcs~nUWh924E8iiP0S7AyTYaJsFQEgKu1AlxvC~srNYTQv1kk7D5by96yTk4SbpOXai18GcRlflW4r70vltplu4m4T21vVgDxvmV9b1e4BXOaVkik3c8Lnuu6bDh1j1UAprZbfjKIkNTvBUtURCIYTj7zUpvGbf2ppET-ZRUsvZZ8fXqfNpCfNQC7j3x-2ESZOXMtvs4E32eBenJiQfsLRc5jXHFDS8D5kYSZp6JVLeXnxQ__">
         <div class="info">
-            <h2>{{ stay.title }}</h2>
-            <p class="location">{{ stay.location }}</p>
+            <h2>{{ state.stay.title }}</h2>
+            <p class="location">{{ state.stay.location }}</p>
             <div class="reviews">
                 <img src="../assets/images/icons/star-fill.svg">
-                <h2>{{ stay.rating.overall }} · 223 reviews</h2>
+                <h2>{{ state.stay.rating.overall }} · 223 reviews</h2>
             </div>
         </div>
     </div>
     <div class="price">
         <div class="sum">
-            <p class="nights">${{ stay.price }} per night</p>
-            <p class="res">${{ stateService.cost$ | async }}</p>
+            <p class="nights">${{ state.stay.price }} per night</p>
+            <p class="res">${{ state.cost }}</p>
         </div>
         <div class="services">
             <p class="fee">Cleaning and service fee</p>
@@ -41,7 +41,7 @@
         <hr>
         <div class="result">
             <p class="total">Total nights stay</p>
-            <p class="itog">${{ stateService.cost$ | async  }}</p>
+            <p class="itog">${{ state.cost }}</p>
         </div>
     </div>
 </div>

@@ -81,11 +81,13 @@ export class ProductPageComponent {
   }
   
   saveState(): void {
-    this.stateService.changeDateStart(this.range.controls['start'].value);
-    this.stateService.changeDateEnd(this.range.controls['end'].value);
-    this.stateService.changeGuestCount(this.count); 
-    this.stateService.changeCost(this.cost);
-    this.stateService.changeStay(this.stay!);
+    this.stateService.setState({
+      dateStart: this.range.controls['start'].value,
+      dateEnd: this.range.controls['end'].value,
+      guests: this.count,
+      cost: this.cost,
+      stay: this.stay!,
+    })
     this.router.navigate(['/booking']);
   }
 
