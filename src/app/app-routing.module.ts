@@ -8,6 +8,7 @@ import { ForguestsComponent } from './pages/forguests/forguests.component';
 import { WishlistsComponent } from './pages/wishlists/wishlists.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { BookingComponent } from './pages/booking/booking.component';
+import { BookingSuccessPageComponent } from './pages/booking-success-page/booking-success-page.component';
 
 
 
@@ -16,12 +17,13 @@ const routes: Routes = [
   {path: '', redirectTo: 'main', pathMatch: 'full'},
   {path: 'main', loadChildren: () => import('./pages/main-page/main-page.module').then(m => m.MainPageModule), component: MainPageComponent},
   {path: 'register', loadChildren: () => import('./pages/register-page/register-page.module').then(m => m.RegisterPageModule), component: RegisterPageComponent},
-  {path: 'product', component: ProductPageComponent},
+  {path: 'product/:id', component: ProductPageComponent},
   {path: 'helpcenter', component: HelpcenterComponent},
   {path: 'forguests', component: ForguestsComponent},
   {path: 'wishlists', component: WishlistsComponent},
   {path: 'account-settings', component: AccountSettingsComponent},
-  {path: 'booking', component: BookingComponent}
+  {path: 'booking', component: BookingComponent},
+  {path: 'booking/success', component: BookingSuccessPageComponent}
 ];
 
 @NgModule({

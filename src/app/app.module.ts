@@ -23,6 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { BookingComponent } from './pages/booking/booking.component';
+import { RouterModule } from '@angular/router';
+import { BookingSuccessPageComponent } from './pages/booking-success-page/booking-success-page.component';
 
 
 
@@ -39,11 +41,13 @@ import { BookingComponent } from './pages/booking/booking.component';
     AccountSettingsComponent,
     DatepickerComponent,
     BookingComponent,
+    BookingSuccessPageComponent,
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,

@@ -1,491 +1,518 @@
 <app-header></app-header>
 
-<div class="overview">
-    <h1>Overview</h1>
-    <div class="links">
-        <a href="#" class="share"><img src="../assets/images/icons/share.svg">Share </a>
-        <a href="#" class="save"><img src="../assets/images/icons/heart.svg"> Save</a>
-    </div>
-</div>
-
-<div class="parent">
-    <div class="div1"><img src="https://t4.ftcdn.net/jpg/00/09/21/15/360_F_9211505_d4hxfNtPeTfgt7AeGmoO7u79P2hwxkoQ.jpg"> </div>
-    <div class="div2"><img src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
-    <div class="div3"><img src="https://thumbs.dreamstime.com/b/%D0%B3%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%B8%D1%87%D0%BD%D1%8B%D0%B5-%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%B0-8146308.jpg"></div>
-    <div class="div4"> <img src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
-    <div class="div5"> <img src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
-</div>
-  
-<div class="main">
-    <div class="name">
-        <h2 class="hotel-name">Entire villa in Koromačno, Croatia</h2>
-        <p class="copacity">8 guests · 4 bedrooms · 4 beds · 5 baths</p>
-        <div class="rating"><img src="../assets/images/icons/star-fill.svg"><p> No reviews yet</p></div>
-    </div>
-    <hr>
-    <div class="host">
-       <img src="../assets/images/icons/man-user.svg">
-       <div class="column">
-        <h2>Marco Pellini</h2>
-        <p>3 years hosting</p>
+<ng-container *ngIf="!!stay">
+    <div class="overview">
+        <h1>Overview</h1>
+        <div class="links">
+            <a href="#" class="share"><img src="../assets/images/icons/share.svg">Share </a>
+            <a href="#" class="save"><img src="../assets/images/icons/heart.svg"> Save</a>
+        </div>
     </div>
 
+    <div class="parent">
+        <div class="div1"><img
+                src="https://t4.ftcdn.net/jpg/00/09/21/15/360_F_9211505_d4hxfNtPeTfgt7AeGmoO7u79P2hwxkoQ.jpg"> </div>
+        <div class="div2"><img
+                src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
+        <div class="div3"><img
+                src="https://thumbs.dreamstime.com/b/%D0%B3%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%B8%D1%87%D0%BD%D1%8B%D0%B5-%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%B0-8146308.jpg">
+        </div>
+        <div class="div4"> <img
+                src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
+        <div class="div5"> <img
+                src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
     </div>
-    <hr>
-    <div class="activity">
-        <div class="item">
-            <img src="../assets/images/icons/activity.svg">
-             <div class="column">
-                <h3>Play pool with your friends</h3>
-                <p>You can play pool lalalalala</p>
+
+    <div class="main">
+        <div class="name">
+            <h2 class="hotel-name">{{ stay.title}} in {{ stay.location }}</h2>
+            <p class="copacity">{{ stay.maxGuests }} guests · {{ stay.bedrooms }} bedrooms · {{ stay.beds }} beds · {{ stay.bathrooms }} baths</p>
+            <div class="rating"><img src="../assets/images/icons/star-fill.svg">
+                <p> No reviews yet</p>
             </div>
         </div>
-
-        <div class="item">
-            <img src="../assets/images/icons/activity.svg">
-             <div class="column">
-                <h3>Play pool with your friends</h3>
-                <p>You can play pool lalalalala</p>
-            </div>
-        </div>
-
-        <div class="item">
-            <img src="../assets/images/icons/activity.svg">
-             <div class="column">
-                <h3>Play pool with your friends</h3>
-                <p>You can play pool lalalalala</p>
-            </div>
-        </div>
-    </div>
-
-    <hr class="hr-3"> 
-    <div class="description">
-        <p>
-            With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. The architecturally exclusive house with especially many extras is located on an impressive, over 8,000 m² large, gently sloping and completely fenced area in southwestern orientation. An absolute highlight on the extremely well-kept grounds is the 14.5 m long infinity saltwater pool, which can be heated on request. From the water and from the surrounding terrace you have a sensationally beautiful
-        </p>
-    </div>
-
-    <hr class="hr-4">
-
-
-    <div class="booking" [class.expanded]="isAvailable" [style.height]="isAvailable ? '330px' : '300px'">
-        <div class="first-line">
-          <div class="price">$500 <p>per night</p></div>
-        </div>
-        <div class="row">
-          <div class="calendar">
-            <mat-form-field>
-              <mat-label>Check in - Check out</mat-label>
-              <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                <input matStartDate formControlName="start" placeholder="Start date">
-                <input matEndDate formControlName="end" placeholder="End date">
-              </mat-date-range-input>
-            
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-date-range-picker #picker></mat-date-range-picker>
-            
-              <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
-<mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
-
-            </mat-form-field>
-          </div>
-          <div class="guests" (click)="toggleDropdown2()">{{count}} guest</div>
-        </div>
-        <div class="total-cost" [style.visibility]="isAvailable ? 'visible' : 'hidden'">
-          <h3>Total nights stay</h3>
-          <h3 class="cost">${{ cost }}</h3>
-        </div>
-        <div class="btn-reserve" 
-            (click)="onSubmit()" 
-            [style.margin-top]="isAvailable ? '-5px' : '-30px'">
-            {{ isAvailable ? 'Request to book' : 'Check availability' }}
-        </div>
-
-        
-        
-<div class="dropdown-guests" *ngIf="dropdownOpen2">
-    <div class="item">
-      <div class="column">
-        <h3>Adults</h3>
-        <p>Ages 13 or above</p>
-      </div>
-      <div class="count">
-        <a (click)="decrementCounter('adults')">-</a>
-        <span>{{ adults_count }}</span>
-        <a (click)="incrementCounter('adults')">+</a>
-      </div>
-        
-    </div>
-    <hr>
-  
-    <div class="item">
-      <div class="column">
-        <h3>Children</h3>
-        <p>Ages 2 - 12</p>
-      </div>
-      <div class="count">
-        <a (click)="decrementCounter('children')">-</a>
-        <span>{{ children_count }}</span>
-        <a (click)="incrementCounter('children')">+</a>
-      </div>
-        
-    </div>
-    <hr>
-  
-    <div class="item">
-      <div class="column">
-        <h3>Infants</h3>
-        <p>Under 2</p>
-      </div>
-      <div class="count">
-        <a (click)="decrementCounter('infants')">-</a>
-        <span>{{ infants_count }}</span>
-        <a (click)="incrementCounter('infants')">+</a>
-      </div>
-        
-    </div>
-    <hr>
-  
-    <div class="item">
-      <div class="column">
-        <h3>Pets</h3>
-        <p>Bringing a servise animal</p>
-      </div>
-      <div class="count">
-        <a (click)="decrementCounter('pets')">-</a>
-        <span>{{ pets_count }}</span>
-        <a (click)="incrementCounter('pets')">+</a> 
-      </div>
-        
-    </div>
-  
-    
-  </div>
-    </div>
-
-<div class="other">
-    <div class="rooms">
-        <h2>Where you'll sleep</h2>
-        <div class="item">
-            <img src="../assets/images/icons/room-key.svg">
-            <h3>Bedroom</h3>
-            <p>1 double bed</p>
-        </div>
-    </div>
-
-    <hr class="hr-5">
-
-    <div class="amenities">
-        <h2>Where you'll sleep</h2>
-        <div class="row">
+        <hr>
+        <div class="host">
+            <img src="../assets/images/icons/man-user.svg">
             <div class="column">
-                <div class="item"> 
-                    <img src="../assets/images/icons/swimming-pool.svg">
-                    <p>Swimming pool</p>
-                </div>
+                <h2>Marco Pellini</h2>
+                <p>3 years hosting</p>
+            </div>
 
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
-                </div>
-
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
-                </div>
-
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
-                </div>
-
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
+        </div>
+        <hr>
+        <div class="activity">
+            <div class="item">
+                <img src="../assets/images/icons/activity.svg">
+                <div class="column">
+                    <h3>Play pool with your friends</h3>
+                    <p>You can play pool lalalalala</p>
                 </div>
             </div>
 
-            <div class="column">
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
+            <div class="item">
+                <img src="../assets/images/icons/activity.svg">
+                <div class="column">
+                    <h3>Play pool with your friends</h3>
+                    <p>You can play pool lalalalala</p>
                 </div>
+            </div>
 
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
-                </div>
-
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
-                </div>
-
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
-                </div>
-
-                <div class="item"> 
-                    <img src="../assets/images/icons/wifi.svg">
-                    <p>Wifi</p>
+            <div class="item">
+                <img src="../assets/images/icons/activity.svg">
+                <div class="column">
+                    <h3>Play pool with your friends</h3>
+                    <p>You can play pool lalalalala</p>
                 </div>
             </div>
         </div>
 
-        <div class="show"><p>Show all 59 amenities</p></div>
-    </div>
+        <hr class="hr-3">
+        <div class="description">
+            <p>
+                {{ stay.description }}
+            </p>
+        </div>
 
-    <hr class="hr-6">
+        <hr class="hr-4">
 
-</div>
 
-<div class="reviews">
-    <div class="head">
-        <img src="../assets/images/icons/star-fill.svg">
-        <h2>4.93 · 223 reviews</h2>
-    </div>
-    <div class="reviews-row">
-        <div class="row">
-            <div class="overall-rating">
-                <h2>Overall rating</h2>
+        <div class="booking" [class.expanded]="isAvailable" [style.height]="isAvailable ? '330px' : '300px'">
+            <div class="first-line">
+                <div class="price">${{ stay.price }} <p>per night</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="calendar">
+                    <mat-form-field>
+                        <mat-label>Check in - Check out</mat-label>
+                        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                            <input matStartDate formControlName="start" placeholder="Start date">
+                            <input matEndDate formControlName="end" placeholder="End date">
+                        </mat-date-range-input>
+
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+
+                        <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start
+                            date</mat-error>
+                        <mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end
+                            date</mat-error>
+
+                    </mat-form-field>
+                </div>
+                <div class="guests" (click)="toggleDropdown2()">{{count}} guest</div>
+            </div>
+            <div class="total-cost" [style.visibility]="isAvailable ? 'visible' : 'hidden'">
+                <h3>Total nights stay</h3>
+                <h3 class="cost">${{ cost }}</h3>
+            </div>
+            <div class="btn-reserve" (click)="onSubmit()" [style.margin-top]="isAvailable ? '-5px' : '-30px'">
+                {{ isAvailable ? 'Request to book' : 'Check availability' }}
+            </div>
+
+
+
+            <div class="dropdown-guests" *ngIf="dropdownOpen2">
                 <div class="item">
-                    <p>5</p><hr>
+                    <div class="column">
+                        <h3>Adults</h3>
+                        <p>Ages 13 or above</p>
+                    </div>
+                    <div class="count">
+                        <a (click)="decrementCounter('adults')">-</a>
+                        <span>{{ adults_count }}</span>
+                        <a (click)="incrementCounter('adults')">+</a>
+                    </div>
+
                 </div>
+                <hr>
+
                 <div class="item">
-                    <p>4</p><hr>
+                    <div class="column">
+                        <h3>Children</h3>
+                        <p>Ages 2 - 12</p>
+                    </div>
+                    <div class="count">
+                        <a (click)="decrementCounter('children')">-</a>
+                        <span>{{ children_count }}</span>
+                        <a (click)="incrementCounter('children')">+</a>
+                    </div>
+
                 </div>
+                <hr>
+
                 <div class="item">
-                    <p>3</p><hr class="none">
+                    <div class="column">
+                        <h3>Infants</h3>
+                        <p>Under 2</p>
+                    </div>
+                    <div class="count">
+                        <a (click)="decrementCounter('infants')">-</a>
+                        <span>{{ infants_count }}</span>
+                        <a (click)="incrementCounter('infants')">+</a>
+                    </div>
+
                 </div>
+                <hr>
+
                 <div class="item">
-                    <p>2</p><hr class="none">
+                    <div class="column">
+                        <h3>Pets</h3>
+                        <p>Bringing a servise animal</p>
+                    </div>
+                    <div class="count">
+                        <a (click)="decrementCounter('pets')">-</a>
+                        <span>{{ pets_count }}</span>
+                        <a (click)="incrementCounter('pets')">+</a>
+                    </div>
+
                 </div>
-                <div class="item">
-                    <p>1</p><hr class="none">
-                </div>
+
+
             </div>
         </div>
-    
-        <div class="category">
-            <div class="item"> 
-                <p>Cleanliness</p>
-                <p>4.6</p>
-                <img src="../assets/images/icons/clean.svg">    
+
+        <div class="other">
+            <div class="rooms">
+                <h2>Where you'll sleep</h2>
+                <div class="item">
+                    <img src="../assets/images/icons/room-key.svg">
+                    <h3>Bedroom</h3>
+                    <p>1 double bed</p>
+                </div>
             </div>
 
-            <div class="item"> 
-                <p>Cleanliness</p>
-                <p>4.6</p>
-                <img src="../assets/images/icons/clean.svg">    
+            <hr class="hr-5">
+
+            <div class="amenities">
+                <h2>Where you'll sleep</h2>
+                <div class="row">
+                    <div class="column">
+                        <div class="item">
+                            <img src="../assets/images/icons/swimming-pool.svg">
+                            <p>Swimming pool</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+
+                        <div class="item">
+                            <img src="../assets/images/icons/wifi.svg">
+                            <p>Wifi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="show">
+                    <p>Show all 59 amenities</p>
+                </div>
             </div>
 
-            <div class="item"> 
-                <p>Cleanliness</p>
-                <p>4.6</p>
-                <img src="../assets/images/icons/clean.svg">    
+            <hr class="hr-6">
+
+        </div>
+
+        <div class="reviews">
+            <div class="head">
+                <img src="../assets/images/icons/star-fill.svg">
+                <h2>{{ stay.rating.overall }} · 223 reviews</h2>
+            </div>
+            <div class="reviews-row">
+                <div class="row">
+                    <div class="overall-rating">
+                        <h2>Overall rating</h2>
+                        <div class="item">
+                            <p>5</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <p>4</p>
+                            <hr>
+                        </div>
+                        <div class="item">
+                            <p>3</p>
+                            <hr class="none">
+                        </div>
+                        <div class="item">
+                            <p>2</p>
+                            <hr class="none">
+                        </div>
+                        <div class="item">
+                            <p>1</p>
+                            <hr class="none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="item">
+                        <p>Cleanliness</p>
+                        <p>{{ stay.rating.cleanliness }}</p>
+                        <img src="../assets/images/icons/clean.svg">
+                    </div>
+
+                    <div class="item">
+                        <p>Cleanliness</p>
+                        <p>{{ stay.rating.cleanliness }}</p>
+                        <img src="../assets/images/icons/clean.svg">
+                    </div>
+
+                    <div class="item">
+                        <p>Cleanliness</p>
+                        <p>{{ stay.rating.cleanliness }}</p>
+                        <img src="../assets/images/icons/clean.svg">
+                    </div>
+
+                    <div class="item">
+                        <p>Cleanliness</p>
+                        <p>{{ stay.rating.cleanliness }}</p>
+                        <img src="../assets/images/icons/clean.svg">
+                    </div>
+
+                    <div class="item">
+                        <p>Cleanliness</p>
+                        <p>{{ stay.rating.cleanliness }}</p>
+                        <img src="../assets/images/icons/clean.svg">
+                    </div>
+
+                    <div class="item">
+                        <p>Cleanliness</p>
+                        <p>{{ stay.rating.cleanliness }}</p>
+                        <img src="../assets/images/icons/clean.svg">
+                    </div>
+                </div>
             </div>
 
-            <div class="item"> 
-                <p>Cleanliness</p>
-                <p>4.6</p>
-                <img src="../assets/images/icons/clean.svg">    
+            <hr class="hr-review">
+
+            <div class="main2">
+                <div class="item">
+                    <div class="temp">
+                        <img class="user-img" src="../assets/images/icons/man-user.svg">
+
+                        <div>
+                            <p class="name">Susan</p>
+                            <p class="location">Ukraine, Odesa</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="stars">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                        </div>
+                        <p class="time">1 week ago</p>
+                    </div>
+
+                    <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation
+                        home. </p>
+                </div>
+
+                <div class="item">
+                    <div class="temp">
+                        <img class="user-img" src="../assets/images/icons/man-user.svg">
+
+                        <div>
+                            <p class="name">Susan</p>
+                            <p class="location">Ukraine, Odesa</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="stars">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                        </div>
+                        <p class="time">1 week ago</p>
+                    </div>
+
+                    <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation
+                        home. </p>
+                </div>
+
+                <div class="item">
+                    <div class="temp">
+                        <img class="user-img" src="../assets/images/icons/man-user.svg">
+
+                        <div>
+                            <p class="name">Susan</p>
+                            <p class="location">Ukraine, Odesa</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="stars">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                        </div>
+                        <p class="time">1 week ago</p>
+                    </div>
+
+                    <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation
+                        home. </p>
+                </div>
+
+                <div class="item">
+                    <div class="temp">
+                        <img class="user-img" src="../assets/images/icons/man-user.svg">
+
+                        <div>
+                            <p class="name">Susan</p>
+                            <p class="location">Ukraine, Odesa</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="stars">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                        </div>
+                        <p class="time">1 week ago</p>
+                    </div>
+
+                    <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation
+                        home. </p>
+                </div>
+
+                <div class="item">
+                    <div class="temp">
+                        <img class="user-img" src="../assets/images/icons/man-user.svg">
+
+                        <div>
+                            <p class="name">Susan</p>
+                            <p class="location">Ukraine, Odesa</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="stars">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                        </div>
+                        <p class="time">1 week ago</p>
+                    </div>
+
+                    <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation
+                        home. </p>
+                </div>
+
+                <div class="item">
+                    <div class="temp">
+                        <img class="user-img" src="../assets/images/icons/man-user.svg">
+
+                        <div>
+                            <p class="name">Susan</p>
+                            <p class="location">Ukraine, Odesa</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="stars">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                        </div>
+                        <p class="time">1 week ago</p>
+                    </div>
+
+                    <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation
+                        home. </p>
+                </div>
+
+                <div class="item">
+                    <div class="temp">
+                        <img class="user-img" src="../assets/images/icons/man-user.svg">
+
+                        <div>
+                            <p class="name">Susan</p>
+                            <p class="location">Ukraine, Odesa</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="stars">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                            <img src="../assets/images/icons/star-fill.svg">
+                        </div>
+                        <p class="time">1 week ago</p>
+                    </div>
+
+                    <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation
+                        home. </p>
+                </div>
             </div>
 
-            <div class="item"> 
-                <p>Cleanliness</p>
-                <p>4.6</p>
-                <img src="../assets/images/icons/clean.svg">    
-            </div>
 
-            <div class="item"> 
-                <p>Cleanliness</p>
-                <p>4.6</p>
-                <img src="../assets/images/icons/clean.svg">    
-            </div>
+            <hr class="hr-review2">
         </div>
     </div>
+</ng-container>
 
-    <hr class="hr-review">
-
-    <div class="main2"> 
-        <div class="item">
-            <div class="temp">
-                <img class="user-img" src="../assets/images/icons/man-user.svg">
-
-                <div>
-                    <p class="name">Susan</p>
-                    <p class="location">Ukraine, Odesa</p>
-                </div>
-               
-            </div>
-           
-            <div class="row"> 
-                <div class="stars">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                </div>
-                <p class="time">1 week ago</p>
-            </div>
-           
-            <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. </p>
-        </div>
-
-        <div class="item">
-            <div class="temp">
-                <img class="user-img" src="../assets/images/icons/man-user.svg">
-
-                <div>
-                    <p class="name">Susan</p>
-                    <p class="location">Ukraine, Odesa</p>
-                </div>
-               
-            </div>
-           
-            <div class="row"> 
-                <div class="stars">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                </div>
-                <p class="time">1 week ago</p>
-            </div>
-           
-            <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. </p>
-        </div>
-
-        <div class="item">
-            <div class="temp">
-                <img class="user-img" src="../assets/images/icons/man-user.svg">
-
-                <div>
-                    <p class="name">Susan</p>
-                    <p class="location">Ukraine, Odesa</p>
-                </div>
-               
-            </div>
-           
-            <div class="row"> 
-                <div class="stars">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                </div>
-                <p class="time">1 week ago</p>
-            </div>
-           
-            <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. </p>
-        </div>
-
-        <div class="item">
-            <div class="temp">
-                <img class="user-img" src="../assets/images/icons/man-user.svg">
-
-                <div>
-                    <p class="name">Susan</p>
-                    <p class="location">Ukraine, Odesa</p>
-                </div>
-               
-            </div>
-           
-            <div class="row"> 
-                <div class="stars">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                </div>
-                <p class="time">1 week ago</p>
-            </div>
-           
-            <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. </p>
-        </div>
-
-        <div class="item">
-            <div class="temp">
-                <img class="user-img" src="../assets/images/icons/man-user.svg">
-
-                <div>
-                    <p class="name">Susan</p>
-                    <p class="location">Ukraine, Odesa</p>
-                </div>
-               
-            </div>
-           
-            <div class="row"> 
-                <div class="stars">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                </div>
-                <p class="time">1 week ago</p>
-            </div>
-           
-            <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. </p>
-        </div>
-
-        <div class="item">
-            <div class="temp">
-                <img class="user-img" src="../assets/images/icons/man-user.svg">
-
-                <div>
-                    <p class="name">Susan</p>
-                    <p class="location">Ukraine, Odesa</p>
-                </div>
-               
-            </div>
-           
-            <div class="row"> 
-                <div class="stars">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                </div>
-                <p class="time">1 week ago</p>
-            </div>
-           
-            <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. </p>
-        </div>
-
-        <div class="item">
-            <div class="temp">
-                <img class="user-img" src="../assets/images/icons/man-user.svg">
-
-                <div>
-                    <p class="name">Susan</p>
-                    <p class="location">Ukraine, Odesa</p>
-                </div>
-               
-            </div>
-           
-            <div class="row"> 
-                <div class="stars">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                    <img src="../assets/images/icons/star-fill.svg">
-                </div>
-                <p class="time">1 week ago</p>
-            </div>
-           
-            <p class="text">With the majestic Villa Panoramica we present you an absolutely spectacular vacation home. </p>
-        </div>
-    </div>
-
-
-    <hr class="hr-review2">
-    </div>
 <app-footer></app-footer>

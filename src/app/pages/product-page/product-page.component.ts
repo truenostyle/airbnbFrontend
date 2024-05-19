@@ -1,7 +1,9 @@
 import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { StateService } from 'src/app/services/state.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StayItemDetailed } from 'src/app/models/stay-item-detailed.model';
+import { BookingStateService } from 'src/app/services/booking-state.service';
+import { StaysService } from 'src/app/services/stays.service';
 
 
 @Component({
@@ -10,6 +12,8 @@ import { StateService } from 'src/app/services/state.service';
   styleUrls: ['./product-page.component.scss'],
 })
 export class ProductPageComponent {
+  stay?: StayItemDetailed;
+  id!: number;
   range: FormGroup;
   count: number = 0;
   cost: number = 0;
@@ -24,17 +28,26 @@ export class ProductPageComponent {
 
   constructor(
     private fb: FormBuilder,
-    private stateService: StateService,
-    private router: Router
+    private stateService: BookingStateService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private staysService: StaysService,
   ) {
+    
+    
     this.range = this.fb.group({
       start: [null, Validators.required],
       end: [null, Validators.required]
     });
+    
+    const nullableId = this.activatedRoute.snapshot.paramMap.get('id');
+    if (nullableId === null) {
+      this.router.navigate(['/']);
+      return;
+    }
+    this.id = parseInt(nullableId);
+    this.staysService.getStay(this.id).subscribe({next: (stay) => this.stay = stay});
   }
-
-  
- 
 
   checkConditions(): boolean {
     const start = this.range.controls['start'].value;
@@ -68,9 +81,11 @@ export class ProductPageComponent {
   }
   
   saveState(): void {
-    this.stateService.changeDateRange(this.range.controls['start'].value, this.range.controls['end'].value);
+    this.stateService.changeDateStart(this.range.controls['start'].value);
+    this.stateService.changeDateEnd(this.range.controls['end'].value);
     this.stateService.changeGuestCount(this.count); 
     this.stateService.changeCost(this.cost);
+    this.stateService.changeStay(this.stay!);
     this.router.navigate(['/booking']);
   }
 
