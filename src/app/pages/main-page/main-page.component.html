@@ -384,8 +384,8 @@
 
 <div class="main">
   <ng-container *ngFor="let item of items | async">
-    <a class="item" [routerLink]="['/product', item.id]">
-      <img class="main-img" [src]="item.imageUrl">
+    <a class="item">
+      <a  [routerLink]="['/product', item.id]"><img class="main-img" [src]="item.imageUrl"></a>
       <a class="add-to-wishlist" (click)="toggleWishlistBox()"><img src="/assets/images/icons/heart.svg"></a>
       <div class="row">
         <p class="name">{{ item.name }}</p>
