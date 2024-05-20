@@ -32,10 +32,8 @@ import { BookingSuccessPageComponent } from './pages/booking-success-page/bookin
   declarations: [
     AppComponent,
     ProductPageComponent,
-    HeaderComponent,
     HelpcenterComponent,
     ForguestsComponent,
-    SecondHeaderComponent,
     FooterComponent,
     WishlistsComponent,
     AccountSettingsComponent,

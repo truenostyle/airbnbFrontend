@@ -17,17 +17,17 @@
     <div class="log-info">
       <div class="email">
         <p>Your email</p>
-        <input type="text" class="styled-input" >
+        <input type="text" [(ngModel)]="email" class="styled-input" >
       </div>
     
       <div class="password">
         <p>Your password</p>
         <a href="#"><img src="../assets/images/icons/eye-hide.svg"><p>Hide</p></a>
-        <input type="password" class="styled-input" >
+        <input type="password" [(ngModel)]="password" class="styled-input" >
       </div>
+      
     </div>
-    
-    <a class="login-btn" href="#" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
+    <a class="login-btn" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
       <p>Log in</p>
     </a>
   

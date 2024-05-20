@@ -1,27 +1,38 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth-response.model';
 import { HttpClient } from '@angular/common/http';
 import { StaysService } from 'src/app/services/stays.service';
 import { StayItem } from 'src/app/models/stay-item.model';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  email: string = '';
+  password: string = '';
+  user?: User;
   constructor(
-    private router: Router, private http: HttpClient, private staysService: StaysService
-  ){
+    private router: Router, private http: HttpClient, userService: UserService
+  )
+  {
+    userService.getCurrentUser().subscribe({next: user => this.user = user });
   }
 
   async goRegister() {
     await this.router.navigate(['/register'])
   }
 
-  email: string = '';
-  password: string = '';
+  
 
   isFormFilled(): boolean {
     return this.email.trim() !== '' && this.password.trim() !== '';
@@ -33,7 +44,7 @@ export class HeaderComponent {
         email: this.email,
         password: this.password,
       })
-        .subscribe((token) => console.log(token));
+      .subscribe((result) => localStorage.setItem("Authorization", result.token));
     } else {
       console.log('Пожалуйста, заполните все поля');
     }

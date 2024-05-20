@@ -1,4 +1,4 @@
-<div class="header">
+<div *ngIf="user" class="header">
     <h2>logo</h2>
 
     <div class="right">
@@ -6,7 +6,7 @@
         <div class="language">English</div>
         <div class="profile" (click)="toggleDropdown()">
             <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
-            <img class="avatar" src="../assets/images/icons/man-user.svg">
+            <img class="avatar" [src]="user.imageUrl ?? '../assets/images/icons/man-user.svg'">
 
         </div>
     </div>
@@ -24,3 +24,5 @@
         <li><a>Log out</a></li>
     </ul>
 </div>
+
+<app-header *ngIf="!user"></app-header>

@@ -9,6 +9,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {NgIf, JsonPipe} from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
+import { SecondHeaderComponent } from '../second-header/second-header.component';
+import { HeaderComponent } from '../header/header.component';
 
 
 
@@ -29,6 +31,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     NgIf,
     JsonPipe,
     MatNativeDateModule,
+    SecondHeaderComponent
   ],
   exports: [
     MainPageComponent
