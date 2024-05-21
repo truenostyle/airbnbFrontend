@@ -40,7 +40,7 @@
 
 
 
-<header>
+<div class="main-header">
   <h1>logo</h1>
   <select>
     <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
@@ -48,7 +48,7 @@
   <a class="login" (click)="toggleLoginBox()">
     <p>Log In</p>
   </a>
-</header>
+</div>
 
 <div class="search-box">
   <h2>Looking for?</h2>

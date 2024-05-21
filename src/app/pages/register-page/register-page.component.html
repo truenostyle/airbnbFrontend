@@ -9,29 +9,46 @@
     <p class="p-signup">Sign up with your email adress</p>
 
     <div class="reg-info">
-        <div class="name">
-          <p>Profile name</p>
-          <input class="main-input" type="text" [(ngModel)]="registerInfo.name" placeholder="Enter your profile name">
-        </div>
-      
-        <div class="email">
-          <p>Your email</p>
-          <input class="main-input" type="text" [(ngModel)]="registerInfo.email" placeholder="Enter your email adress">
-        </div>
-
-        <div class="password">
-            <p>Your password</p>
-            <a href="#"><img src="../assets/images/icons/eye-hide.svg"><p>Hide</p></a>
-            <input class="main-input" type="password" [(ngModel)]="registerInfo.password" placeholder="Enter your password">
-            <p>Use 8 or more characters with a mix of letters, numbers & symbols </p>
-        </div>
-
-        <div class="repeat-password">
-            <p>Repeat your password</p>
-            <a href="#"><img src="../assets/images/icons/eye-hide.svg"><p>Hide</p></a>
-            <input class="main-input" type="password" placeholder="Enter your password">
-        </div>
-
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="name">
+              <p>Profile name</p>
+              <input class="main-input" type="text" formControlName="name" placeholder="Enter your profile name">
+              <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="error">
+                <div *ngIf="name?.errors?.['required']">Profile name is required.</div>
+                <div *ngIf="name?.errors?.['minlength']">Profile name must be at least 3 characters long.</div>
+              </div>
+            </div>
+          
+            <div class="email">
+              <p>Your email</p>
+              <input class="main-input" type="text" formControlName="email" placeholder="Enter your email address">
+              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error">
+                <div *ngIf="email?.errors?.['required']">Email is required.</div>
+                <div *ngIf="email?.errors?.['email']">Enter a valid email address.</div>
+              </div>
+            </div>
+          
+            <div class="password">
+              <p>Your password</p>
+             
+              <input class="main-input" type="password" formControlName="password" placeholder="Enter your password">
+              <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="error">
+                <div *ngIf="password?.errors?.['required']">Password is required.</div>
+                <div *ngIf="password?.errors?.['minlength']">Use 8 or more characters with a mix of letters, numbers & symbols.</div>
+              </div>
+            </div>
+          
+            <div class="repeat-password">
+              <p>Repeat your password</p>
+              
+              <input class="main-input" type="password" formControlName="repeatPassword" placeholder="Enter your password again">
+              <div *ngIf="repeatPassword?.invalid && (repeatPassword?.dirty || repeatPassword?.touched)" class="error">
+                <div *ngIf="repeatPassword?.errors?.['required']">Repeat your password is required.</div>
+                <div *ngIf="registerForm.errors?.['mismatch'] && repeatPassword?.touched">Passwords must match.</div>
+              </div>
+            </div>
+          
+         
         <div class="gender">
             <p> What's your gender?</p><p class="optional-text">(optional)</p>
             <div class="radio-row">
@@ -199,22 +216,18 @@
         </div>
            
         <div class="checkbox-share">
-            <input type="checkbox" id="customCheckbox">
-             <label for="customCheckbox">Share my registration data with our content providers for 
-            marketing purposes</label>
-        </div>
+            <input type="checkbox" id="customCheckbox" formControlName="acceptTerms">
+            <label for="customCheckbox">Share my registration data with our content providers for marketing purposes</label>
+          </div>
 
        
         </div>
         <p class="agree">By creating an account, you agree to the Terms of use and Privacy Policy. </p>
 
-        <button class="register-btn" (click)="register()">
-            <p>Sign up</p>
-        </button>
-
+        <button class="register-btn" type="submit" [disabled]="!registerForm.valid" 
+        [style.opacity]="registerForm.valid ? '1' : '0.25'">
+        <p>Sign up</p>
+      </button>
+    </form>
     </div>
-      
-      
-    
-    
 </div>

@@ -28,6 +28,10 @@ body {
     background-color: white;
 
     padding-top: 40px;
+
+    @media (min-width: 766px) and (max-width: 1400px) {
+        left: 5%;
+    }
     .logo {
         width:48px;
         height: 48px;
@@ -203,10 +207,11 @@ body {
 }
 
 
-header {
+.main-header {
     width: 90%;
+    height: 100px;
     position: relative;
-    top: 50px;
+    top: 20px;
     left: 149px;
     display: flex;
     flex-direction: row;
@@ -217,6 +222,7 @@ header {
     @media (max-width: 766px) {
        display: none;
       }
+      
     h1 {
         margin: 0;
         
@@ -261,7 +267,12 @@ header {
     justify-content: center;
     @media (max-width: 766px) {
         display: none;
+        width:1px;
        }
+       @media (min-width: 767px) and (max-width: 1400px) {
+        width: 95%;
+        margin-left: 2.5%;
+    }
 
     h2 {
         margin: 0;
@@ -275,6 +286,7 @@ header {
 
     
     .dropdown-menu {
+        
         font-family: 'Montserrat', sans-serif;
         position: absolute;
         top: 430px; /* Регулируйте положение меню здесь */
@@ -287,6 +299,16 @@ header {
         box-shadow: 0px 0px 10px 0px #0000004D;
         z-index: 9999;
         padding-top: 37px;
+        @media (max-width: 766px) {
+            display: none;
+            left: 0;
+            width:1px;
+           }
+           @media (min-width: 766px) and (max-width: 1400px) {
+            left: 2%;
+            top: 500px;
+        }
+           
         h2 {
             font-size:22px;
             font-weight: 700;
@@ -354,7 +376,15 @@ header {
         z-index: 9999;
         padding-top: 67px;
         padding-left: 36px;
-        
+        @media (max-width: 766px) {
+            display: none;
+            left: 0;
+            width:1px;
+           }
+           @media (min-width: 766px) and (max-width: 1400px) {
+            right: 2%;
+            top: 500px;
+        }
         hr {
             width: 449px;
             margin: 0;
@@ -419,6 +449,10 @@ header {
         display: flex;
         flex-direction: row;
         align-items: center;
+        @media (max-width: 766px) {
+            display: none;
+            width:1px;
+           }
         .search-img {
             width: 24px;
             height: 24px;
@@ -435,6 +469,9 @@ header {
             font-family: 'Montserrat', sans-serif; 
             
             margin-left: 12px;
+            @media (min-width: 766px) and (max-width: 1400px) {
+                width: 12%;
+            }
           }
 
           .vertical-hr {
@@ -448,7 +485,10 @@ header {
           .calendar {
            margin-top: 20px;
             margin-left: 50px;
-            
+            @media (min-width: 766px) and (max-width: 1400px) {
+                margin-left: 1%
+                
+            }
              
               
           }
@@ -467,7 +507,7 @@ header {
 
           .vertical-hr2 {
             margin: 0;
-            margin-left: 75px;
+            margin-left: 3%;
             border: none; /* Убираем границу */
             height: 24px; /* Устанавливаем высоту */
             width: 2px; /* Ширина линии */
@@ -528,6 +568,11 @@ header {
             text-align: center;
             line-height: 80px;
             margin-left: 105px;
+
+            @media (min-width: 766px) and (max-width: 1400px) {
+                margin-left: auto;
+                margin-right: 30px;
+            }
             img {
                 width: 30px;
                 height: 30px;
@@ -608,6 +653,7 @@ header {
         margin-left: 0;
         margin-top: 40px;
         z-index: 0;
+      
        .item {
         display: flex;
         flex-direction: column;
@@ -634,10 +680,14 @@ header {
 
 .filters-carousel {
     font-family: 'Montserrat', sans-serif; 
-    width:1441px;
+    width:70%;
     margin-left: -150px;
     margin-top: 48px;
     z-index: 0;
+    @media (min-width: 766px) and (max-width: 1400px) {
+        width: 90%;
+        margin-left: 2%;
+    }
    .item {
 
     cursor: pointer;
@@ -662,7 +712,7 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
 
     position: absolute;
     margin-top: -90px;
-    right: 230px;
+    right: 17%;
     width: 116px;
     height: 64px;
     border: 1px solid #E0E0E0;
@@ -674,6 +724,10 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
     align-items: center;
     justify-content: center;
     z-index: 9999;
+
+    @media (min-width: 766px) and (max-width: 1400px) {
+        right: 1%;
+    }
         img {
         width: 24px;
         height: 24px;
@@ -704,6 +758,17 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
     font-family: "Montserrat", sans-serif;
     display: flex;
     flex-direction: column;
+    @media (max-width: 766px) {
+        left: 0px;
+        width: 0px;
+        height: 0px;
+       }
+
+       @media (min-width: 766px) and (max-width: 1400px) {
+        left: 2%;
+        
+        width: 95%;
+    }
     .header {
         display: flex;
         flex-direction: row;
@@ -753,6 +818,11 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
             height: 343px;
             margin-right:33px;
             margin-top: 36px;
+            @media (max-width: 766px) {
+                left: 0px;
+                width: 0px;
+                height: 0px;
+               }
             img {
                 width: 100%;
                 height: 287px;
@@ -789,6 +859,11 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
         color: white;
         font-weight: 600;
         line-height: 60px;
+        @media (max-width: 766px) {
+            left: 0px;
+            width: 0px;
+            height: 0px;
+           }
     }
 }
 
@@ -806,6 +881,10 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
         top: 160px;
         margin-left: 0;
        }
+       @media (min-width: 766px) and (max-width: 1400px) {
+        width: 95%;
+        margin-left: 0;
+    }
     .item {
         position: relative;
         width: 303px;
@@ -1264,7 +1343,7 @@ box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
 }
 
 .footer {
-    width: 430px;
+    width: 100%;
     height: 86px;
     box-shadow: 0px -4px 13.7px 0px #00000040;
     position: fixed;
