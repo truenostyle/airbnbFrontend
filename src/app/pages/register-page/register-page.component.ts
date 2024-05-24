@@ -57,25 +57,21 @@ export class RegisterPageComponent {
         provider: user.provider,
         idToken: user.idToken,
       })
-        .subscribe((token) => console.log(token));
+      .subscribe((result) => localStorage.setItem("Authorization", result.token));
     });
   }
 
   register() {
     if (this.registerForm.valid) {
       this.http.post<AuthResponse>(`http://localhost:5098/api/auth/register`, {
-        name: this.registerInfo.name,
-        email: this.registerInfo.email,
-        password: this.registerInfo.password,
-        gender: this.registerInfo.gender,
-        dateOfBirth: this.registerInfo.dateOfBirth,
-        shareRegistrationData: this.registerInfo.shareRegistrationData
+        name: this.registerForm.get('name')?.value,
+        email: this.registerForm.get('email')?.value,
+        password: this.registerForm.get('password')?.value,
+        gender: this.registerForm.get('gender')?.value,
+        dateOfBirth: this.registerForm.get('dateOfBirth')?.value,
+        shareRegistrationData: this.registerForm.get('shareRegistrationData')?.value
       })
-        .subscribe((token) => console.log(token));
-  
+      .subscribe((result) => localStorage.setItem("Authorization", result.token));
     }
-    
   }
-  
-  
 }
