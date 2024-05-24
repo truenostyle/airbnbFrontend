@@ -7,7 +7,11 @@
         font-weight: 500;
         margin-bottom: 100px;
     }
-
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
     .items {
         display: flex;
         flex-direction: row;

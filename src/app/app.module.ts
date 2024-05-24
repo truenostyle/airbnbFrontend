@@ -25,6 +25,7 @@ import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { RouterModule } from '@angular/router';
 import { BookingSuccessPageComponent } from './pages/booking-success-page/booking-success-page.component';
+import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
 
 
 
@@ -42,6 +43,7 @@ import { BookingSuccessPageComponent } from './pages/booking-success-page/bookin
     DatepickerComponent,
     BookingComponent,
     BookingSuccessPageComponent,
+    PersonalSettingsComponent,
 
   ],
   imports: [

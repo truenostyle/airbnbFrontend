@@ -365,7 +365,7 @@
 </div>
 
 
-<div class="wishlist-add" [ngClass]="{ 'hidden': wishlistBoxHidden }">
+<div class="wishlist-add" *ngIf="wishlistModal">
   <div class="header">
     <a class="close-btn" (click)="toggleWishlistBox()"><img src="/assets/images/icons/close.svg"></a>
     <h1>Add to wishlist</h1>
@@ -384,8 +384,8 @@
 
 <div class="main">
   <ng-container *ngFor="let item of items | async">
-    <a class="item" [routerLink]="['/product', item.id]">
-      <img class="main-img" [src]="item.imageUrl">
+    <a class="item" >
+      <img class="main-img" [src]="item.imageUrl" [routerLink]="['/product', item.id]">
       <a class="add-to-wishlist" (click)="toggleWishlistBox()"><img src="/assets/images/icons/heart.svg"></a>
       <div class="row">
         <p class="name">{{ item.name }}</p>

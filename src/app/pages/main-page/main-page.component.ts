@@ -32,6 +32,7 @@ export class MainPageComponent {
   dropdownOpen2: boolean = false;
   loginModal: boolean = false;
   filterModal: boolean = false;
+  wishlistModal: boolean = false;
   selectedCity: string = ''; 
 
   RoomType = RoomType;
@@ -68,33 +69,8 @@ export class MainPageComponent {
     }
   }
 
-  toggleAllBoxes(): void {
 
-    this.wishlistBoxHidden = false;
-
-    const overlay = document.querySelector('.overlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-    }
-}
-
-
-
-
-
-
-
- 
-
-  wishlistBoxHidden: boolean = true;
-  toggleWishlistBox(): void {
-    console.log('test')
-    this.wishlistBoxHidden = !this.wishlistBoxHidden;
-    const overlay = document.querySelector('.overlay');
-    if (overlay) {
-      this.wishlistBoxHidden? overlay.classList.add('hidden') : overlay.classList.remove('hidden');
-    }
-  }
+  
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
@@ -102,6 +78,7 @@ export class MainPageComponent {
     const dropdownGuests = document.querySelector('.dropdown-guests');
     const loginModal = document.querySelector('.login-box');
     const filterModal = document.querySelector('.filterModal');
+    const wishlistModal = document.querySelector('.wishlist-add');
     if (dropdownMenu !== null) {
       if (!dropdownMenu.contains(event.target as Node)) {
         this.dropdownOpen = false;
@@ -120,11 +97,15 @@ export class MainPageComponent {
       }
     }
     
-    console.log(filterModal);
     if (filterModal !== null) {
-      console.log("close");
       if (!filterModal.contains(event.target as Node)) {
         this.filterModal = false;
+      }
+    }
+
+    if (wishlistModal !== null) {
+      if (!wishlistModal.contains(event.target as Node)) {
+        this.wishlistModal = false;
       }
     }
 
@@ -153,6 +134,12 @@ export class MainPageComponent {
   toggleFilterBox(): void {
     setTimeout(() => {
       this.filterModal = !this.filterModal;
+    }, 0);
+  }
+
+  toggleWishlistBox(): void {
+    setTimeout(() => {
+      this.wishlistModal = !this.wishlistModal;
     }, 0);
   }
 

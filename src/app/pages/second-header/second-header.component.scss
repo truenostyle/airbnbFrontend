@@ -18,7 +18,17 @@
             margin-left: 28px;
             cursor: pointer;
         }
+        .language {
+            @media (max-width: 766px) {
+                display: none;
+            }
+        }
 
+        .currency {
+            @media (max-width: 766px) {
+                display: none;
+            }
+        }
         .profile {
             margin-right: 96px;
             width: 96px;
@@ -30,7 +40,9 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-
+            @media (max-width: 766px) {
+                margin-right: 5%;
+            }
             cursor: pointer;
             .avatar {
                 width: 33px;
@@ -60,7 +72,9 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 999;
     padding-top: 37px;
-   
+    @media (max-width: 766px) {
+       right: 1%;
+    }
 
     ul {
       

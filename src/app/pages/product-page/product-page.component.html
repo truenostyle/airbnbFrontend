@@ -10,7 +10,7 @@
     </div>
 
     <div class="parent">
-        <div class="div1"><img
+        <div class="div1 main-image"><img
                 src="https://t4.ftcdn.net/jpg/00/09/21/15/360_F_9211505_d4hxfNtPeTfgt7AeGmoO7u79P2hwxkoQ.jpg"> </div>
         <div class="div2"><img
                 src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
@@ -107,7 +107,7 @@
                 <h3>Total nights stay</h3>
                 <h3 class="cost">${{ cost }}</h3>
             </div>
-            <div class="btn-reserve" (click)="onSubmit()" [style.margin-top]="isAvailable ? '-5px' : '-30px'">
+            <div class="btn-reserve" (click)="onSubmit()" [style.margin-top]="isAvailable ? '-5px' : '-40px'">
                 {{ isAvailable ? 'Request to book' : 'Check availability' }}
             </div>
 
@@ -512,7 +512,50 @@
 
             <hr class="hr-review2">
         </div>
+        
     </div>
+    <div class="booking-mobile">
+        <div class="column">
+            <div class="calendar">
+                <mat-form-field>
+                    <mat-label>Check in - Check out</mat-label>
+                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                        <input matStartDate formControlName="start" placeholder="Start date">
+                        <input matEndDate formControlName="end" placeholder="End date">
+                    </mat-date-range-input>
+    
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+    
+                    <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start
+                        date</mat-error>
+                    <mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end
+                        date</mat-error>
+    
+                </mat-form-field>
+                
+            </div>
+        
+        </div>
+        
+        <a class="reserve-btn">Reserve</a> 
+    </div>
+    <div class="footer">
+        <div class="explore">
+          <img src="assets/images/icons/search.svg">
+          <p>Explore</p>
+        </div>
+        <div class="wishlists">
+          <img src="assets/images/icons/heart2.svg">
+          <p>Wishlists</p>
+        </div>
+        <div class="login">
+          <img src="assets/images/icons/user2.svg">
+          <p>Log in</p>
+        </div>
+      </div>
+     
 </ng-container>
 
-<app-footer></app-footer>
+
+

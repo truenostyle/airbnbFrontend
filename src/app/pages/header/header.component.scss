@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 84%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* полупрозрачный цвет фона */
     z-index: 999; /* устанавливаем поверх всех других элементов */
@@ -16,10 +16,10 @@
     position: absolute;
     left: 30%;
     top: 50px;
-    z-index: 9999;
+    z-index: 999;
     max-width: 795px;
-    width: 100%;
-    height: 821px;
+ 
+    height: 760px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
     border-radius: 24px;
@@ -29,7 +29,11 @@
     flex-direction: column;
     background-color: white;
 
-    padding-top: 40px;
+ 
+
+    @media (max-width: 766px) {
+       left: 4%;
+     }
     .logo {
         width:48px;
         height: 48px;
@@ -69,7 +73,7 @@
         display: flex;
         flex-direction: row;
         max-width: 528px;
-        width: 100%;
+        width: 80%;
         height: 72px;
         border-radius: 40px;
         border: 1px solid black;
@@ -79,6 +83,10 @@
         color: black;
         transition: background-color 0.3s ease;
         margin-top: 40px;
+        @media (max-width: 766px) {
+            max-width: 70%;
+          
+         }
         img {
             width: 24px;
             height: 24px;
@@ -105,12 +113,20 @@
         margin-top: 40px;
         align-items: center;
         justify-content: center;
+        @media (max-width: 766px) {
+           width: 100%;
+         }
+       
         hr {
             border: none; /* Убираем рамку */
             height: 2px; /* Высота линии */
             width: 223.5px;
             background-color: #66666640; /* Цвет линии */
             margin: 0; /* Отступы */ 
+            @media (max-width: 766px) {
+                max-width: 30%;
+              
+             }
         }
 
         p {
@@ -173,6 +189,10 @@
             box-sizing: border-box; /* Учитываем padding и border внутри width и height */
             font-size: 16px; /* Размер текста */
              /* Выравнивание текста по центру */
+             @media (max-width: 766px) {
+                width: 100%;
+              
+             }
         }
         
     }
@@ -196,6 +216,10 @@
             margin: 0;
             margin-top: 15px;
         }
+        @media (max-width: 766px) {
+            width: 60%;
+          
+         }
     }
 
     .login-btn.filled {
@@ -206,20 +230,28 @@
 
 
 header {
-    width: 90%;
-    position: relative;
-    top: 50px;
-    left: 149px;
+    width: 100%;
     display: flex;
-    flex-direction: row;
     align-items: center;
-
+    margin-top: 25px;
     font-family: 'Montserrat', sans-serif;
+
     h1 {
         margin: 0;
-        
+    
         font-weight: 300;
         font-size: 56px;
+    }
+
+    .logo {
+        margin-left: 5%;
+
+        img {
+            @media (max-width: 766px) {
+                width: 150px;
+              
+             }
+        }
         
     }
 
@@ -227,21 +259,21 @@ header {
         border: none;
         font-size: 22px;
         font-weight: 400;
-        position: absolute;
-        right: 290px;
+        margin-left: auto;
+        margin-right: 6%;
         cursor: pointer;
     }
 
-    a {
+    .login {
         width: 107px;
         height: 55px;
         border-radius: 26px;
         background-color: #2288E6;
         color: white;
         text-align: center;
-        position: absolute;
+        margin-right: 5%;
         cursor: pointer;
-        right: 155px;
+
         p {
             margin: 0;
             margin-top: 15px;
@@ -250,3 +282,4 @@ header {
         }
     }
 }
+

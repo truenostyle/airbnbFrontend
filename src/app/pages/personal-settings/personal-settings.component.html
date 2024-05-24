@@ -1,0 +1,34 @@
+<app-second-header></app-second-header>
+<h1>Personal Info</h1>
+<div class="main">
+<div class="image-load">
+    <img [src]="selectedImageUrl || '../assets/images/icons/man-user.svg'">
+    <a class="load" (click)="onChoosePhoto()">Choose photo</a>
+
+<!-- Скрытый элемент input для выбора файла -->
+<input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+</div>
+
+<div class="info">
+    <div class="form-container">
+        <div class="column">
+          <input type="text" placeholder="Name" class="form-input">
+          <input type="email" placeholder="Email" class="form-input">
+          <input type="password" placeholder="Password" class="form-input">
+        </div>
+        <div class="column">
+          <input type="date" placeholder="Date of Birth" class="form-input">
+          <select class="form-input">
+            <option value="" disabled selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          <a class="save">Save</a>
+        </div>
+       
+      </div>    
+</div>
+
+</div>
+<app-footer></app-footer>

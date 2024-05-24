@@ -9,6 +9,7 @@ import { WishlistsComponent } from './pages/wishlists/wishlists.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { BookingSuccessPageComponent } from './pages/booking-success-page/booking-success-page.component';
+import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
 
 
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'wishlists', component: WishlistsComponent},
   {path: 'account-settings', component: AccountSettingsComponent},
   {path: 'booking', component: BookingComponent},
-  {path: 'booking/success', component: BookingSuccessPageComponent}
+  {path: 'booking/success', component: BookingSuccessPageComponent},
+  {path: 'personal-settings', component: PersonalSettingsComponent}
 ];
 
 @NgModule({

@@ -2,7 +2,17 @@
     font-family: 'Montserrat', sans-serif; 
     margin-left: 212px;
     margin-top: 56px;
-
+    @media (min-width: 766px) and (max-width: 1400px) {
+        margin-top: 600px;
+    }
+    @media (min-width: 766px) and (max-width: 1000px) {
+        margin-left: 1%;
+       
+    }
+    @media (max-width: 766px) {
+       margin-top: 600px;
+       margin-left: 10%;
+    }
     h1 {
         margin: 0;
        font-size: 38px;
@@ -48,6 +58,21 @@
     padding-right: 48px;
     border-radius: 62px;
     border: 1.52px solid #DDDDDD;
+    @media (max-width: 766px) {
+        right: unset;
+        width: 80%;
+        left: 1%;
+    }
+    @media (min-width: 1000px) and (max-width: 1400px) {
+        right: unset;
+        left: 212px;
+       
+    }
+    @media (min-width: 766px) and (max-width: 1000px) {
+        right: unset;
+        left: 1%;
+       
+    }
     .head {
         width: 550px;
         height: 154px;
@@ -59,6 +84,7 @@
             border-radius: 16px;
         }
         .info {
+            width: 40%;
             margin-left: 21px;
             h2 {
                  font-family: 'Montserrat', sans-serif;  
@@ -96,6 +122,7 @@
         hr {
             background-color: #DDDDDD;
             margin-top: 21px;
+           
         }
         p {
             margin: 0;
@@ -165,10 +192,21 @@
     font-family: 'Montserrat', sans-serif;
     margin-left: 212px;
     margin-top: 45px;
+    @media (min-width: 766px) and (max-width: 1000px) {
+        
+       
+    }
+    @media (max-width: 766px) {
+        margin-left: 10%;
+    }
     hr {
         width: 745px;
         background-color: black;
         margin: 0;
+        @media (max-width: 766px) {
+            width: 90%;
+        }
+       
     }
     h3 {
         margin-top: 43px;
@@ -184,6 +222,9 @@
         flex-direction: row;
         align-items: center;
         margin-top: 35px;
+        @media (max-width: 766px) {
+            width: 346px;
+        }
         img {
             width: 40px;
             height: 30px;
@@ -206,16 +247,23 @@
         border: 1px solid #000000;
         font-size:20px;
         padding-left: 25px;
+        @media (max-width: 766px) {
+            width: 321px;
+        }
     }
 
     .two-inputs {
         input {
         width: 346.5px;
+       
         height: 81px;
         border: none;
         border-bottom: 1px solid #000000;
         padding-left: 25px;
         font-size:20px;
+        @media (max-width: 766px) {
+            width:146.5px;
+        }
         }
         .expiration {
             border-bottom-left-radius: 25px;
@@ -236,6 +284,9 @@
         border: 1px solid #000000;
         font-size:20px;
         padding-left: 25px;
+        @media (max-width: 766px) {
+            width: 321px;
+        }
     }
 
     
@@ -244,6 +295,13 @@
 .confirm {
     margin-left: 800px;
     margin-top: 40px;
+    @media (min-width: 766px) and (max-width: 1000px) {
+       
+       
+    }
+    @media (max-width: 766px) {
+        margin-left: 10%;
+    }
     display: block;
     width: 160px;
     height: 40px;
@@ -253,4 +311,5 @@
     border-radius: 25px;
     text-align: center;
     line-height: 40px;
+    
 }
