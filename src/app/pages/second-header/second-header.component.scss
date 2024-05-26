@@ -1,23 +1,299 @@
+.hidden {
+    visibility: hidden;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 84%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* полупрозрачный цвет фона */
+    z-index: 999;
+    /* устанавливаем поверх всех других элементов */
+}
+
+.login-box {
+    position: absolute;
+    left: 30%;
+    top: 50px;
+    z-index: 999;
+    max-width: 795px;
+
+    height: 760px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    border-radius: 24px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+
+
+
+    @media (max-width: 766px) {
+        left: 4%;
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+        background-color: red;
+        border-radius: 50%;
+    }
+
+    h1 {
+        font-size: 32px;
+        line-height: 48px;
+        font-weight: 500;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .signup-label {
+        display: flex;
+        flex-direction: row;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            margin: 0;
+            color: black;
+            margin-left: 5px;
+
+            &:hover {
+                color: blueviolet;
+            }
+        }
+    }
+
+    .social-google {
+
+        display: flex;
+        flex-direction: row;
+        max-width: 528px;
+        width: 80%;
+        height: 72px;
+        border-radius: 40px;
+        border: 1px solid black;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        transition: background-color 0.3s ease;
+        margin-top: 40px;
+
+        @media (max-width: 766px) {
+            max-width: 70%;
+
+        }
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+
+        h2 {
+            font-family: 'Avenir', sans-serif;
+            margin: 0;
+            margin-left: 16px;
+
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 30.05px;
+        }
+
+        &:hover {
+            background-color: rgb(230, 229, 229);
+        }
+    }
+
+    .or-box {
+        display: flex;
+        flex-direction: row;
+        margin-top: 40px;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: 766px) {
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            /* Убираем рамку */
+            height: 2px;
+            /* Высота линии */
+            width: 223.5px;
+            background-color: #66666640;
+            /* Цвет линии */
+            margin: 0;
+
+            /* Отступы */
+            @media (max-width: 766px) {
+                max-width: 30%;
+
+            }
+        }
+
+        p {
+            font-family: 'Avenir', sans-serif;
+            font-size: 24px;
+            line-height: 32.78px;
+            font-weight: 400;
+            margin-left: 23px;
+            margin-right: 23px;
+            margin-top: 0;
+            margin-bottom: 0;
+            color: #666666;
+        }
+    }
+
+    .log-info {
+        margin-top: 40px;
+
+        .password {
+            margin-top: 40px;
+        }
+
+        p {
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            line-height: 16px;
+            color: #666666;
+            margin-bottom: 7px;
+        }
+
+        a {
+            font-size: 18px;
+            line-height: 27px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            text-decoration: none;
+            color: #666666CC;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: -27px;
+            margin-bottom: 7px;
+            margin-right: 5px;
+
+            p {
+                margin: 0;
+            }
+
+            img {
+                width: 24px;
+                height: 24px;
+
+            }
+        }
+
+        input {
+            width: 528px;
+            height: 56px;
+            border-radius: 12px;
+            border: 1px solid #66666659;
+            /* Чтобы добавить рамку, укажите толщину и цвет */
+            padding: 10px;
+            /* Добавляем отступы внутри инпута */
+            box-sizing: border-box;
+            /* Учитываем padding и border внутри width и height */
+            font-size: 16px;
+
+            /* Размер текста */
+            /* Выравнивание текста по центру */
+            @media (max-width: 766px) {
+                width: 100%;
+
+            }
+        }
+
+    }
+
+    .login-btn {
+        max-width: 528px;
+        width: 100%;
+        height: 64px;
+        border-radius: 40px;
+        background-color: #111111;
+        opacity: 25%;
+        font-family: "Poppins", sans-serif;
+        color: white;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 33px;
+        text-align: center;
+        text-decoration: none;
+        margin-top: 40px;
+
+        p {
+            margin: 0;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 766px) {
+            width: 60%;
+
+        }
+    }
+
+    .login-btn.filled {
+        background-color: #C99228;
+        opacity: 100%;
+        /* Цвет кнопки, когда поля заполнены */
+    }
+}
+
+
 .header {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #D9D9D9;
     height: 70px;
-    
+
     h2 {
         margin-left: 43px;
         margin-top: auto;
     }
+
+    .login {
+        width: 107px;
+        height: 55px;
+        border-radius: 26px;
+        background-color: #2288E6;
+        color: white;
+        text-align: center;
+        margin-right: 5%;
+        cursor: pointer;
+
+        p {
+            margin: 0;
+            margin-top: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+    }
+
     .right {
         margin-left: auto;
         display: flex;
         flex-direction: right;
         align-items: center;
-        
+
         div {
             margin-left: 28px;
             cursor: pointer;
         }
+
         .language {
             @media (max-width: 766px) {
                 display: none;
@@ -29,6 +305,7 @@
                 display: none;
             }
         }
+
         .profile {
             margin-right: 96px;
             width: 96px;
@@ -40,19 +317,23 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
+
             @media (max-width: 766px) {
                 margin-right: 5%;
             }
+
             cursor: pointer;
+
             .avatar {
                 width: 33px;
                 height: 33px;
                 margin-left: 7px;
+                border-radius: 100%;
             }
 
             .settings {
                 margin-right: 7px;
-                
+
             }
 
         }
@@ -62,26 +343,29 @@
 .dropdown-menu {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
-    top: 65px; /* Регулируйте положение меню здесь */
+    top: 65px;
+    /* Регулируйте положение меню здесь */
     right: 100px;
     width: 320px;
     height: 370px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 999;
     padding-top: 37px;
+
     @media (max-width: 766px) {
-       right: 1%;
+        right: 1%;
     }
 
     ul {
-      
+
         li {
             font-size: 22px;
-            
+
             margin-bottom: 10px;
+
             a {
                 padding-left: 20px;
                 text-decoration: none;
@@ -108,7 +392,6 @@
 }
 
 .profile {
-    position: relative; /* Добавляем относительное позиционирование */
+    position: relative;
+    /* Добавляем относительное позиционирование */
 }
-
-

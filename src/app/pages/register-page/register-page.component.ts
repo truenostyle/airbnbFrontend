@@ -2,6 +2,7 @@ import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth-response.model';
 
 @Component({
@@ -21,7 +22,7 @@ export class RegisterPageComponent {
   }
   registerForm: FormGroup;
 
-  constructor(private socialAuthService: SocialAuthService, private http: HttpClient, private fb: FormBuilder) { 
+  constructor(private socialAuthService: SocialAuthService, private http: HttpClient, private fb: FormBuilder, private router: Router) { 
     this.registerForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -71,7 +72,10 @@ export class RegisterPageComponent {
         dateOfBirth: this.registerForm.get('dateOfBirth')?.value,
         shareRegistrationData: this.registerForm.get('shareRegistrationData')?.value
       })
-      .subscribe((result) => localStorage.setItem("Authorization", result.token));
+      .subscribe((result) => { 
+        localStorage.setItem("Authorization", result.token)
+        this.router.navigate(['']);
+      });
     }
   }
 }

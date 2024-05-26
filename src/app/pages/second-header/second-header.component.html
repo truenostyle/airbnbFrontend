@@ -1,14 +1,49 @@
+<div class="login-box" [ngClass]="{ 'hidden': loginBoxHidden }">
+    <div class="logo"></div>
+    <h1>Log in</h1>
+    <div class="signup-label">
+      <p>Don’t have an ccount? </p>
+      <a href="register" (click)="goRegister">Sign up</a>
+    </div>
+    
+    <asl-google-signin-button type='standard' shape="pill" size='large' text="signup_with"></asl-google-signin-button>
+  
+    <div class="or-box"><p>OR</p></div>
+    
+    <div class="log-info">
+      <div class="email">
+        <p>Your email</p>
+        <input type="text" class="styled-input" >
+      </div>
+    
+      <div class="password">
+        <p>Your password</p>
+        <a href="#"><img src="../assets/images/icons/eye-hide.svg"><p>Hide</p></a>
+        <input type="password" class="styled-input" >
+      </div>
+    </div>
+    
+    <a class="login-btn" href="#" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
+      <p>Log in</p>
+    </a>
+  
+  </div>
+
 <div class="header">
-    <h2>logo</h2>
+    <a  routerLink=""><h2>logo</h2></a>
+    
 
     <div class="right">
         <div class="currency">USD ($)</div>
         <div class="language">English</div>
-        <div class="profile" (click)="toggleDropdown()">
-            <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
-            <img class="avatar" src="../assets/images/icons/man-user.svg">
-
-        </div>
+        <ng-container *ngIf="currentUser$ | async as user">
+            <div *ngIf="!!user"  class="profile" (click)="dropdownOpen = !dropdownOpen">
+                <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
+                <img class="avatar" [src]="user?.imageUrl ? user.imageUrl : '../assets/images/icons/man-user.svg'">
+            </div>
+            <a *ngIf="!user" class="login" (click)="toggleLoginBox()"><p>Log In</p></a> 
+        </ng-container>
+        
     </div>
 </div>
 
@@ -21,6 +56,6 @@
         <li><a [routerLink]="'/account-settings'">Account</a></li>
         <li><a>Gift card</a></li>
         <li><a [routerLink]="'/helpcenter'">Help center</a></li>
-        <li><a>Log out</a></li>
+        <li (click)="logOut()"><a>Log out</a></li>
     </ul>
 </div>
