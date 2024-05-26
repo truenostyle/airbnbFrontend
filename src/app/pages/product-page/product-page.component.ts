@@ -97,8 +97,8 @@ export class ProductPageComponent {
     const oneDay = 24 * 60 * 60 * 1000;
     if (end !== null && start !== null) {
       const diffDays = Math.round(Math.abs((end.getTime() - start.getTime()) / oneDay));
-      const pricePerNight = 500;
-      this.cost = diffDays * pricePerNight;
+      const pricePerNight = this.stay?.price;
+      this.cost = diffDays * pricePerNight!;
     }
   }
 
