@@ -31,10 +31,10 @@
         </div>
         <hr>
         <div class="host">
-            <img src="../assets/images/icons/man-user.svg">
+            <img style="border-radius: 100%;" [src]="stay.owner.imageUrl || '../assets/images/icons/man-user.svg'">
             <div class="column">
-                <h2>Marco Pellini</h2>
-                <p>3 years hosting</p>
+                <h2>{{ stay.owner.userName }}</h2>
+                <p>{{ stay.owner.yearsOfHosting }} years hosting</p>
             </div>
 
         </div>

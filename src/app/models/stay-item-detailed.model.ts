@@ -1,4 +1,5 @@
 import { Rating } from './rating.model';
+import { UserInfo } from './user-info.model';
 
 export interface StayItemDetailed {
   id: number;
@@ -12,4 +13,5 @@ export interface StayItemDetailed {
   price: number;
   cleaningFee: number;
   rating: Rating;
+  owner: UserInfo;
 }

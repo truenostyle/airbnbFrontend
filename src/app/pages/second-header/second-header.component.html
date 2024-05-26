@@ -36,13 +36,11 @@
     <div class="right">
         <div class="currency">USD ($)</div>
         <div class="language">English</div>
-        <ng-container *ngIf="currentUser$ | async as user">
-            <div *ngIf="!!user"  class="profile" (click)="dropdownOpen = !dropdownOpen">
-                <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
-                <img class="avatar" [src]="user?.imageUrl ? user.imageUrl : '../assets/images/icons/man-user.svg'">
-            </div>
-            <a *ngIf="!user" class="login" (click)="toggleLoginBox()"><p>Log In</p></a> 
-        </ng-container>
+        <div *ngIf="currentUser$ | async as user"  class="profile" (click)="dropdownOpen = !dropdownOpen">
+          <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
+          <img class="avatar" [src]="user?.imageUrl ? user.imageUrl : '../assets/images/icons/man-user.svg'">
+      </div>
+      <a *ngIf="!(currentUser$ | async)" class="login" (click)="toggleLoginBox()"><p>Log In</p></a> 
         
     </div>
 </div>
