@@ -345,6 +345,9 @@
       <p class="price"><b>{{ item.price }}$</b> / night</p>
     </a>
   </ng-container>
+  <h1 *ngIf="(items | async)?.length == 0">
+    No results.
+  </h1>
 </div>
 <div class="background-filters" *ngIf="filterModal">
   <div class="filters-btn" >

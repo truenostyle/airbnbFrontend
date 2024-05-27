@@ -2,11 +2,12 @@
   <h1>Personal Info</h1>
   <div class="main">
     <div class="image-load">
-      <img [src]="selectedImageUrl || userForm.get('imageUrl')?.value || '../assets/images/icons/man-user.svg'">
+      <img class="profile-image" [src]="selectedImageUrl || userForm.get('imageUrl')?.value || '../assets/images/icons/man-user.svg'">
       <a class="load" (click)="onChoosePhoto()">Choose photo</a>
 
       <!-- Скрытый элемент input для выбора файла -->
       <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+      
     </div>
 
     <div class="info">
@@ -14,15 +15,16 @@
         <div class="column">
           <input type="text" formControlName="userName" placeholder="Name" class="form-input">
           <input type="email" formControlName="email" placeholder="Email" class="form-input">
-          <input type="password" formControlName="password" placeholder="Password" class="form-input">
+          <input type="password" formControlName="currentPassword" placeholder="Current password" class="form-input">
+          <input type="password" formControlName="newPassword" placeholder="New password" class="form-input">
         </div>
         <div class="column">
           <input type="date" formControlName="dateOfBirth" placeholder="Date of Birth" class="form-input">
-          <select  formControlName="gender" class="form-input">
+          <select formControlName="gender" class="form-input">
             <option value="" disabled>Gender</option>
-            <option value="0">Male</option>
-            <option value="1">Female</option>
-            <option value="2">Other</option>
+            <option [ngValue]="0">Male</option>
+            <option [ngValue]="1">Female</option>
+            <option [ngValue]="2">Other</option>
           </select>
           <a (click)="saveInfo()" class="save">Save</a>
         </div>

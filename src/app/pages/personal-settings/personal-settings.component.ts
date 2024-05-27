@@ -14,7 +14,7 @@ export class PersonalSettingsComponent {
   selectedImageUrl: string | ArrayBuffer | null = null;
   userForm?: FormGroup;
 
-  constructor(userService: UserService, formBuilder: FormBuilder) {
+  constructor(private userService: UserService, formBuilder: FormBuilder) {
     userService.currentUser$
       .pipe(
         filter((user) => !!user),
@@ -22,14 +22,18 @@ export class PersonalSettingsComponent {
       )
       .subscribe({
         next: (user) => {
-          console.log(user);
+          this.selectedImageUrl = user?.imageUrl!;
           this.userForm = formBuilder.group({
             userName: [user?.userName, Validators.required],
             email: [user?.email, Validators.required],
             gender: [user?.gender, Validators.required],
-            dateOfBirth: [formatDate(user?.dateOfBirth!, "yyyy-MM-dd", 'en-US'), Validators.required],
-            password: [''],
-            imageUrl: [user?.imageUrl],
+            dateOfBirth: [
+              formatDate(user?.dateOfBirth!, 'yyyy-MM-dd', 'en-US'),
+              Validators.required,
+            ],
+            currentPassword: [undefined],
+            newPassword: [undefined],
+            imageBase64: [undefined],
           });
         },
       });
@@ -45,13 +49,19 @@ export class PersonalSettingsComponent {
       const file = input.files[0];
       const reader = new FileReader();
       reader.onload = () => {
+        const dataBase64: string = reader.result as string;
         this.selectedImageUrl = reader.result;
+        this.userForm
+          ?.get('imageBase64')
+          ?.setValue(dataBase64.substr(dataBase64.indexOf(',') + 1));
       };
       reader.readAsDataURL(file);
     }
   }
 
   saveInfo() {
-    console.log(this.userForm);
+    this.userService
+      .updateDataInfo(this.userForm?.value)
+      .subscribe({ next: () => window.location.reload() });
   }
 }
