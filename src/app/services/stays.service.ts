@@ -5,15 +5,22 @@ import { StayBrief } from '../models/stay-brief.model';
 import { StayItem } from '../models/stay-item.model';
 import { StayFilter } from '../models/stay-filter.model';
 import { StayItemDetailed } from '../models/stay-item-detailed.model';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class StaysService {
-  constructor(private http: HttpClient) {}
+export class StaysService extends BaseService {
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   public getStay(id: number): Observable<StayItemDetailed> {
     return this.http.get<StayItemDetailed>(`http://localhost:5098/api/stays/${id}`);
+  }
+
+  public getMyStays(): Observable<StayItem[]> {
+    return this.http.get<StayItem[]>('http://localhost:5098/api/stays/my', this.getOptions());
   }
 
   public getStays(filter: StayFilter): Observable<StayItem[]> {
