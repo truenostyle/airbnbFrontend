@@ -10,6 +10,7 @@ import { AccountSettingsComponent } from './pages/account-settings/account-setti
 import { BookingComponent } from './pages/booking/booking.component';
 import { BookingSuccessPageComponent } from './pages/booking-success-page/booking-success-page.component';
 import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
+import { HostingPageComponent } from './pages/hosting-page/hosting-page.component';
 
 
 
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'account-settings', component: AccountSettingsComponent},
   {path: 'booking', component: BookingComponent},
   {path: 'booking/success', component: BookingSuccessPageComponent},
-  {path: 'personal-settings', component: PersonalSettingsComponent}
+  {path: 'personal-settings', component: PersonalSettingsComponent},
+  {path: 'hosting', component: HostingPageComponent}
 ];
 
 @NgModule({

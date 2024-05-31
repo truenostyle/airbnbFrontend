@@ -1,0 +1,133 @@
+<div class="nav">
+    <div class="temp" [class.active]="currentState === 'state1'">
+        <a (click)="setState('state1')" [class.active]="currentState === 'state1'">Listings</a>
+    </div>
+    <div class="temp" [class.active]="currentState === 'state2'">
+        <a (click)="setState('state2')" [class.active]="currentState === 'state2'">Reservations</a>
+    </div>
+    <div class="temp" [class.active]="currentState === 'state3'">
+        <a (click)="setState('state3')" [class.active]="currentState === 'state3'">Earnings</a>
+    </div>
+  </div>
+  
+  <div class="listing" *ngIf="currentState === 'state1'">
+    <h1>Your listing</h1>
+    <div class="table-container">
+      <div class="row header">
+        <div class="cell" *ngFor="let header of headers">{{ header }}</div>
+      </div>
+      <div class="row" *ngFor="let row of rows">
+        <div class="cell" *ngFor="let cell of row; let first = first" [class.bold]="first">
+          <ng-container *ngIf="cell.image">
+            <img [src]="cell.image" alt="Image" class="cell-image">
+          </ng-container>
+          {{ cell.text }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reservations" *ngIf="currentState === 'state2'">
+    <h1>Reservations</h1>
+    <div class="reservations_nav">
+      <div class="temp" [class.active]="currentState2 === 'statusAll'">
+        <a (click)="setState2('statusAll')" [class.active]="currentState2 === 'statusAll'">All</a>
+      </div>
+      <div class="temp" [class.active]="currentState2 === 'Completed'">
+        <a (click)="setState2('Completed')" [class.active]="currentState2 === 'Completed'">Completed</a>
+      </div>
+      <div class="temp" [class.active]="currentState2 === 'Upcoming'">
+        <a (click)="setState2('Upcoming')" [class.active]="currentState2 === 'Upcoming'">Upcoming</a>
+      </div>
+      <div class="temp" [class.active]="currentState2 === 'Cancelled'">
+        <a (click)="setState2('Cancelled')" [class.active]="currentState2 === 'Cancelled'">Cancelled</a>
+      </div>
+     
+    </div>
+    
+    <div *ngIf="currentState2 === 'statusAll'">
+      <div class="table-container">
+        <div class="row header">
+          <div class="cell" *ngFor="let header of headers2">{{ header }}</div>
+        </div>
+        <div class="row" *ngFor="let row of rows2">
+          <div class="cell" *ngFor="let cell of row">
+            <ng-container *ngIf="cell.image">
+              <img [src]="cell.image" alt="Image" class="cell-image">
+            </ng-container>
+            {{ cell.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentState2 === 'Completed'">
+      <div class="table-container">
+        <div class="row header">
+          <div class="cell" *ngFor="let header of headers2">{{ header }}</div>
+        </div>
+        <div class="row" *ngFor="let row of filteredRows2">
+          <div class="cell" *ngFor="let cell of row">
+            <ng-container *ngIf="cell.image">
+              <img [src]="cell.image" alt="Image" class="cell-image">
+            </ng-container>
+            {{ cell.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentState2 === 'Upcoming'">
+      <div class="table-container">
+        <div class="row header">
+          <div class="cell" *ngFor="let header of headers2">{{ header }}</div>
+        </div>
+        <div class="row" *ngFor="let row of filteredRows2">
+          <div class="cell" *ngFor="let cell of row">
+            <ng-container *ngIf="cell.image">
+              <img [src]="cell.image" alt="Image" class="cell-image">
+            </ng-container>
+            {{ cell.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="currentState2 === 'Cancelled'">
+      <div class="table-container">
+        <div class="row header">
+          <div class="cell" *ngFor="let header of headers2">{{ header }}</div>
+        </div>
+        <div class="row" *ngFor="let row of filteredRows2">
+          <div class="cell" *ngFor="let cell of row">
+            <ng-container *ngIf="cell.image">
+              <img [src]="cell.image" alt="Image" class="cell-image">
+            </ng-container>
+            {{ cell.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+  </div>
+  <div class="earnings" *ngIf="currentState === 'state3'">
+    <h1>Earnings</h1>
+    <div class="made">
+      <p>You've made</p>
+      <div class="temp"><p class="sum">$235.23 </p><p> this month</p></div>
+    </div>
+    <div class="stats">
+      <div class="upcoming">
+        <h2>Upcoming</h2>
+        <p>$235.32</p>
+      </div>
+      <div class="paid">
+        <h2>Paid</h2>
+        <p>$235.32</p>
+      </div>
+      <div class="cancelled">
+        <h2>Cancelled</h2>
+        <p class="red">$235.32</p>
+      </div>
+    </div>
+    
+  </div>
+  

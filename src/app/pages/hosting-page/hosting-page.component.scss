@@ -1,0 +1,206 @@
+.nav {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 37px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; /* Убедитесь, что ссылки располагаются в ряд */
+    justify-content: center;
+    .temp {
+        width: 130px;
+        padding-bottom: 10px;
+        margin-right: 36px;
+        text-align: center;
+    }
+    a {
+        
+        font-size: 18px;
+        margin: 0;
+        font-weight: 500;
+        text-decoration: none;
+        color: #6A6A6A;
+        cursor: pointer;
+    }
+  
+  }
+  
+  .nav a.active {
+    color: #000000;
+  }
+  .nav div.active {
+    
+    border-bottom: 3px solid black;
+  }
+
+
+.listing {
+    font-family: 'Montserrat', sans-serif;
+    .table-container {
+        margin-top: 93px;
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        margin-left: 5%;
+        .row {
+            display: flex;
+            flex-direction: row;
+            gap: 15%; /* Добавляет отступ между колонками */
+            .cell {
+                flex-basis: 500px;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+               
+               
+                .cell-image {
+                    width: 50px; /* Adjust the size as needed */
+                    height: 50px; /* Adjust the size as needed */
+                    margin-right: 10px; /* Space between image and text */
+                }
+              }
+          }
+          .header {
+            font-weight: 500;
+            font-size: 22px;
+          }
+          
+      }
+      
+      
+      .bold {
+        font-weight: bold;
+      }
+      
+      
+      
+      h1 {
+        font-weight: 600;
+        font-size: 40px;
+        margin-top: 54px;
+        margin-left: 5%;
+    }
+}
+
+.reservations {
+  font-family: 'Montserrat', sans-serif;
+  h1 {
+    font-weight: 600;
+    font-size: 40px;
+    margin-top: 54px;
+    margin-left: 5%;
+}
+  .reservations_nav {
+    margin-top: 28px;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    a.active {
+      color: #000000;
+    }
+    div.active {
+      
+      border-bottom: 3px solid black;
+    }
+    .temp {
+      width: 153px;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+    a {
+      cursor: pointer;
+      color: #6A6A6A;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+  .table-container {
+    margin-top: 29px;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-left: 5%;
+    .row {
+        display: flex;
+        flex-direction: row;
+        gap: 3%; /* Добавляет отступ между колонками */
+        .cell {
+            flex-basis: 500px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+           
+           
+            .cell-image {
+                width: 50px; /* Adjust the size as needed */
+                height: 50px; /* Adjust the size as needed */
+                margin-right: 10px; /* Space between image and text */
+            }
+          }
+      }
+      .header {
+        font-weight: 500;
+        font-size: 22px;
+      }
+      
+  }
+  
+  
+  
+}
+
+.earnings {
+  font-family: 'Montserrat', sans-serif;
+  h1 {
+    font-weight: 600;
+    font-size: 40px;
+    margin-top: 54px;
+    margin-left: 5%;
+}
+  p {
+    font-size: 70px;
+    font-weight: 400;
+    margin: 0;
+  }
+  .made {
+    margin-left: 5%;
+    margin-top: 54px;
+    .temp {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: row;
+      p {
+        margin-right: 20px;
+      }
+      .sum {
+        color: #8E979F;
+      }
+    }
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+    align-items: center;
+    margin-top: 100px;
+    gap: 10%;
+    div {
+      h2 {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      p {
+        margin: 0;
+        margin-top: 30px;
+        font-size: 70px;
+        color: #8E979F;
+        font-weight: 400;
+      }
+      .red {
+        color:#C92929;
+      }
+    }
+  }
+  
+}
