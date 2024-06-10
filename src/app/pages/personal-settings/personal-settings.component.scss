@@ -1,13 +1,97 @@
 h1 {
     font-size: 32px;
     font-weight: 500;
-    margin-left: 20%;
-    margin-top: 70px;
+    margin-left: 24%;
+    margin-top: 50px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .profile-image {
     border-radius: 100%;
 }
+
+.main1 {
+    margin-left: 24%;
+    .image-load {
+        margin-top: 30px;
+        
+        width: 20%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        img {
+            width: 150px;
+            height: 150px;
+        }
+        .load {
+            width: 50%;
+            height: 40px;
+            text-decoration: none;
+            color: black;
+            margin-top: 20px;
+            background-color: #2288E6;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            text-align: center;
+            border-radius: 40px;
+            line-height: 40px;
+            cursor: pointer;
+        }
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        .form-container {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                margin-top: 30px;
+                margin-bottom: 11px;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 16px;
+                color: #666666;
+            }
+            input {
+                font-family: 'Montserrat', sans-serif;
+                border: 1px solid #66666659;
+                border-radius: 12px;
+                width: 665px;
+                height: 56px;
+                padding-left: 10px;
+            }
+
+            select {
+                width: 180px;
+                height: 56px;
+                border-radius: 12px;
+                border: 1px solid #66666659;
+                font-family: 'Montserrat', sans-serif;
+                padding-left: 10px;
+            }
+            .save {
+                cursor: pointer;
+                width: 528px;
+                height: 64px;
+                background-color: #2288E6;
+                border-radius: 40px;
+                color: white;
+                text-align: center;
+                line-height: 65px;
+                font-size: 22px;
+                margin-top: 48px;
+              } 
+        }
+    }
+
+}
+
+
+
+
 
 .main {
     width: 60%;
@@ -68,23 +152,6 @@ h1 {
             background-color: white;
             box-sizing: border-box; 
           }
-          .save {
-            
-            display: block;
-            width: 90%;
-            height: 40px;
-            text-decoration: none;
-            color: black;
-            margin-top: 120px;
-            margin-left: 50px;
-            background-color: #2288E6;
-            color: white;
-            font-size: 20px;
-            font-weight: 400;
-            text-align: center;
-            border-radius: 12.15px;
-            line-height: 40px;
-            cursor: pointer;
-          } 
+          
       }
 }

@@ -46,6 +46,7 @@
     }
 
     h1 {
+        margin-top: 100px;
         font-size: 32px;
         line-height: 48px;
         font-weight: 500;
@@ -260,10 +261,17 @@
     flex-direction: row;
     border-bottom: 1px solid #D9D9D9;
     height: 93px;
-
+    @media (max-width: 766px) {
+        display: none;
+    }
     .main-a {
             margin-left: 5%;
-            margin-top: 25px;
+            margin-top: 31px;
+
+            img { 
+                width: 200px;
+                height: 32px;
+            }
     }
 
     .login {

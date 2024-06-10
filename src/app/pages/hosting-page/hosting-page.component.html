@@ -8,6 +8,8 @@
     <div class="temp" [class.active]="currentState === 'state3'">
         <a (click)="setState('state3')" [class.active]="currentState === 'state3'">Earnings</a>
     </div>
+
+    <a class="new-listing"  routerLink="/start-host">Add new listing</a>
   </div>
   
   <div class="listing" *ngIf="currentState === 'state1'">

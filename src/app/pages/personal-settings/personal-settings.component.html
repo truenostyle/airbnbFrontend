@@ -1,11 +1,51 @@
 <form *ngIf="userForm" [formGroup]="userForm">
-  <h1>Personal Info</h1>
+
+  <h1>Profile</h1>
+  <div class="main1">
+    <div class="image-load">
+      <img class="profile-image" [src]="selectedImageUrl || userForm.get('imageUrl')?.value || '../assets/images/icons/man-user.svg'">
+      <a class="load" (click)="onChoosePhoto()">Choose photo</a>
+
+     
+      <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+      
+    </div>
+
+    <div class="info">
+      <div class="form-container">
+          <label>Name</label>
+          <input type="text" formControlName="userName"  class="form-input">
+          <label>Email</label>
+          <input type="email" formControlName="email"  class="form-input">
+          <label>Current password</label>
+          <input type="password" formControlName="currentPassword"  class="form-input">
+          <label>New password</label>
+          <input type="password" formControlName="newPassword" class="form-input">
+          <label>Date of Birth</label>
+          <input type="date" formControlName="dateOfBirth" class="form-input">
+          <label>Gender</label>
+          <select formControlName="gender" class="form-input">
+            <option value="" disabled>Gender</option>
+            <option [ngValue]="0">Male</option>
+            <option [ngValue]="1">Female</option>
+            <option [ngValue]="2">Other</option>
+          </select>
+          <a (click)="saveInfo()" class="save">Save changes</a>
+        
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!--<h1>Personal Info</h1>
   <div class="main">
     <div class="image-load">
       <img class="profile-image" [src]="selectedImageUrl || userForm.get('imageUrl')?.value || '../assets/images/icons/man-user.svg'">
       <a class="load" (click)="onChoosePhoto()">Choose photo</a>
 
-      <!-- Скрытый элемент input для выбора файла -->
+     
       <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
       
     </div>
@@ -31,7 +71,7 @@
 
       </div>
     </div>
-  </div>
+  </div>-->
 </form>
 
 <app-footer></app-footer>

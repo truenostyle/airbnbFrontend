@@ -21,7 +21,7 @@ export class SecondHeaderComponent implements OnInit {
 
   constructor(
     private elementRef: ElementRef,
-    usersService: UserService,
+    usersService: UserService,  
     private http: HttpClient,
     private router: Router,
     private socialAuthService: SocialAuthService

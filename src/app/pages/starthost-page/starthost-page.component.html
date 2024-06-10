@@ -1,0 +1,159 @@
+<div class="describes">
+    <h2>Which of these best describes your place?</h2>
+    <div class="container">
+        <div class="item" *ngFor="let place of places" (click)="toggleSelection(place)" [class.selected]="place.selected">
+            <img [src]="place.imgUrl">
+            <p>{{ place.name }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="placeType">
+    <h2>What type of place will guests have?</h2>
+    <div class="container">
+        <div class="item" *ngFor="let place of placeTypes" (click)="selectPlace(place)" [class.selected]="place.selected">
+            <div class="column">
+                <h3>{{ place.title }}</h3>
+                <p>{{ place.description }}</p>
+            </div>
+            <img src="{{ place.imgUrl }}">
+        </div>
+    </div>
+</div>
+
+<div class="located">
+    <h2>Where’s your place located?</h2>
+    <div class="country">
+        <label for="countryInput">Country / region</label>
+        <input type="text" id="countryInput" placeholder=" ">
+    </div>
+
+    <div class="container">
+        <div class="item">
+            <label for="street">Street / adress</label>
+            <input type="text" id="street" placeholder=" ">
+        </div>
+        <div class="item">
+            
+            <input type="text" id="app" placeholder="Apt, house, etc, (if application)">
+        </div>
+        <div class="item">
+            <label for="city">City / district</label>
+            <input type="text" id="city" placeholder=" ">
+        </div>
+        <div class="item">
+            <label for="province">Province / region</label>
+            <input type="text" id="province" placeholder=" ">
+        </div>
+        <div class="item">
+            <label for="postcode">Postcode</label>
+            <input type="text" id="postcode" placeholder=" ">
+        </div>
+    </div>
+    
+</div>
+
+<div class="basics">
+    <h2>Let’s start with the basics</h2>
+    <div class="container">
+        <div class="item">
+            <p>Bedrooms</p>
+            <div class="counter">
+                <a (click)="decrement('bedrooms')"><img src="/assets/images/icons/minus.svg"></a>
+                <span>{{ bedroomsCount }}</span>
+                <a (click)="increment('bedrooms')"><img src="/assets/images/icons/plus.svg"></a>
+            </div> 
+        </div>
+        <hr>
+        <div class="item">
+            <p>Beds</p>
+            <div class="counter">
+                <a (click)="decrement('beds')"><img src="/assets/images/icons/minus.svg"></a>
+                <span>{{ bedsCount }}</span>
+                <a (click)="increment('beds')"><img src="/assets/images/icons/plus.svg"></a>
+            </div> 
+        </div>
+        <hr>
+        <div class="item">
+            <p>Bathrooms</p>
+            <div class="counter">
+                <a (click)="decrement('bathrooms')"><img src="/assets/images/icons/minus.svg"></a>
+                <span>{{ bathroomsCount }}</span>
+                <a (click)="increment('bathrooms')"><img src="/assets/images/icons/plus.svg"></a>
+            </div> 
+        </div>
+        <hr>
+    </div>
+
+    <h2>How many guests fit comfortable in your place?</h2>
+
+    <div class="count">
+        <a (click)="decrement('all')"><img src="/assets/images/icons/minus.svg"></a>
+        <span>{{ allCount }}</span>
+        <a (click)="increment('all')"><img src="/assets/images/icons/plus.svg"></a>
+    </div>
+    
+</div>
+
+<div class="offers">
+    <h2>Tell guests what your place has to offer</h2>
+    <div class="container">
+        <div class="item" *ngFor="let offer of offers" (click)="toggleSelection(offer)" [class.selected]="offer.selected">
+            <img [src]="offer.imgUrl">
+            <p>{{ offer.name }}</p>
+        </div>
+    </div>
+    <h3>Do you have any standout amenities?</h3>
+    <div class="container">
+        <div class="item" *ngFor="let amenitie of amenities" (click)="toggleSelection(amenitie)" [class.selected]="amenitie.selected">
+            <img [src]="amenitie.imgUrl">
+            <p>{{ amenitie.name }}</p>
+        </div>
+    </div>
+    <h3>Do you have any of these safety items?</h3>
+    <div class="container">
+        <div class="item" *ngFor="let safety of safetys" (click)="toggleSelection(safety)" [class.selected]="safety.selected">
+            <img [src]="safety.imgUrl">
+            <p>{{ safety.name }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="photos">
+    <h2>Add some photos of your earth home</h2>
+    <div class="container">
+        <label for="fileInput">
+            <img src="/assets/images/icons/photos.svg">
+            <h3>Drag your photo here</h3>
+            <p>Choose at least 5 photos</p>
+            <a>Upload from your device</a>
+        </label>
+        <input type="file" id="fileInput" multiple style="display: none;" (change)="handleFileInput($event)">
+    </div>
+    <div class="photo-grid">
+        <div *ngFor="let photo of photos; let i = index">
+            <div class="photo-wrapper">
+                <img [src]="photo" width="600" height="300">
+                <span class="delete-icon" (click)="deletePhoto(i)"><img src="/assets/images/icons/close1.svg"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="title">
+    <h2>Now, let’s give your earth home a title </h2>
+    <div class="container">
+        <input type="text" maxlength="32" [(ngModel)]="inputValue" (input)="updateCounter($event)">
+        <div>{{ counter }} / 32</div>
+    </div>
+    
+
+</div>
+
+<div class="finish">
+    <hr>
+    <div class="row">
+        <a class="back"  routerLink="/hosting">Back</a>
+        <a class="end">Finish</a>
+    </div>
+</div>
