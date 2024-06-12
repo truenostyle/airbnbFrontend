@@ -1,5 +1,5 @@
 <div class="login-box" [ngClass]="{ 'hidden': loginBoxHidden }">
-    <div class="logo"></div>
+    
     <h1>Log in</h1>
     <div class="signup-label">
       <p>Don’t have an ccount? </p>
@@ -30,12 +30,11 @@
   </div>
 
 <div class="header">
-    <a class="main-a" routerLink=""><h2>logo</h2></a>
+    <a class="main-a" routerLink=""><img src="../assets/images/logo/logo.png"></a>
     
 
     <div class="right">
-        <div class="currency">USD ($)</div>
-        <div class="language">English</div>
+       
         <div *ngIf="currentUser$ | async as user"  class="profile" (click)="dropdownOpen = !dropdownOpen">
           <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
           <img class="avatar" [src]="user?.imageUrl ? user.imageUrl : '../assets/images/icons/man-user.svg'">

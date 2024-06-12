@@ -26,6 +26,7 @@ import { RouterModule } from '@angular/router';
 import { BookingSuccessPageComponent } from './pages/booking-success-page/booking-success-page.component';
 import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
 import { HostingPageComponent } from './pages/hosting-page/hosting-page.component';
+import { StarthostPageComponent } from './pages/starthost-page/starthost-page.component';
 
 
 
@@ -44,6 +45,7 @@ import { HostingPageComponent } from './pages/hosting-page/hosting-page.componen
     BookingSuccessPageComponent,
     PersonalSettingsComponent,
     HostingPageComponent,
+    StarthostPageComponent,
   ],
   imports: [
     BrowserModule,

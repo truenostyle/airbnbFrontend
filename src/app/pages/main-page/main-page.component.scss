@@ -262,7 +262,7 @@ body {
 }
 
 .search-box {
-    margin-top: 191px;
+    margin-top: 91px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -486,7 +486,7 @@ body {
 
           .calendar {
            margin-top: 20px;
-            margin-left: 50px;
+            margin-left: 100px;
             @media (min-width: 766px) and (max-width: 1400px) {
                 margin-left: 1%
                 
@@ -528,7 +528,7 @@ body {
             .search-people {
                 width: 24px;
                 height: 24px;
-                margin-left: 75px;
+                margin-left: 100px;
             
               }
     
@@ -569,7 +569,7 @@ body {
             cursor: pointer;
             text-align: center;
             line-height: 80px;
-            margin-left: 105px;
+            margin-left: 100px;
 
             @media (min-width: 766px) and (max-width: 1400px) {
                 margin-left: auto;
@@ -683,7 +683,7 @@ body {
 .filters-carousel {
     font-family: 'Montserrat', sans-serif; 
     width:70%;
-    margin-left: -150px;
+    margin-left: -50px;
     margin-top: 48px;
     z-index: 0;
     @media (min-width: 766px) and (max-width: 1400px) {
@@ -691,7 +691,9 @@ body {
         margin-left: 2%;
     }
    .item {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
 
     img {
@@ -711,10 +713,10 @@ body {
     -webkit-box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
 -moz-box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
 box-shadow: -40px 7px 6px 20px rgba(255,255,255,1);
-
+cursor: pointer;
     position: absolute;
     margin-top: -90px;
-    right: 17%;
+    right: 14%;
     width: 116px;
     height: 64px;
     border: 1px solid #E0E0E0;

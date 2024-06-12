@@ -382,7 +382,7 @@ ng-container{
             div {
                 width: 262px;
                 height: 77px;
-                border-radius: 42px;
+                border-radius: 25px;
                 border: 1px solid #DDDDDD;
                 margin-left: 6px;
                 margin-right: 6px;
@@ -605,7 +605,7 @@ ng-container{
                     display: flex;
                     flex-direction: row;
                     margin: 0;
-                    
+                    margin-bottom: 15px;
                     align-items: center;
                     img {
                         width: 46px;
