@@ -6,6 +6,7 @@ import { StayItem } from '../models/stay-item.model';
 import { StayFilter } from '../models/stay-filter.model';
 import { StayItemDetailed } from '../models/stay-item-detailed.model';
 import { BaseService } from './base.service';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +17,11 @@ export class StaysService extends BaseService {
   }
 
   public getStay(id: number): Observable<StayItemDetailed> {
-    return this.http.get<StayItemDetailed>(`http://localhost:5098/api/stays/${id}`);
+    return this.http.get<StayItemDetailed>(environment.apiUrl + `/api/stays/${id}`);
   }
 
   public getMyStays(): Observable<StayItem[]> {
-    return this.http.get<StayItem[]>('http://localhost:5098/api/stays/my', this.getOptions());
+    return this.http.get<StayItem[]>(environment.apiUrl + '/api/stays/my', this.getOptions());
   }
 
   public getStays(filter: StayFilter): Observable<StayItem[]> {
@@ -32,7 +33,7 @@ export class StaysService extends BaseService {
     params = params.append('PlaceType', filter.roomType.toString());
     params = filter.location !== '' ? params.append('Location', filter.location) : params;
 
-    return this.http.get<StayBrief[]>('http://localhost:5098/api/stays', { params } ).pipe(
+    return this.http.get<StayBrief[]>(environment.apiUrl + '/api/stays', { params } ).pipe(
       map((staysBrief: StayBrief[]) =>
         staysBrief.map((stay: StayBrief) => ({
           ...stay,
