@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthResponse } from 'src/app/models/auth-response.model';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-register-page',
@@ -54,7 +55,7 @@ export class RegisterPageComponent {
 
   ngOnInit() {
     this.socialAuthService.authState.subscribe((user) => {
-      this.http.post<AuthResponse>(`http://localhost:5098/api/auth/login/external`, {
+      this.http.post<AuthResponse>(environment.apiUrl + `/api/auth/login/external`, {
         provider: user.provider,
         idToken: user.idToken,
       })
@@ -64,7 +65,7 @@ export class RegisterPageComponent {
 
   register() {
     if (this.registerForm.valid) {
-      this.http.post<AuthResponse>(`http://localhost:5098/api/auth/register`, {
+      this.http.post<AuthResponse>(environment.apiUrl + `/api/auth/register`, {
         name: this.registerForm.get('name')?.value,
         email: this.registerForm.get('email')?.value,
         password: this.registerForm.get('password')?.value,

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { AuthResponse } from 'src/app/models/auth-response.model';
 import { UserInfo } from 'src/app/models/user-info.model';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-second-header',
@@ -31,7 +32,7 @@ export class SecondHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.socialAuthService.authState.subscribe((user) => {
       this.http
-        .post<AuthResponse>(`http://localhost:5098/api/auth/login/external`, {
+        .post<AuthResponse>(environment.apiUrl + `/api/auth/login/external`, {
           provider: user.provider,
           idToken: user.idToken,
         })
@@ -59,7 +60,7 @@ export class SecondHeaderComponent implements OnInit {
   login(): void {
     if (this.isFormFilled()) {
       this.http
-        .post<AuthResponse>(`http://localhost:5098/api/auth/login`, {
+        .post<AuthResponse>(environment.apiUrl + `/api/auth/login`, {
           email: this.email,
           password: this.password,
         })

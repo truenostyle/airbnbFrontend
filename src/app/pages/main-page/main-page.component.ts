@@ -12,6 +12,7 @@ import { RoomType } from 'src/app/enums/room-type.enum';
 import { WhishlistsService } from 'src/app/services/whishlists.service';
 import { WhishlistCategory } from 'src/app/models/whistlist-category.model';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { environment } from 'src/environment/environment';
 
 
 @Component({
@@ -59,7 +60,7 @@ export class MainPageComponent {
 
   login(): void {
     if (this.isFormFilled()) {
-      this.http.post<AuthResponse>(`http://localhost:5098/api/auth/login`, {
+      this.http.post<AuthResponse>( environment.apiUrl + `/api/auth/login`, {
         email: this.email,
         password: this.password,
       })
