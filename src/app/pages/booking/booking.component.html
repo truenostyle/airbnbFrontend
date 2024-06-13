@@ -41,6 +41,7 @@
             <p class="total">Total nights stay</p>
             <p class="itog">${{ state.cost }}</p>
         </div>
+        <a class="order" (click)="submitBooking()">Order</a>
     </div>
 </div>
 
@@ -53,15 +54,160 @@
         <p>Credit or debit card</p>
     </div>
     
-    <input class="number" type="text" placeholder="Card number"> 
-    <div class="two-inputs">
-        <input class="expiration" type="text" placeholder="Expiration">
-        <input class="cvv" type="number" placeholder="CVV">
-    </div>
-
+    <form [formGroup]="cardForm">
+        <input
+          class="number"
+          type="text"
+          formControlName="cardNumber"
+          placeholder="Card number"
+          [class.invalid]="cardNumber?.invalid && cardNumber?.touched"
+        >
+        <div class="two-inputs">
+            <input
+            class="expiration"
+            type="text"
+            formControlName="expiration"
+            placeholder="Expiration"
+            [class.invalid]="expiration?.invalid && expiration?.touched"
+            (input)="formatExpiration($event)"
+          >
+          <input
+            class="cvv"
+            type="number"
+            formControlName="cvv"
+            placeholder="CVV"
+            [class.invalid]="cvv?.invalid && cvv?.touched"
+          >
+        </div>
+        <div *ngIf="isFormInvalid()" class="error-message">
+            Сard entered incorrectly
+        </div>
+      </form>
     <input class="zip" type="text" placeholder="ZIP code"> 
-    
+    <hr>
 </div>
 
-<a class="confirm" (click)="submitBooking()">Сonfirm</a>
+
+<div class="required">
+    <h2>Required for your trip</h2>
+
+    <div class="container">
+        <div class="item">
+          <div class="column">
+            <h3>Message the Host</h3>
+            <p>Share why you’re travelling, who’s coming with you, and what you love about the space.</p>
+          </div>
+          <a class="btn-add" (click)="openModal(1)">Add</a>
+        </div>
+      
+        <div class="item">
+          <div class="column">
+            <h3>Profile photo</h3>
+            <p>Hosts want to know who’s staying at their place.</p>
+          </div>
+          <a class="btn-add" (click)="openModal(2)">Add</a>
+        </div>
+      
+        <div class="item">
+          <div class="column">
+            <h3>Phone number</h3>
+            <p>Add and confirm your phone number to get trip updates.</p>
+          </div>
+          <a class="btn-add" (click)="openModal(3)">Add</a>
+        </div>
+      </div>
+
+    <div class="modal-overlay" *ngIf="modalOpen">
+        <div class="modal">
+        <div class="messageState" *ngIf="modalId === 1">
+            <div class="header"> 
+                <a class="btn-close" (click)="closeModal()">
+                    <img src="/assets/images/icons/close.svg">
+                </a>
+                <h2>Message the Host</h2>
+            </div>
+            <div class="main">
+                <p>
+                    Share why you’re traveling, who’s coming with you, and what love about the space.
+                </p>
+                <div class="text-block">
+                    <div class="user">
+                        <img src="/assets/images/icons/man-user.svg">
+                        <div class="column">
+                            <h3>Dawid</h3>
+                            <p>Joined in 2023</p>
+                        </div>
+                    </div>
+                    <p>Hi, if you have any question before booking, I’m here to help.</p>
+                </div>
+                <textarea class="messageInput" rows="10" ></textarea>
+            </div>
+            <div class="block-save">
+                <a>Save</a>
+            </div>
+            
+        </div>
+        <div class="photoState" *ngIf="modalId === 2">
+            <div class="header"> 
+                <a class="btn-close" (click)="closeModal()">
+                    <img src="/assets/images/icons/close.svg">
+                </a>
+                <h2>Add your profile photo</h2>
+            </div>
+            <div class="main">
+                <div class="img-container">
+                    <img src="/assets/images/icons/user2.svg">
+                </div>
+              
+               <p>
+                Pick an image that shows your face. Hosts won't be able to see your profile photo until your booking is confirmed.
+               </p>
+               <div class="row">
+                <a class="accept">Yes, looks good</a>
+                <a class="addPhoto">Take a new photo</a>
+               </div>
+            </div>
+               
+           
+            
+            
+        </div>
+
+        <div class="numberState" *ngIf="modalId === 3">
+            <div class="header"> 
+                <a class="btn-close" (click)="closeModal()">
+                    <img src="/assets/images/icons/close.svg">
+                </a>
+                <h2>Add phone number</h2>
+            </div>
+            <div class="main">
+                <h2>
+                    We’ll send you trip updates and a text to verify this number.
+                </h2>
+                <div class="region">
+                    <p class="label">Country/region</p>
+                    <p class="country">Ukraine (+380)</p>
+                </div>
+                <form [formGroup]="phoneForm">
+                    <input
+                      type="text"
+                      class="inputNumber"
+                      formControlName="phoneNumber"
+                      placeholder="Enter phone number"
+                      [class.invalid]="phoneNumber?.invalid && phoneNumber?.touched"
+                    >
+                    <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched" class="error-message">
+                      Введен неправильный номер телефона
+                    </div>
+                    <a class="save" [class.disabled]="phoneForm.invalid" (click)="save()" [class.inactive]="phoneForm.invalid">Save</a>
+                  </form>
+            </div>
+        </div>
+          
+        </div>
+      </div>
+</div>
+
+
+
 <app-footer></app-footer>
