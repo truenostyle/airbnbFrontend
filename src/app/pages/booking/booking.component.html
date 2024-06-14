@@ -41,8 +41,27 @@
             <p class="total">Total nights stay</p>
             <p class="itog">${{ state.cost }}</p>
         </div>
-        <a class="order" (click)="submitBooking()">Order</a>
+        <a
+  class="order"
+  [class.disabled]="!areAllConditionsTrue()"
+  [class.inactive]="!areAllConditionsTrue()"
+  (click)="submitBooking()"
+  (click)="openModal(0)"
+  [class.clickable]="areAllConditionsTrue()"
+>
+  Order
+</a>
+<p *ngIf="!areAllConditionsTrue()">for order you need to fill in all the required data</p>
+        
     </div>
+</div>
+
+<div class="modal-overlay" *ngIf="orderModalOpen">
+    <div class="order-modal">
+        <img src="../assets/images/icons/order.svg">
+        <h2>Thank you for your order!</h2>
+        <a [routerLink]="'/main'">Back to the catalog page</a>
+        </div>
 </div>
 
 <div class="payment">
@@ -97,7 +116,8 @@
             <h3>Message the Host</h3>
             <p>Share why you’re travelling, who’s coming with you, and what you love about the space.</p>
           </div>
-          <a class="btn-add" (click)="openModal(1)">Add</a>
+          <a class="btn-add" *ngIf="!messageSaved" (click)="openModal(1)">Add</a>
+        <a class="btn-edit" *ngIf="messageSaved" (click)="openModal(1)">Edit</a>
         </div>
       
         <div class="item">
@@ -105,7 +125,9 @@
             <h3>Profile photo</h3>
             <p>Hosts want to know who’s staying at their place.</p>
           </div>
-          <a class="btn-add" (click)="openModal(2)">Add</a>
+          <a class="btn-add" *ngIf="!profilePhotoSaved" (click)="openModal(2)">Add</a>
+        <a class="btn-edit" *ngIf="profilePhotoSaved" (click)="openModal(2)">Edit</a>
+
         </div>
       
         <div class="item">
@@ -113,7 +135,8 @@
             <h3>Phone number</h3>
             <p>Add and confirm your phone number to get trip updates.</p>
           </div>
-          <a class="btn-add" (click)="openModal(3)">Add</a>
+          <a class="btn-add" *ngIf="!phoneSaved" (click)="openModal(3)">Add</a>
+        <a class="btn-edit" *ngIf="phoneSaved" (click)="openModal(3)">Edit</a>
         </div>
       </div>
 
@@ -140,38 +163,37 @@
                     </div>
                     <p>Hi, if you have any question before booking, I’m here to help.</p>
                 </div>
-                <textarea class="messageInput" rows="10" ></textarea>
+                <textarea class="messageInput" rows="10" [(ngModel)]="messageText"></textarea>
             </div>
             <div class="block-save">
-                <a>Save</a>
+                <a (click)="saveMessage()">Save</a>
             </div>
             
         </div>
         <div class="photoState" *ngIf="modalId === 2">
-            <div class="header"> 
-                <a class="btn-close" (click)="closeModal()">
-                    <img src="/assets/images/icons/close.svg">
-                </a>
-                <h2>Add your profile photo</h2>
+            <div class="header">
+              <a class="btn-close" (click)="closeModal()">
+                <img src="/assets/images/icons/close.svg">
+              </a>
+              <h2>Add your profile photo</h2>
             </div>
             <div class="main">
-                <div class="img-container">
-                    <img src="/assets/images/icons/user2.svg">
-                </div>
-              
-               <p>
+              <div class="img-container">
+                <img *ngIf="profilePhoto" [src]="profilePhoto" alt="Profile Photo">
+                <img *ngIf="!profilePhoto" src="/assets/images/icons/user2.svg" alt="Default Photo">
+              </div>
+          
+              <p>
                 Pick an image that shows your face. Hosts won't be able to see your profile photo until your booking is confirmed.
-               </p>
-               <div class="row">
-                <a class="accept">Yes, looks good</a>
-                <a class="addPhoto">Take a new photo</a>
-               </div>
+              </p>
+              <div class="row">
+                <a class="accept" (click)="savePhoto()">Yes, looks good</a>
+                <a class="addPhoto" (click)="triggerFileInput()">Take a new photo</a>
+              </div>
+              <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
             </div>
-               
-           
-            
-            
-        </div>
+          </div>
+          
 
         <div class="numberState" *ngIf="modalId === 3">
             <div class="header"> 
@@ -190,6 +212,7 @@
                 </div>
                 <form [formGroup]="phoneForm">
                     <input
+                    [(ngModel)]="phoneText"
                       type="text"
                       class="inputNumber"
                       formControlName="phoneNumber"
@@ -197,9 +220,9 @@
                       [class.invalid]="phoneNumber?.invalid && phoneNumber?.touched"
                     >
                     <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched" class="error-message">
-                      Введен неправильный номер телефона
+                        Incorrect phone number entered
                     </div>
-                    <a class="save" [class.disabled]="phoneForm.invalid" (click)="save()" [class.inactive]="phoneForm.invalid">Save</a>
+                    <a class="save" [class.disabled]="phoneForm.invalid" (click)="save()"  (click)="savePhone()" [class.inactive]="phoneForm.invalid">Save</a>
                   </form>
             </div>
         </div>

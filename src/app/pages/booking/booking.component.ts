@@ -14,8 +14,18 @@ export class BookingComponent {
   state!: BookingState;
   cardForm!: FormGroup;
   phoneForm!: FormGroup;
+  
+  messageText: string = '';
+  messageSaved: boolean = false;
+
+  phoneText: string = '';
+  phoneSaved: boolean = false;
+
+  profilePhoto: string | ArrayBuffer | null = null;
+  profilePhotoSaved: boolean = false;
 
   modalOpen: boolean = false;
+  orderModalOpen: boolean = false;
   modalId: number | null = null;
 
   constructor(
@@ -45,7 +55,7 @@ export class BookingComponent {
 
   uaPhoneValidator(control: any) {
     const value = control.value;
-    // Регулярное выражение для проверки украинского номера телефона (может начинаться с +380 или просто 0, и содержит 10-12 цифр)
+   
     const isValid = /^(?:\+380|0)\d{9}$/.test(value);
     return isValid ? null : { invalidPhone: true };
   }
@@ -56,35 +66,35 @@ export class BookingComponent {
 
   save() {
     if (this.phoneForm.valid) {
-      // Логика сохранения данных
+
       console.log('Phone number is valid:', this.phoneForm.value.phoneNumber);
     }
   }
 
   cardValidator(control: any) {
     const value = control.value;
-    // Пример простой валидации (можете заменить на более сложную проверку)
-    const isValid = /^[0-9]{16}$/.test(value); // Простая проверка на 16 цифр
+
+    const isValid = /^[0-9]{16}$/.test(value); 
     return isValid ? null : { invalidCard: true };
   }
 
   expirationValidator(control: any) {
     const value = control.value;
-    const isValid = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/.test(value); // Простая проверка формата MM/YY
+    const isValid = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/.test(value); 
     return isValid ? null : { invalidExpiration: true };
   }
 
   formatExpiration(event: any) {
     let input = event.target.value.trim();
-    // Удаляем все нечисловые символы
+
     input = input.replace(/\D/g, '');
-    // Добавляем слеш после второго символа, если его нет
+
     if (input.length > 2 && input.indexOf('/') === -1) {
       input = input.slice(0, 2) + '/' + input.slice(2);
     }
-    // Обрезаем дату после 6 символов (месяц и год)
+
     input = input.slice(0, 5);
-    // Обновляем значение в форме
+
     this.cardForm.patchValue({
       expiration: input
     });
@@ -110,22 +120,76 @@ export class BookingComponent {
 
   ngOnInit(): void {}
 
+  
 
   openModal(modalId: number) {
+    if (modalId === 0) {
+      this.orderModalOpen = true;
+    }
+    else {
+      this.modalOpen = true;
+    }
     this.modalId = modalId;
-    this.modalOpen = true;
-    document.body.style.overflow = 'hidden'; // Запрет прокрутки фона при открытом модальном окне
+    
+    this.loadMessage();
+    document.body.style.overflow = 'hidden'; 
   }
 
   closeModal() {
     this.modalOpen = false;
     this.modalId = null;
-    document.body.style.overflow = ''; // Восстановление прокрутки фона при закрытии модального окна
+    document.body.style.overflow = ''; 
+  }
+  
+  triggerFileInput() {
+    const fileInput = document.querySelector('input[type="file"]') as HTMLElement;
+    fileInput.click();
   }
 
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.profilePhoto = e.target?.result as string | ArrayBuffer;
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  savePhoto() {
+    this.profilePhotoSaved = true;
+    this.closeModal();
+  }
+
+  savePhone() {
+    this.phoneSaved = true;
+    localStorage.setItem('phoneText', this.phoneText);
+    this.closeModal();
+  }
+
+  loadPhone() {
+    this.phoneText = localStorage.getItem('phoneText') || '';
+  }
+
+  saveMessage() {
+    this.messageSaved = true;
+    localStorage.setItem('messageText', this.messageText);
+    this.closeModal();
+  }
+
+  loadMessage() {
+    this.messageText = localStorage.getItem('messageText') || '';
+  }
+
+  areAllConditionsTrue(): boolean {
+    return this.messageSaved && this.phoneSaved && this.profilePhotoSaved && this.cardForm.valid;
+  }
 
   submitBooking() {
-    this.bookingService
+
+    if (this.areAllConditionsTrue()) {
+      this.bookingService
       .book({
         checkIn: this.state.dateStart,
         checkOut: this.state.dateEnd,
@@ -133,5 +197,11 @@ export class BookingComponent {
         stayId: this.state.stay.id,
       })
       .subscribe({ next: () => this.router.navigate(['/booking/success']) });
+      
+    } else {
+     
+    }
   }
+   
+  
 }
