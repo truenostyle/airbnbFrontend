@@ -16,6 +16,7 @@ export interface StayItemDetailed {
   bathrooms: number;
   price: number;
   cleaningFee: number;
+  imageUrls: string[];
   rating: Rating;
   owner: UserInfo;
   places: PlaceTags[];

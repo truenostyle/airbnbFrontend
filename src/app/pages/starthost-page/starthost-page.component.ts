@@ -112,7 +112,7 @@ export class StarthostPageComponent {
       maxGuests: this.allCount,
       price: this.price,
       placeType: this.placeTypes.find(place => place.selected === true)?.type!,
-      images: this.photos,
+      images: this.photos.map(image => image.substr(image.indexOf(',') + 1)),
       places: this.mapTags(this.places),
       offers: this.mapTags(this.offers),
       amenities: this.mapTags(this.amenities),
