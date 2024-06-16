@@ -1,5 +1,5 @@
 export interface BookingRequest {
-    stayId: number;
+    stayId: string;
     checkIn: Date;
     checkOut: Date;
     guests: number;

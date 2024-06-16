@@ -2,7 +2,7 @@ import { Rating } from './rating.model';
 import { UserInfo } from './user-info.model';
 
 export interface StayItemDetailed {
-  id: number;
+  id: string;
   title: string;
   description: string;
   location: string;

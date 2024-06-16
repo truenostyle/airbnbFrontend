@@ -19,11 +19,9 @@ import { environment } from 'src/environment/environment';
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
-  providers: [NativeDateAdapter], 
- 
+  providers: [NativeDateAdapter],
 })
 export class MainPageComponent {
-  
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
@@ -34,21 +32,24 @@ export class MainPageComponent {
   loginModal: boolean = false;
   filterModal: boolean = false;
   wishlistModal: boolean = false;
-  selectedCity: string = ''; 
+  selectedCity: string = '';
 
   RoomType = RoomType;
   items?: Observable<StayItem[]>;
-  filters = new StayFilter;
+  filters = new StayFilter();
   whishlistCategories?: Observable<WhishlistCategory[]>;
   constructor(
-    private router: Router, private http: HttpClient, private staysService: StaysService, private elementRef: ElementRef, private whishlistsService: WhishlistsService
-  ){
-    this.refreshWhishlistCategories()
+    private router: Router,
+    private http: HttpClient,
+    private staysService: StaysService,
+    private whishlistsService: WhishlistsService
+  ) {
+    this.refreshWhishlistCategories();
     this.refreshStays();
   }
 
   async goRegister() {
-    await this.router.navigate(['/register'])
+    await this.router.navigate(['/register']);
   }
 
   email: string = '';
@@ -60,18 +61,18 @@ export class MainPageComponent {
 
   login(): void {
     if (this.isFormFilled()) {
-      this.http.post<AuthResponse>( environment.apiUrl + `/api/auth/login`, {
-        email: this.email,
-        password: this.password,
-      })
-        .subscribe((result) => localStorage.setItem("Authorization", result.token));
+      this.http
+        .post<AuthResponse>(environment.apiUrl + `/api/auth/login`, {
+          email: this.email,
+          password: this.password,
+        })
+        .subscribe((result) =>
+          localStorage.setItem('Authorization', result.token)
+        );
     } else {
       console.log('Пожалуйста, заполните все поля');
     }
   }
-
-
-  
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
@@ -91,13 +92,13 @@ export class MainPageComponent {
         this.dropdownOpen2 = false;
       }
     }
-    
+
     if (loginModal !== null) {
       if (!loginModal.contains(event.target as Node)) {
         this.loginModal = false;
       }
     }
-    
+
     if (filterModal !== null) {
       if (!filterModal.contains(event.target as Node)) {
         this.filterModal = false;
@@ -109,9 +110,6 @@ export class MainPageComponent {
         this.wishlistModal = false;
       }
     }
-
-   
-   
   }
 
   toggleDropdown() {
@@ -119,7 +117,7 @@ export class MainPageComponent {
       this.dropdownOpen = !this.dropdownOpen;
     }, 0);
   }
-  
+
   toggleDropdown2() {
     setTimeout(() => {
       this.dropdownOpen2 = !this.dropdownOpen2;
@@ -147,7 +145,7 @@ export class MainPageComponent {
   options = [
     { value: 1, label: 'USD' },
     { value: 2, label: 'EUR' },
-    { value: 3, label: 'UAH' }
+    { value: 3, label: 'UAH' },
   ];
 
   count: number = 0; // Начальное значение счетчика
@@ -157,7 +155,8 @@ export class MainPageComponent {
   }
 
   decrement(): void {
-    if (this.filters.minGuests > 1) { // Проверяем, что счетчик больше 1
+    if (this.filters.minGuests > 1) {
+      // Проверяем, что счетчик больше 1
       this.filters.minGuests--; // Уменьшаем счетчик на 1
     }
   }
@@ -178,7 +177,12 @@ export class MainPageComponent {
     } else if (counter === 'pets') {
       this.pets_count++;
     }
-    this.resultCount(this.adults_count, this.children_count, this.infants_count, this.pets_count )
+    this.resultCount(
+      this.adults_count,
+      this.children_count,
+      this.infants_count,
+      this.pets_count
+    );
   }
 
   // Функция для уменьшения счетчика
@@ -192,33 +196,39 @@ export class MainPageComponent {
     } else if (counter === 'pets' && this.pets_count > 0) {
       this.pets_count--;
     }
-    this.resultCount(this.adults_count, this.children_count, this.infants_count, this.pets_count )
+    this.resultCount(
+      this.adults_count,
+      this.children_count,
+      this.infants_count,
+      this.pets_count
+    );
   }
 
   resultCount(adults: number, children: number, infants: number, pets: number) {
     this.count = adults + children + infants + pets;
   }
 
-
   customOptions: any = {
     loop: true,
     margin: 5,
     nav: false,
-    navText: ["<div class='nav-button owl-prev'>‹</div>", "<div class='nav-button owl-next'>›</div>"],
+    navText: [
+      "<div class='nav-button owl-prev'>‹</div>",
+      "<div class='nav-button owl-next'>›</div>",
+    ],
     dots: false,
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       300: {
-        items: 6
+        items: 6,
       },
       1000: {
-        items: 12
-      }
-    }
+        items: 12,
+      },
+    },
   };
-
 
   setActiveButton(index: number): void {
     this.filters.roomType = index;
@@ -235,7 +245,7 @@ export class MainPageComponent {
   bathroomsSetActiveButton(index: number): void {
     this.filters.minBathrooms = index;
   }
-  
+
   clearAll() {
     this.filters.minBathrooms = 0;
     this.filters.minBeds = 0;
@@ -248,24 +258,18 @@ export class MainPageComponent {
   }
 
   refreshWhishlistCategories() {
-    this.whishlistCategories = this.whishlistsService.get()
+    this.whishlistCategories = this.whishlistsService.get();
   }
 
   addWhishlistCategory() {
-    this.whishlistsService.add("New category").subscribe(() => this.refreshWhishlistCategories());
+    this.whishlistsService
+      .add('New category')
+      .subscribe(() => this.refreshWhishlistCategories());
   }
- 
-
-  
 
   selectCity(city: string) {
     this.selectedCity = city; // Устанавливаем значение выбранного города
   }
 
-
-
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

@@ -1,5 +1,5 @@
 export interface StayItem {
-    id: number;
+    id: string;
     name: string;
     imageUrl: string;
     place: string;

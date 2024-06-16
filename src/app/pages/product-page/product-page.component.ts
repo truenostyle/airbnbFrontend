@@ -13,7 +13,7 @@ import { StaysService } from 'src/app/services/stays.service';
 })
 export class ProductPageComponent {
   stay?: StayItemDetailed;
-  id!: number;
+  id!: string;
   range: FormGroup;
   count: number = 0;
   cost: number = 0;
@@ -45,7 +45,7 @@ export class ProductPageComponent {
       this.router.navigate(['/']);
       return;
     }
-    this.id = parseInt(nullableId);
+    this.id = nullableId;
     this.staysService.getStay(this.id).subscribe({next: (stay) => this.stay = stay});
   }
 

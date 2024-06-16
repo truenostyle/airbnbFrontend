@@ -7,6 +7,7 @@ import { StayFilter } from '../models/stay-filter.model';
 import { StayItemDetailed } from '../models/stay-item-detailed.model';
 import { BaseService } from './base.service';
 import { environment } from 'src/environment/environment';
+import { NewStay } from '../models/new-stay.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,11 @@ export class StaysService extends BaseService {
     super();
   }
 
-  public getStay(id: number): Observable<StayItemDetailed> {
+  public addStay(stay: NewStay): Observable<any> {
+    return this.http.post(environment.apiUrl + '/api/stays', stay, this.getOptions());
+  }
+
+  public getStay(id: string): Observable<StayItemDetailed> {
     return this.http.get<StayItemDetailed>(environment.apiUrl + `/api/stays/${id}`);
   }
 
