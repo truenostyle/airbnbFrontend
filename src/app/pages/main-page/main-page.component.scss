@@ -865,18 +865,19 @@ cursor: pointer;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 8%;
+    margin-left: 7%;
     font-family: 'Montserrat', sans-serif; 
     @media (max-width: 766px) {
         position: absolute;
         top: 160px;
         margin-left: 0;
        }
-       @media (min-width: 766px) and (max-width: 1400px) {
+       @media (min-width: 766px) and (max-width: 1600px) {
         width: 95%;
-        margin-left: 0;
+        margin-left: 4%;
     }
     .item {
+        cursor: pointer;
         position: relative;
         width: 303px;
         height: 387px;

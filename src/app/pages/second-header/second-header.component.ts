@@ -18,6 +18,7 @@ export class SecondHeaderComponent implements OnInit {
   currentUser$: Observable<UserInfo | undefined>;
   email: string = '';
   password: string = '';
+  
   loginBoxHidden: boolean = true;
 
   constructor(
@@ -53,6 +54,7 @@ export class SecondHeaderComponent implements OnInit {
     }
   }
 
+
   isFormFilled(): boolean {
     return this.email.trim() !== '' && this.password.trim() !== '';
   }
@@ -85,7 +87,15 @@ export class SecondHeaderComponent implements OnInit {
       !targetElement.closest('.login-box') &&
       !targetElement.closest('.login')
     ) {
-      this.loginBoxHidden = true;
+      this.closeLoginBox();
+    }
+  }
+
+  closeLoginBox(): void {
+    this.loginBoxHidden = true;
+    const overlay = document.querySelector('.overlay');
+    if (overlay) {
+      overlay.classList.add('hidden');
     }
   }
 
