@@ -187,21 +187,15 @@ export class BookingComponent {
   }
 
   submitBooking() {
-
     if (this.areAllConditionsTrue()) {
       this.bookingService
       .book({
-        checkIn: this.state.dateStart,
-        checkOut: this.state.dateEnd,
+        checkIn: this.state.dateStart.toISOString(),
+        checkOut: this.state.dateEnd.toISOString(),
         guests: this.state.guests,
         stayId: this.state.stay.id,
       })
       .subscribe({ next: () => this.router.navigate(['/booking/success']) });
-      
-    } else {
-     
     }
   }
-   
-  
 }

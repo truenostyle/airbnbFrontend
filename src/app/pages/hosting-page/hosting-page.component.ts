@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BookingService } from 'src/app/services/booking.service';
 import { StaysService } from 'src/app/services/stays.service';
 interface Cell {
   image?: string;
@@ -55,62 +56,35 @@ export class HostingPageComponent {
     ],
   ];
 
-  rows2: Cell[][] = [
-    [
-      { image: '../assets/images/icons/man-user.svg', text: 'John Simons' },
-      { text: 'Aura House 2bds Eco Bamboo House' },
-      { text: 'Jul 4-5, 2024' },
-      { text: 'Jun 15, 2024' },
-      { text: '$430' },
-      {
-        status: 'Completed',
-        text: 'Completed',
-      },
-    ],
-    [
-      { image: '../assets/images/icons/man-user.svg', text: 'John Simons' },
-      { text: 'Aura House 2bds Eco Bamboo House' },
-      { text: 'Jul 4-5, 2024' },
-      { text: 'Jun 15, 2024' },
-      { text: '$430' },
-      {
-        status: 'Upcoming',
-        text: 'Upcoming',
-      },
-    ],
-    [
-      { image: '../assets/images/icons/man-user.svg', text: 'John Simons' },
-      { text: 'Aura House 2bds Eco Bamboo House' },
-      { text: 'Jul 4-5, 2024' },
-      { text: 'Jun 15, 2024' },
-      { text: '$430' },
-      {
-        status: 'Cancelled',
-        text: 'Cancelled',
-      },
-    ],
-    [
-      { image: '../assets/images/icons/man-user.svg', text: 'John Simons' },
-      { text: 'Aura House 2bds Eco Bamboo House' },
-      { text: 'Jul 4-5, 2024' },
-      { text: 'Jun 15, 2024' },
-      { text: '$430' },
-      {
-        status: 'Cancelled',
-        text: 'Cancelled',
-      },
-    ],
-  ];
+  rows2: Cell[][] = [];
+  statusLabels = ['AwaitingPayment', 'Upcoming', 'Completed', 'Cancelled'];
 
-  constructor(staysService: StaysService) {
-    staysService.getMyStays().subscribe(stays => this.rows = stays.map(stay => [
-      {
-        image: stay.imageUrl,
-        text: stay.name,
-      },
-      { text: stay.place },
-      { text: this.stayStatuses[stay.status] },
-    ]))
+  constructor(staysService: StaysService, bookingsService: BookingService) {
+    staysService.getMyStays().subscribe(
+      (stays) =>
+        (this.rows = stays.map((stay) => [
+          {
+            image: stay.imageUrl,
+            text: stay.name,
+          },
+          { text: stay.place },
+          { text: this.stayStatuses[stay.status] },
+        ]))
+    );
+
+    bookingsService.getBookingsOfMyStays().subscribe((bookings) => {
+      this.rows2 = bookings.map((booking) => [
+        { image: booking.userImageUrl, text: booking.userName },
+        { text: booking.stayName },
+        { text: this.formatDuration(booking.checkInDate, booking.checkOutDate) },
+        { text: booking.bookedDate.toLocaleString('default', { month: 'short' }) },
+        { text: `$${booking.price}` },
+        {
+          status: booking.status.toString(),
+          text: this.statusLabels[booking.status],
+        },
+      ]);
+    });
   }
 
   setState(state: string) {
@@ -120,6 +94,7 @@ export class HostingPageComponent {
   filteredRows2: Cell[][] = [];
 
   setState2(state: string) {
+    console.log(this.rows2);
     this.currentState2 = state;
     if (this.currentState2 === 'statusAll') {
       // Если выбран "All", отображаем все ряды
@@ -130,5 +105,18 @@ export class HostingPageComponent {
         return row.some((cell) => cell.status === this.currentState2);
       });
     }
+  }
+
+  private formatDuration(startDate: Date, endDate: Date): string {
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+    const startMonth = startDate.toLocaleString('default', { month: 'short' });
+    const endMonth =
+      startDate.getMonth() != endDate.getMonth()
+        ? endDate.toLocaleString('default', { month: 'short' })
+        : '';
+    const startDay = startDate.getDate();
+    const endDay = endDate.getDate();
+    return `${startMonth} ${startDay} - ${endMonth} ${endDay}`;
   }
 }
