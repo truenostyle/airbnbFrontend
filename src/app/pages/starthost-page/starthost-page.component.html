@@ -23,13 +23,14 @@
 
 <div class="located">
     <h2>Where’s your place located?</h2>
-    <div class="country">
-        <label for="countryInput">Country / region</label>
-        <input type="text" id="countryInput" placeholder=" ">
-    </div>
+
 
     <div class="container">
         <form [formGroup]="location">
+            <div class="country">
+                <label for="countryInput">Country / region</label>
+                <input type="text" id="countryInput" formControlName="country">
+            </div>
             <div class="item">
                 <label for="street">Street / adress</label>
                 <input type="text" id="street" formControlName="adress">

@@ -36,6 +36,7 @@ export class StaysService extends BaseService {
     params = params.append('MinBedrooms', filter.minBedrooms.toString());
     params = params.append('MinBeds', filter.minBeds.toString());
     params = params.append('PlaceType', filter.roomType.toString());
+    params = params.append('Count', 100);
     params = filter.minPrice ? params.append('MinPrice', filter.minPrice) : params;
     params = filter.maxPrice ? params.append('MaxPrice', filter.maxPrice) : params;
     params = filter.checkInDate ? params.append('CheckInDate', filter.checkInDate.toISOString()) : params;
