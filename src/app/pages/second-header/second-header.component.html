@@ -1,36 +1,34 @@
+<div class="overlay hidden" (click)="toggleLoginBox()"></div>
 <div class="login-box" [ngClass]="{ 'hidden': loginBoxHidden }">
-    
     <h1>Log in</h1>
     <div class="signup-label">
-      <p>Don’t have an ccount? </p>
-      <a href="register" (click)="goRegister">Sign up</a>
+        <p>Don’t have an account? </p>
+        <a href="register" (click)="goRegister()">Sign up</a>
     </div>
-    
     <asl-google-signin-button type='standard' shape="pill" size='large' text="signup_with"></asl-google-signin-button>
-  
-    <div class="or-box"><p>OR</p></div>
-    
-    <div class="log-info">
-      <div class="email">
-        <p>Your email</p>
-        <input type="text" class="styled-input" >
-      </div>
-    
-      <div class="password">
-        <p>Your password</p>
-        <a href="#"><img src="../assets/images/icons/eye-hide.svg"><p>Hide</p></a>
-        <input type="password" class="styled-input" >
-      </div>
+    <div class="or-box">
+        <p>OR</p>
     </div>
-    
+    <div class="log-info">
+        <div class="email">
+            <p>Your email</p>
+            <input type="text" class="styled-input">
+        </div>
+        <div class="password">
+            <p>Your password</p>
+            <a href="#"><img src="../assets/images/icons/eye-hide.svg"><p>Hide</p></a>
+            <input type="password" class="styled-input">
+        </div>
+    </div>
     <a class="login-btn" href="#" [ngClass]="{ 'filled': isFormFilled() }" (click)="login()">
-      <p>Log in</p>
+        <p>Log in</p>
     </a>
-  
-  </div>
+</div>
+
+
 
 <div class="header">
-    <a class="main-a" routerLink=""><img src="../assets/images/logo/logo.png"></a>
+    <a class="main-a" routerLink="/main"><img src="../assets/images/logo/logo.png"></a>
     
 
     <div class="right">

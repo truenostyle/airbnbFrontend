@@ -4,12 +4,11 @@ footer {
     display: flex;
     justify-content: center;
 
-
     .main {
         border-top: 1px solid #CDC4C4;
         padding-top: 40px;
         padding-bottom: 35px;
-        width: 1500px; /* Убедитесь, что ширина соответствует вашей */
+        width: 1500px;
         margin-top: 40px;
         font-family: "Montserrat", sans-serif;
         display: flex;
@@ -41,6 +40,48 @@ footer {
             display: flex;
             flex-direction: row;
         }
+    }
+}
+
+/* Адаптивний дизайн для планшетів і телефонів */
+@media (max-width: 1200px) {
+    footer .main {
+        width: 100%;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .main a {
+        margin-right: 0;
+        margin-bottom: 15px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    footer .main p {
+        margin-right: 0;
+        margin-bottom: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    footer .main .temp {
+        margin: 20px 0 0 0;
+        justify-content: center;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        display: none;
     }
 }
 
