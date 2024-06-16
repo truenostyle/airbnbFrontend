@@ -291,7 +291,7 @@ body {
         
         font-family: 'Montserrat', sans-serif;
         position: absolute;
-        top: 500px; /* Регулируйте положение меню здесь */
+        top: 400px; /* Регулируйте положение меню здесь */
         left: 344px;
         width: 695px;
         height: 550px;
@@ -367,7 +367,7 @@ body {
         
         font-family: 'Montserrat', sans-serif;
         position: absolute;
-        top: 500px; /* Регулируйте положение меню здесь */
+        top: 400px; /* Регулируйте положение меню здесь */
         right: 367px;
         width: 489px;
         height: 494px;
@@ -695,6 +695,7 @@ body {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    text-align: center;
 
     img {
             width: 46px;
