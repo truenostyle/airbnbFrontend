@@ -7,6 +7,7 @@ import { StayFilter } from '../models/stay-filter.model';
 import { StayItemDetailed } from '../models/stay-item-detailed.model';
 import { BaseService } from './base.service';
 import { environment } from 'src/environment/environment';
+import { NewStay } from '../models/new-stay.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,11 @@ export class StaysService extends BaseService {
     super();
   }
 
-  public getStay(id: number): Observable<StayItemDetailed> {
+  public addStay(stay: NewStay): Observable<any> {
+    return this.http.post(environment.apiUrl + '/api/stays', stay, this.getOptions());
+  }
+
+  public getStay(id: string): Observable<StayItemDetailed> {
     return this.http.get<StayItemDetailed>(environment.apiUrl + `/api/stays/${id}`);
   }
 
@@ -31,6 +36,11 @@ export class StaysService extends BaseService {
     params = params.append('MinBedrooms', filter.minBedrooms.toString());
     params = params.append('MinBeds', filter.minBeds.toString());
     params = params.append('PlaceType', filter.roomType.toString());
+    params = filter.minPrice ? params.append('MinPrice', filter.minPrice) : params;
+    params = filter.maxPrice ? params.append('MaxPrice', filter.maxPrice) : params;
+    params = filter.checkInDate ? params.append('CheckInDate', filter.checkInDate.toISOString()) : params;
+    params = filter.checkOutDate ? params.append('CheckOutDate', filter.checkOutDate.toISOString()) : params;
+    filter.places?.forEach(place => params = params.append('Places', place));
     params = filter.location !== '' ? params.append('Location', filter.location) : params;
 
     return this.http.get<StayBrief[]>(environment.apiUrl + '/api/stays', { params } ).pipe(

@@ -1,6 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Amenities } from 'src/app/consts/amenities';
+import { Offers } from 'src/app/consts/offers';
+import { Places } from 'src/app/consts/places';
+import { Safetys } from 'src/app/consts/safetys';
 import { StayItemDetailed } from 'src/app/models/stay-item-detailed.model';
 import { BookingStateService } from 'src/app/services/booking-state.service';
 import { StaysService } from 'src/app/services/stays.service';
@@ -13,12 +17,13 @@ import { StaysService } from 'src/app/services/stays.service';
 })
 export class ProductPageComponent {
   stay?: StayItemDetailed;
-  id!: number;
+  id!: string;
   range: FormGroup;
   count: number = 0;
   cost: number = 0;
   isAvailable: boolean = false;
   dropdownOpen2: boolean = false;
+  totalAmenities: any[] = [];
 
   adults_count: number = 0; // Начальное значение счетчика взрослых
   children_count: number = 0;
@@ -45,8 +50,17 @@ export class ProductPageComponent {
       this.router.navigate(['/']);
       return;
     }
-    this.id = parseInt(nullableId);
-    this.staysService.getStay(this.id).subscribe({next: (stay) => this.stay = stay});
+    this.id = nullableId;
+    this.staysService.getStay(this.id).subscribe({next: (stay) => {
+      this.stay = stay
+      this.totalAmenities = [
+        ...Amenities.filter(amenity => stay.amenities.includes(amenity.type)),
+        ...Places.filter(place => stay.places.includes(place.type)),
+        ...Offers.filter(offer => stay.offers.includes(offer.type)),
+        ...Safetys.filter(safety => stay.safetys.includes(safety.type))
+      ]
+      console.log(this.totalAmenities);
+    }});
   }
 
   checkConditions(): boolean {

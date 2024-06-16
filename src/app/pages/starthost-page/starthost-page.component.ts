@@ -1,16 +1,36 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Amenities } from 'src/app/consts/amenities';
+import { Offers } from 'src/app/consts/offers';
+import { PlaceTypes } from 'src/app/consts/place-types';
+import { Places } from 'src/app/consts/places';
+import { Safetys } from 'src/app/consts/safetys';
+import { StaysService } from 'src/app/services/stays.service';
 
 @Component({
   selector: 'app-starthost-page',
   templateUrl: './starthost-page.component.html',
-  styleUrls: ['./starthost-page.component.scss']
+  styleUrls: ['./starthost-page.component.scss'],
 })
 export class StarthostPageComponent {
-
-  constructor() {}
-
   inputValue: string = '';
+  description: string = '';
   counter: number = 0;
+  price: number = 0;
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
+  location = new FormGroup({
+    country: new FormControl<string>(''),
+    adress: new FormControl<string>(''),
+    house: new FormControl<string>(''),
+    city: new FormControl<string>(''),
+    region: new FormControl<string>(''),
+    postcode: new FormControl<string>(''),
+  });
 
   photos: string[] = [];
   bedroomsCount = 0;
@@ -18,94 +38,23 @@ export class StarthostPageComponent {
   bathroomsCount = 0;
   allCount = 0;
 
-  placeTypes = [
-    {
-      title: 'An entire place',
-      description: 'Guests have the whole place to themselves.',
-      imgUrl: '/assets/images/icons/house.svg',
-      selected: true
-    },
-    {
-      title: 'A room',
-      description: 'Guests have their own room in a home, plus access to shared spaces.',
-      imgUrl: '/assets/images/icons/house.svg',
-      selected: false
-    },
-    {
-      title: 'A shared room',
-      description: 'Guests sleep in a room or common area that may be shared with you or others.',
-      imgUrl: '/assets/images/icons/house.svg',
-      selected: false
-    }
-  ];
+  placeTypes = PlaceTypes;
+  places = Places;
+  offers = Offers;
+  amenities = Amenities;
+  safetys = Safetys;
 
-
-  places = [
-    { imgUrl: '/assets/images/icons/house.svg', name: 'House', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Apartment', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Barn', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Bed & breakfast', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Boat', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Cabin', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Camper / RV', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Casa particular', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Castle', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Dammuso', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Dome', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Earth home', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Farm', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Guesthouse', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Hotel', selected: false }
-  ];
-
-  offers = [
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Wifi', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'TV', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Kitchen', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Washer', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Free parking', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Paid parking', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Air conditioning', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Dedicated', selected: false },
-   
-  ];
-
-  amenities = [
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Poo', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Hot tube', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Patio', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'BBQ grill', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Outdoor dining', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Fire pit', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Pool table', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Indoor fireplace ', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Piano', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Ecercise equipment', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'lake access ', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Outdoor shower', selected: false },
-   
-  ];
-
-  safetys = [
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Smoke alarm', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'First aid kit', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Fire extinguisher', selected: false },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Carbon monoxide alarm', selected: false },
-
-  ];
-
+  constructor(private staysService: StaysService, private router: Router) {}
 
   selectPlace(selectedPlace: { title: string; selected: boolean }) {
-    this.placeTypes.forEach(place => {
+    this.placeTypes.forEach((place) => {
       place.selected = place === selectedPlace;
     });
   }
 
-  toggleSelection(place: { name: string, selected: boolean }) {
+  toggleSelection(place: { name: string; selected: boolean }) {
     place.selected = !place.selected;
   }
-
-  
 
   increment(type: string) {
     if (type === 'bedrooms') {
@@ -116,7 +65,7 @@ export class StarthostPageComponent {
       this.bathroomsCount++;
     } else if (type === 'all') {
       this.allCount++;
-    } 
+    }
   }
 
   decrement(type: string) {
@@ -131,25 +80,53 @@ export class StarthostPageComponent {
     }
   }
 
-
- 
-
- handleFileInput(event: any) {
-        const files: FileList = event.target.files;
-        for (let i = 0; i < files.length; i++) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                this.photos.push(reader.result as string);
-            };
-            reader.readAsDataURL(files[i]);
-        }
+  handleFileInput(event: any) {
+    const files: FileList = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.photos.push(reader.result as string);
+      };
+      reader.readAsDataURL(files[i]);
     }
+  }
 
-    deletePhoto(index: number) {
-      this.photos.splice(index, 1);
+  deletePhoto(index: number) {
+    this.photos.splice(index, 1);
   }
 
   updateCounter(event: any) {
     this.counter = event.target.value.length;
-}
+  }
+
+  submit() {
+    const newStay = {
+      title: this.inputValue,
+      description: this.description,
+      location: this.getLocation(),
+      startDate: this.range.controls.start.value!,
+      endDate: this.range.controls.end.value!,
+      bedrooms: this.bedroomsCount,
+      beds: this.bedsCount,
+      bathrooms: this.bathroomsCount,
+      maxGuests: this.allCount,
+      price: this.price,
+      placeType: this.placeTypes.find(place => place.selected === true)?.type!,
+      images: this.photos.map(image => image.substr(image.indexOf(',') + 1)),
+      places: this.mapTags(this.places),
+      offers: this.mapTags(this.offers),
+      amenities: this.mapTags(this.amenities),
+      safetys: this.mapTags(this.amenities)
+    }
+    this.staysService.addStay(newStay).subscribe(() => this.router.navigate(['/hosting']));
+  }
+
+  private mapTags(tags: {selected: boolean, type: number}[]): number[] {
+    return tags.filter(tag => tag.selected).map(tag => tag.type);
+  }
+
+  private getLocation() {
+    const controls = this.location.controls;
+    return `${controls.country.value} ${controls.region.value} ${controls.city.value} ${controls.adress.value} ${controls.house.value} ${controls.postcode.value}`
+  }
 }

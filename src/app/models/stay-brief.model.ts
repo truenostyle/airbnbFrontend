@@ -1,5 +1,5 @@
 export interface StayBrief {
-    id: number;
+    id: string;
     name: string;
     imageUrl: string;
     place: string;
@@ -7,4 +7,5 @@ export interface StayBrief {
     endDate: Date;
     rating: number;
     price: number;
+    status: number;
   }

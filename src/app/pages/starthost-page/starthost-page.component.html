@@ -29,26 +29,28 @@
     </div>
 
     <div class="container">
-        <div class="item">
-            <label for="street">Street / adress</label>
-            <input type="text" id="street" placeholder=" ">
-        </div>
-        <div class="item">
-            
-            <input type="text" id="app" placeholder="Apt, house, etc, (if application)">
-        </div>
-        <div class="item">
-            <label for="city">City / district</label>
-            <input type="text" id="city" placeholder=" ">
-        </div>
-        <div class="item">
-            <label for="province">Province / region</label>
-            <input type="text" id="province" placeholder=" ">
-        </div>
-        <div class="item">
-            <label for="postcode">Postcode</label>
-            <input type="text" id="postcode" placeholder=" ">
-        </div>
+        <form [formGroup]="location">
+            <div class="item">
+                <label for="street">Street / adress</label>
+                <input type="text" id="street" formControlName="adress">
+            </div>
+            <div class="item">
+                <input type="text" id="app" placeholder="Apt, house, etc, (if application)" formControlName="house">
+            </div>
+            <div class="item">
+                <label for="city">City / district</label>
+                <input type="text" id="city" formControlName="city">
+            </div>
+            <div class="item">
+                <label for="province">Province / region</label>
+                <input type="text" id="province" formControlName="region">
+            </div>
+            <div class="item">
+                <label for="postcode">Postcode</label>
+                <input type="text" id="postcode" formControlName="postcode">
+            </div>
+        </form>
+        
     </div>
     
 </div>
@@ -141,19 +143,48 @@
 </div>
 
 <div class="title">
+    <h2>Set your price </h2>
+    <div class="container">
+        <input type="number" [(ngModel)]="price">
+    </div>
+</div>
+
+<div class="title">
+    <h2>Descripe your place </h2>
+    <div class="container">
+        <input type="text" [(ngModel)]="description">
+    </div>
+</div>
+
+<div class="title">
+    <h2>Select date </h2>
+    <mat-form-field class="calendar-box">
+        <mat-label class="ligth">Check in - Check out</mat-label>
+        <mat-date-range-input class="calendar-box" [formGroup]="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+      
+        <mat-datepicker-toggle class="calendar-box" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker class="calendar-box" #picker></mat-date-range-picker>
+      
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+</div>
+
+<div class="title">
     <h2>Now, let’s give your earth home a title </h2>
     <div class="container">
         <input type="text" maxlength="32" [(ngModel)]="inputValue" (input)="updateCounter($event)">
         <div>{{ counter }} / 32</div>
     </div>
-    
-
 </div>
 
 <div class="finish">
     <hr>
     <div class="row">
         <a class="back"  routerLink="/hosting">Back</a>
-        <a class="end">Finish</a>
+        <a class="end" (click)="submit()">Finish</a>
     </div>
 </div>

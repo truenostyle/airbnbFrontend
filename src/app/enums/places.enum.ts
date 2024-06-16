@@ -1,0 +1,17 @@
+export enum PlaceTags {
+    House,
+    Apartment,
+    Barn,
+    BedAndBreakFast,
+    Boat,
+    Cabin,
+    CamperOrRV,
+    CasaParticular,
+    Castle,
+    Dammuso,
+    Dome,
+    EarthHome,
+    Farm,
+    GuestHouse,
+    Hotel,
+}

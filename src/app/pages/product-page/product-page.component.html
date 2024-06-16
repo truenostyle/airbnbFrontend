@@ -9,17 +9,11 @@
     </div>
 
     <div class="parent">
-        <div class="div1 main-image"><img
-                src="https://t4.ftcdn.net/jpg/00/09/21/15/360_F_9211505_d4hxfNtPeTfgt7AeGmoO7u79P2hwxkoQ.jpg"> </div>
-        <div class="div2"><img
-                src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
-        <div class="div3"><img
-                src="https://thumbs.dreamstime.com/b/%D0%B3%D0%BE%D1%81%D1%82%D0%B8%D0%BD%D0%B8%D1%87%D0%BD%D1%8B%D0%B5-%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%B0-8146308.jpg">
-        </div>
-        <div class="div4"> <img
-                src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
-        <div class="div5"> <img
-                src="https://t4.ftcdn.net/jpg/00/48/05/67/360_F_48056772_4xzGQerR7lW82z7MPTN8AulMraNIOZEJ.jpg"></div>
+        <div class="div1 main-image"><img [src]="stay.imageUrls[0] || '../assets/images/placeholder.webp'"></div>
+        <div class="div2"><img [src]="stay.imageUrls[1] || '../assets/images/placeholder.webp'"></div>
+        <div class="div3"><img [src]="stay.imageUrls[2] || '../assets/images/placeholder.webp'"></div>
+        <div class="div4"><img [src]="stay.imageUrls[3] || '../assets/images/placeholder.webp'"></div>
+        <div class="div5"><img [src]="stay.imageUrls[4] || '../assets/images/placeholder.webp'"></div>
     </div>
 
     <div class="main">
@@ -179,49 +173,15 @@
                 <h2>Where you'll sleep</h2>
                 <div class="row">
                     <div class="column">
-                        <div class="item">
-                            <img src="../assets/images/amenities/gym.svg">
-                            <p>Gym</p>
+                        <div class="item" *ngFor="let amenity of totalAmenities">
+                            <img [src]="amenity.imgUrl">
+                            <p>{{ amenity.name }}</p>
                         </div>
-
-                        <div class="item">
-                            <img src="../assets/images/amenities/kitchen.svg">
-                            <p>Oven</p>
-                        </div>
-
-                        <div class="item">
-                            <img src="../assets/images/amenities/pool.svg">
-                            <p>Swimming pool</p>
-                        </div>
-
-                        <div class="item">
-                            <img src="../assets/images/amenities/TV.svg">
-                            <p>HDTV with standard cable, premium cable</p>
-                        </div>
-
-                        <div class="item">
-                            <img src="../assets/images/amenities/wifi.svg">
-                            <p>Wifi</p>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="item">
-                            <img src="../assets/images/amenities/workspace.svg">
-                            <p>Dedicated workspace</p>
-                        </div>
-
-                        <div class="item">
-                            <img src="../assets/images/amenities/shower.svg">
-                            <p>Shower</p>
-                        </div>
-
-                       
                     </div>
                 </div>
 
                 <div class="show">
-                    <p>Show all 59 amenities</p>
+                    <p>Show all {{ totalAmenities.length }} amenities</p>
                 </div>
             </div>
 
