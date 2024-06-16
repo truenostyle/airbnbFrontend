@@ -1,3 +1,7 @@
+import { AmenityTags } from '../enums/amentities.enum';
+import { OfferTags } from '../enums/offers.enum';
+import { PlaceTags } from '../enums/places.enum';
+import { SafetyTags } from '../enums/safetys.enum';
 import { Rating } from './rating.model';
 import { UserInfo } from './user-info.model';
 
@@ -14,4 +18,8 @@ export interface StayItemDetailed {
   cleaningFee: number;
   rating: Rating;
   owner: UserInfo;
+  places: PlaceTags[];
+  offers: OfferTags[];
+  amenities: AmenityTags[];
+  safetys: SafetyTags[];
 }

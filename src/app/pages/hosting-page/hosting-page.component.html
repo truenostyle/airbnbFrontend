@@ -20,9 +20,7 @@
       </div>
       <div class="row" *ngFor="let row of rows">
         <div class="cell" *ngFor="let cell of row; let first = first" [class.bold]="first">
-          <ng-container *ngIf="cell.image">
-            <img [src]="cell.image" alt="Image" class="cell-image">
-          </ng-container>
+          <img *ngIf="cell.image" [src]="cell.image" alt="Image" class="cell-image">
           {{ cell.text }}
         </div>
       </div>

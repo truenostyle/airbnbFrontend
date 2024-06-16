@@ -8,10 +8,10 @@ export const Amenities = [
     { imgUrl: '/assets/images/icons/house.svg', name: 'Outdoor dining', selected: false, type: AmenityTags.OutdoorDining },
     { imgUrl: '/assets/images/icons/house.svg', name: 'Fire pit', selected: false, type: AmenityTags.FirePit },
     { imgUrl: '/assets/images/icons/house.svg', name: 'Pool table', selected: false, type: AmenityTags.PoolTable },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Indoor fireplace ', selected: false, type: AmenityTags.IndoorFireplace },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Piano', selected: false, type: AmenityTags.Piano },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Ecercise equipment', selected: false, type: AmenityTags.ExerciseEquipment },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'lake access ', selected: false, type: AmenityTags.LakeAccess },
-    { imgUrl: '/assets/images/icons/house.svg', name: 'Outdoor shower', selected: false, type: AmenityTags.OutdoorShower },
+    { imgUrl: '/assets/images/filter-icons/fireplace.svg', name: 'Indoor fireplace ', selected: false, type: AmenityTags.IndoorFireplace },
+    { imgUrl: '/assets/images/filter-icons/piano.svg', name: 'Piano', selected: false, type: AmenityTags.Piano },
+    { imgUrl: '/assets/images/amenities/gym.svg', name: 'Exercise equipment', selected: false, type: AmenityTags.ExerciseEquipment },
+    { imgUrl: '/assets/images/filter-icons/lake.svg', name: 'lake access ', selected: false, type: AmenityTags.LakeAccess },
+    { imgUrl: '/assets/images/amenities/shower.svg', name: 'Outdoor shower', selected: false, type: AmenityTags.OutdoorShower },
    
   ];

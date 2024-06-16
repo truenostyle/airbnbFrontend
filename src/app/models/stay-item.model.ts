@@ -6,4 +6,5 @@ export interface StayItem {
     duration: string;
     rating: number;
     price: number;
+    status: number;
   }

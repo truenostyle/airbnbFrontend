@@ -7,4 +7,5 @@ export interface StayBrief {
     endDate: Date;
     rating: number;
     price: number;
+    status: number;
   }
