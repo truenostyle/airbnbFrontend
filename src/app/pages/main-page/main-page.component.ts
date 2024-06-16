@@ -1,18 +1,16 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthResponse } from 'src/app/models/auth-response.model';
 import { HttpClient } from '@angular/common/http';
 import { StaysService } from 'src/app/services/stays.service';
 import { StayItem } from 'src/app/models/stay-item.model';
 import { Observable } from 'rxjs';
 import { NativeDateAdapter } from '@angular/material/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { StayFilter } from 'src/app/models/stay-filter.model';
 import { RoomType } from 'src/app/enums/room-type.enum';
 import { WhishlistsService } from 'src/app/services/whishlists.service';
 import { WhishlistCategory } from 'src/app/models/whistlist-category.model';
-import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { environment } from 'src/environment/environment';
+import {FormGroup, FormControl } from '@angular/forms';
+import { Places } from 'src/app/consts/places';
 
 
 @Component({
@@ -33,6 +31,7 @@ export class MainPageComponent {
   filterModal: boolean = false;
   wishlistModal: boolean = false;
   selectedCity: string = '';
+  placeFilters = Places;
 
   RoomType = RoomType;
   items?: Observable<StayItem[]>;
@@ -59,19 +58,8 @@ export class MainPageComponent {
     return this.email.trim() !== '' && this.password.trim() !== '';
   }
 
-  login(): void {
-    if (this.isFormFilled()) {
-      this.http
-        .post<AuthResponse>(environment.apiUrl + `/api/auth/login`, {
-          email: this.email,
-          password: this.password,
-        })
-        .subscribe((result) =>
-          localStorage.setItem('Authorization', result.token)
-        );
-    } else {
-      console.log('Пожалуйста, заполните все поля');
-    }
+  toggleFilterSelection(filter: { selected: boolean }) {
+    filter.selected = !filter.selected;
   }
 
   @HostListener('document:click', ['$event'])
@@ -124,11 +112,6 @@ export class MainPageComponent {
     }, 0);
   }
 
-  toggleLoginBox(): void {
-    setTimeout(() => {
-      this.loginModal = !this.loginModal;
-    }, 0);
-  }
 
   toggleFilterBox(): void {
     setTimeout(() => {
@@ -254,6 +237,12 @@ export class MainPageComponent {
   }
 
   refreshStays() {
+    this.filters.checkInDate = this.range.controls.start.value!;
+    this.filters.checkOutDate = this.range.controls.end.value!;
+    this.filters.places = this.placeFilters.filter(filter => filter.selected).map(filter => filter.type)
+    if( this.filters.places.length == 0) {
+      this.filters.places = undefined;
+    }
     this.items = this.staysService.getStays(this.filters);
   }
 

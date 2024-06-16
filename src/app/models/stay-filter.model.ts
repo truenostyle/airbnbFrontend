@@ -7,4 +7,9 @@ export class StayFilter {
     minBedrooms: number = 0;
     minBeds: number = 0;
     minBathrooms: number = 0;
+    minPrice = 0;
+    maxPrice?: number;
+    checkInDate?: Date;
+    checkOutDate?: Date;
+    places?: number[];
 }
