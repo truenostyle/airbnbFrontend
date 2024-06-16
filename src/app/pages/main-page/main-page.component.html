@@ -244,7 +244,7 @@
   <ng-container *ngFor="let item of items | async">
     <a class="item" >
       <img class="main-img" [src]="item.imageUrl || '../assets/images/placeholder.webp'" [routerLink]="['/product', item.id]">
-      <a class="add-to-wishlist" (click)="toggleWishlistBox()"><img src="/assets/images/icons/heart.svg"></a>
+      
       <div class="row">
         <p class="name">{{ item.name }}</p>
         <img class="star-img" src="/assets/images/icons/star.svg">
