@@ -196,7 +196,7 @@ export class BookingComponent {
         guests: this.state.guests,
         stayId: this.state.stay.id,
       })
-      .subscribe({ next: () => this.router.navigate(['/booking/success']) });
+      
       
     } else {
      
