@@ -57,10 +57,10 @@ export class StaysService extends BaseService {
   private formatDuration(startDate: Date, endDate: Date): string {
     startDate = new Date(startDate);
     endDate = new Date(endDate);
-    const startMonth = startDate.toLocaleString('default', { month: 'short' });
+    const startMonth = startDate.toLocaleString('en-US', { month: 'short' });
     const endMonth =
       startDate.getMonth() != endDate.getMonth()
-        ? endDate.toLocaleString('default', { month: 'short' })
+        ? endDate.toLocaleString('en-US', { month: 'short' })
         : '';
     const startDay = startDate.getDate();
     const endDay = endDate.getDate();
