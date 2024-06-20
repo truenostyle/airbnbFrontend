@@ -23,4 +23,9 @@ export class UserService extends BaseService {
     return this.http
     .post(environment.apiUrl + '/api/user/me', userInfo, this.getOptions());
   }
+
+  isLoggedIn(): boolean {
+    return !!this.#currentUser$.value; // Возвращает true, если currentUser$ имеет значение
+  }
 }
+

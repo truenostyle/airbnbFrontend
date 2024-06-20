@@ -110,7 +110,7 @@
   <div class="filters-carousel">
     <owl-carousel-o [options]="customOptions">
       <ng-template *ngFor="let filter of placeFilters" carouselSlide >
-        <div class="item" style="padding-top: 8px; border-radius: 16px;" [class.selected-filter]="filter.selected" (click)="toggleFilterSelection(filter)">
+        <div class="item" style="padding-top: 8px; " [class.selected-filter]="filter.selected" (click)="toggleFilterSelection(filter)">
           <img [src]="filter.imgUrl">
           <p>{{ filter.name }}</p>
         </div>
@@ -259,8 +259,8 @@
     No results.
   </h1>
 </div>
-<div class="background-filters" *ngIf="filterModal">
-  <div class="filters-btn" >
+<div class="background-filters" *ngIf="filterModal" (click)="toggleFilterBox()">
+  <div class="filters-btn" (click)="$event.stopPropagation()">
     <div class="filter-header">
       <a class="close-btn" (click)="toggleFilterBox()"><img src="/assets/images/icons/close.svg"></a>
       <h3>Filters</h3>
@@ -365,31 +365,10 @@
         </div>
       </div>
   
-      <hr>
+     
     </div>
   
-    <div class="language">
-      <h2>Host language</h2>
-      <div class="checkbox-container">
-        <div class="row">
-          <label>
-            <input type="checkbox" name="option1"> English
-          </label>
-          <label>
-            <input type="checkbox" name="option2"> French
-          </label>
-        </div>
-        <div class="row">
-          <label>
-            <input type="checkbox" name="option3"> German
-          </label>
-          <label>
-            <input type="checkbox" name="option4"> Japanese
-          </label>
-        </div>
-      </div>
   
-    </div>
   
     <div class="filter-footer">
       <a class="clear" (click)="clearAll()"> Clear all</a>
@@ -401,17 +380,4 @@
 </div>
 
 
-<div class="footer">
-  <div class="explore">
-    <img src="assets/images/icons/search.svg">
-    <p>Explore</p>
-  </div>
-  <div class="wishlists">
-    <img src="assets/images/icons/heart2.svg">
-    <p>Wishlists</p>
-  </div>
-  <div class="login">
-    <img src="assets/images/icons/user2.svg">
-    <p>Log in</p>
-  </div>
-</div>
+
