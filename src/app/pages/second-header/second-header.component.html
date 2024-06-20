@@ -1,4 +1,4 @@
-<div class="overlay hidden" (click)="toggleLoginBox()"></div>
+<div class="overlay hidden" (click)="closeLoginBox()"></div>
 <div class="login-box" [ngClass]="{ 'hidden': loginBoxHidden }">
     <h1>Log in</h1>
     <div class="signup-label">
@@ -33,7 +33,7 @@
 
     <div class="right">
        
-        <div *ngIf="currentUser$ | async as user"  class="profile" (click)="dropdownOpen = !dropdownOpen">
+        <div *ngIf="currentUser$ | async as user"  class="profile" (click)="toggleDropdown()">
           <img class="settings dropdown-arrow" src="../assets/images/icons/more-btn.svg">
           <img class="avatar" [src]="user?.imageUrl ? user.imageUrl : '../assets/images/icons/man-user.svg'">
       </div>
@@ -43,9 +43,10 @@
 </div>
 
 <!-- Меню профиля -->
-<div class="dropdown-menu" *ngIf="dropdownOpen">
+<div class="dropdown-menu" *ngIf="dropdownOpen" (click)="toggleDropdown()">
     <ul>
-        <li><a>Messages</a></li>
+        <li class="first"><p>{{ truncateEmail(getEmail(), 15) }}</p></li>
+        <hr>
         <li><a>Trips</a></li>
         <li><a [routerLink]="'/hosting'">Hosting</a></li>
         <li><a [routerLink]="'/account-settings'">Account</a></li>
@@ -54,3 +55,22 @@
         <li (click)="logOut()"><a>Log out</a></li>
     </ul>
 </div>
+
+<div class="footer">
+    <div class="explore">
+      <img src="assets/images/icons/search.svg">
+      <p>Explore</p>
+    </div>
+    <div class="wishlists">
+      <img src="assets/images/icons/heart2.svg">
+      <p>Wishlists</p>
+    </div>
+    <div *ngIf="currentUser$ | async as user" class="profile" (click)="dropdownOpen = !dropdownOpen">
+        <img class="avatar" [src]="user?.imageUrl ? user.imageUrl : '../assets/images/icons/man-user.svg'">
+        <p>{{ truncateEmail(user?.email, 6) }}</p>
+      </div>
+    <div *ngIf="!(currentUser$ | async)" class="login" (click)="toggleLoginBox()">
+      <img src="assets/images/icons/user2.svg">
+      <p>Log in</p>
+    </div>
+  </div>

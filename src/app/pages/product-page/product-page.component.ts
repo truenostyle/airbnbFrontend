@@ -169,6 +169,14 @@ export class ProductPageComponent {
     this.dropdownOpen2 = false;
   }
 
+  get amenitiesLeft(): any[] {
+    return this.totalAmenities.slice(0, Math.ceil(this.totalAmenities.length / 2));
+}
+
+get amenitiesRight(): any[] {
+    return this.totalAmenities.slice(Math.ceil(this.totalAmenities.length / 2));
+}
+
   ngOnInit(): void {
     
   }

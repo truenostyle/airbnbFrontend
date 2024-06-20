@@ -27,6 +27,7 @@ import { BookingSuccessPageComponent } from './pages/booking-success-page/bookin
 import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
 import { HostingPageComponent } from './pages/hosting-page/hosting-page.component';
 import { StarthostPageComponent } from './pages/starthost-page/starthost-page.component';
+import { AuthErrorComponent } from './pages/auth-error/auth-error.component';
 
 
 
@@ -46,6 +47,7 @@ import { StarthostPageComponent } from './pages/starthost-page/starthost-page.co
     PersonalSettingsComponent,
     HostingPageComponent,
     StarthostPageComponent,
+    AuthErrorComponent,
   ],
   imports: [
     BrowserModule,

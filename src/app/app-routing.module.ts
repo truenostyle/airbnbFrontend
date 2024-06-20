@@ -12,6 +12,8 @@ import { BookingSuccessPageComponent } from './pages/booking-success-page/bookin
 import { PersonalSettingsComponent } from './pages/personal-settings/personal-settings.component';
 import { HostingPageComponent } from './pages/hosting-page/hosting-page.component';
 import { StarthostPageComponent } from './pages/starthost-page/starthost-page.component';
+import { AuthGuard } from './services/auth.guard';
+import { AuthErrorComponent } from './pages/auth-error/auth-error.component';
 
 
 
@@ -24,12 +26,13 @@ const routes: Routes = [
   {path: 'helpcenter', component: HelpcenterComponent},
   {path: 'forguests', component: ForguestsComponent},
   {path: 'wishlists', component: WishlistsComponent},
-  {path: 'account-settings', component: AccountSettingsComponent},
+  {path: 'account-settings', canActivate: [AuthGuard], component: AccountSettingsComponent},
   {path: 'booking', component: BookingComponent},
-  {path: 'booking/success', component: BookingSuccessPageComponent},
-  {path: 'personal-settings', component: PersonalSettingsComponent},
-  {path: 'hosting', component: HostingPageComponent},
-  {path: 'start-host', component: StarthostPageComponent}
+  {path: 'booking/success', canActivate: [AuthGuard], component: BookingSuccessPageComponent},
+  {path: 'personal-settings', canActivate: [AuthGuard], component: PersonalSettingsComponent},
+  { path: 'hosting', canActivate: [AuthGuard], component: HostingPageComponent},
+  {path: 'start-host', canActivate: [AuthGuard], component: StarthostPageComponent},
+  { path: 'auth-error', component: AuthErrorComponent}
 ];
 
 @NgModule({

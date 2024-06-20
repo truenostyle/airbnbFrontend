@@ -2,60 +2,19 @@ ng-container{
     width: 100%;
 }
 
-.overview {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    font-size: 38px;
-    line-height: 83px;
 
-    display: flex;
-    flex-direction: row;
-    margin-left: 149px;
-    margin-top: 100px;
-    margin-right: 156px;
-    align-items: flex-end;
-    @media (max-width: 766px) {
-        display: none;
-    }
-    a {
-        color: black;
-        margin-left: 24px;
-    }
-    h1 {
-        margin: 0;
-    }
-    .links {
-   
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 30px;
-        margin-left: auto;
-        @media (min-width: 766px) and (max-width: 1400px) {
-            font-size: 18px;
-           
-           
-        }
-        
-
-        img {
-            width: 28px;
-            height: 28px;
-            margin-top: 0;
-            position: relative;
-            top: 5px;
-        }
-    }
-}
 
 .parent {
     margin-left: 8%;
     margin-top: 30px;
-    width: 85%;
+    width: 82%;
     height: auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 0.5%; /* Відступ між елементами */
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;  
+
 
     @media (max-width: 766px) {
         display: flex;
@@ -79,25 +38,11 @@ ng-container{
         }
     }
 
-    .div1 {
-        grid-area: 1 / 1 / 3 / 3;
-    }
-
-    .div2 {
-        grid-area: 1 / 3 / 2 / 4;
-    }
-
-    .div3 {
-        grid-area: 1 / 4 / 2 / 5;
-    }
-
-    .div4 {
-        grid-area: 2 / 3 / 3 / 4;
-    }
-
-    .div5 {
-        grid-area: 2 / 4 / 3 / 5;
-    }
+    .div1 { grid-area: 1 / 1 / 3 / 3; }
+    .div2 { grid-area: 1 / 3 / 2 / 4; }
+    .div3 { grid-area: 1 / 4 / 2 / 5; }
+    .div4 { grid-area: 2 / 3 / 3 / 4; }
+    .div5 { grid-area: 2 / 4 / 3 / 5; }
 
     .main-image {
         @media (max-width: 766px) {

@@ -20,7 +20,8 @@ export class SecondHeaderComponent implements OnInit {
   password: string = '';
   
   loginBoxHidden: boolean = true;
-
+  currentEmail: string = '';
+  
   constructor(
     private elementRef: ElementRef,
     usersService: UserService,  
@@ -42,17 +43,25 @@ export class SecondHeaderComponent implements OnInit {
           window.location.reload();
         });
     });
+
+    this.currentUser$.subscribe(user => {
+      if (user) {
+        this.email = user.email; // Установка email после получения пользователя
+      }
+    });
   }
 
-  toggleLoginBox(): void {
-    this.loginBoxHidden = !this.loginBoxHidden;
-    const overlay = document.querySelector('.overlay');
-    if (overlay) {
-      this.loginBoxHidden
-        ? overlay.classList.add('hidden')
-        : overlay.classList.remove('hidden');
-    }
+  getEmail(): string {
+    return this.email || ''; // Возвращает email или пустую строку, если email не определен
   }
+
+  truncateEmail(email: string | undefined, digit: number): string {
+    if (!email) return ''; // обработка случая, когда email не определен
+    return email.length > digit ? email.substring(0, digit) + '...' : email;
+  }
+
+
+ 
 
 
   isFormFilled(): boolean {
@@ -80,18 +89,47 @@ export class SecondHeaderComponent implements OnInit {
   }
 
   @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    // Проверяем, был ли клик вне модального окна
-    const targetElement = event.target as HTMLElement;
-    if (
-      !targetElement.closest('.login-box') &&
-      !targetElement.closest('.login')
-    ) {
-      this.closeLoginBox();
-    }
+onDocumentClick(event: MouseEvent) {
+  const targetElement = event.target as HTMLElement;
+
+  // Проверяем, был ли клик внутри dropdown-menu
+  if (targetElement.closest('.dropdown-menu')) {
+    return;
+  }
+
+  // Проверяем, был ли клик внутри login-box или login
+  if (targetElement.closest('.login-box') || targetElement.closest('.login')) {
+    return;
+  }
+
+  // Если клик был вне всех указанных областей, закрываем все модальные окна
+  this.closeDropdown();
+  this.closeLoginBox();
+}
+
+
+  toggleLoginBox(): void {
+    setTimeout(() => {
+      this.loginBoxHidden = false;
+      console.log ("open");
+      const overlay = document.querySelector('.overlay');
+      if (overlay) {
+        this.loginBoxHidden
+          ? overlay.classList.add('hidden')
+          : overlay.classList.remove('hidden');
+      }
+    }, 0);
+    
+  }
+
+  toggleDropdown(): void {
+    setTimeout(() => {
+      this.dropdownOpen = !this.dropdownOpen;
+    }, 0);
   }
 
   closeLoginBox(): void {
+  
     this.loginBoxHidden = true;
     const overlay = document.querySelector('.overlay');
     if (overlay) {
@@ -100,7 +138,8 @@ export class SecondHeaderComponent implements OnInit {
   }
 
   closeDropdown() {
-    this.dropdownOpen = false;
+    console.log("close");
+      this.dropdownOpen = false;
   }
 
   logOut() {

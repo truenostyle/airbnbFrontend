@@ -1,13 +1,6 @@
 
 <ng-container *ngIf="!!stay">
-    <div class="overview">
-      
-        <div class="links">
-            <a href="#" class="share"><img src="../assets/images/icons/share.svg">Share </a>
-            <a href="#" class="save"><img src="../assets/images/icons/heart.svg"> Save</a>
-        </div>
-    </div>
-
+    
     <div class="parent">
         <div class="div1 main-image"><img [src]="stay.imageUrls[0] || '../assets/images/placeholder.webp'"></div>
         <div class="div2"><img [src]="stay.imageUrls[1] || '../assets/images/placeholder.webp'"></div>
@@ -34,33 +27,9 @@
 
         </div>
         <hr>
-        <div class="activity">
-            <div class="item">
-                <img src="../assets/images/icons/activity.svg">
-                <div class="column">
-                    <h3>Play pool with your friends</h3>
-                    <p>You can play pool</p>
-                </div>
-            </div>
+      
 
-            <div class="item">
-                <img src="../assets/images/icons/activity.svg">
-                <div class="column">
-                    <h3>Play pool with your friends</h3>
-                    <p>You can play pool</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <img src="../assets/images/icons/activity.svg">
-                <div class="column">
-                    <h3>Play pool with your friends</h3>
-                    <p>You can play pool</p>
-                </div>
-            </div>
-        </div>
-
-        <hr class="hr-3">
+      
         <div class="description">
             <p>
                 {{ stay.description }}
@@ -170,20 +139,23 @@
 
 
             <div class="amenities">
-                <h2>Where you'll sleep</h2>
+                <h2>Amenities</h2>
                 <div class="row">
                     <div class="column">
-                        <div class="item" *ngFor="let amenity of totalAmenities">
+                        <div class="item" *ngFor="let amenity of amenitiesLeft">
+                            <img [src]="amenity.imgUrl">
+                            <p>{{ amenity.name }}</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="item" *ngFor="let amenity of amenitiesRight">
                             <img [src]="amenity.imgUrl">
                             <p>{{ amenity.name }}</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="show">
-                    <p>Show all {{ totalAmenities.length }} amenities</p>
-                </div>
             </div>
+            
 
             <hr class="hr-6">
 
@@ -479,20 +451,7 @@
         
         <a class="reserve-btn">Reserve</a> 
     </div>
-    <div class="footer">
-        <div class="explore">
-          <img src="assets/images/icons/search.svg">
-          <p>Explore</p>
-        </div>
-        <div class="wishlists">
-          <img src="assets/images/icons/heart2.svg">
-          <p>Wishlists</p>
-        </div>
-        <div class="login">
-          <img src="assets/images/icons/user2.svg">
-          <p>Log in</p>
-        </div>
-      </div>
+
      
 </ng-container>
 
