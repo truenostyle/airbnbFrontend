@@ -564,18 +564,26 @@
                         }
                     }
                     h2 {
-                        position: absolute;
-                        top: 230px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        margin: 0; /* Уберите стандартные отступы */
-
+                        margin-top: 28px;
                         font-size: 20px;
                         font-weight: 600;
-                       
-                        @media (max-width: 766px) {
-                            margin-left: 10px;
+                        
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    
+                    @media (max-width: 768px) {
+                        h2 {
+                            margin-left: 0;
                             font-size: 18px;
+                        }
+                        a {
+                            margin-top: 20px;
+                            img {
+                                width: 14px;
+                                height: 14px;
+                            }
                         }
                     }
                 }
@@ -719,7 +727,7 @@
                         margin-top: 28px;
                         font-size: 20px;
                         font-weight: 600;
-                        margin-left: 220px;
+                        
                         position: absolute;
                         left: 50%;
                         transform: translateX(-50%);
