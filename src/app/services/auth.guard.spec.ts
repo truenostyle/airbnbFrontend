@@ -1,17 +1,29 @@
-import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { UserService } from './user.service';
 
-import { authGuard } from './auth.guard';
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-describe('authGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => authGuard(...guardParameters));
+  constructor(private userService: UserService, private router: Router) {}
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-  });
-
-  it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
-  });
-});
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> {
+    return this.userService.isLoggedIn().pipe(
+      take(1),
+      map(isLoggedIn => {
+        if (isLoggedIn) {
+          return true;
+        } else {
+          this.router.navigate(['/auth-error']);
+          return false;
+        }
+      })
+    );
+  }
+}

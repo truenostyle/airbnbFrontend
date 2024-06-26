@@ -28,10 +28,10 @@ const routes: Routes = [
   {path: 'wishlists', component: WishlistsComponent},
   {path: 'account-settings',component: AccountSettingsComponent},
   {path: 'booking', component: BookingComponent},
-  {path: 'booking/success', canActivate: [AuthGuard], component: BookingSuccessPageComponent},
+  {path: 'booking/success', component: BookingSuccessPageComponent},
   {path: 'personal-settings', component: PersonalSettingsComponent},
-  { path: 'hosting', canActivate: [AuthGuard], component: HostingPageComponent},
-  {path: 'start-host', canActivate: [AuthGuard], component: StarthostPageComponent},
+  { path: 'hosting', component: HostingPageComponent},
+  {path: 'start-host', component: StarthostPageComponent},
   { path: 'auth-error', component: AuthErrorComponent}
 ];
 
