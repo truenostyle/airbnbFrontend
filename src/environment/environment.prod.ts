@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: 'http://flowrent.sytes.net'
+    apiUrl: 'https://84.235.174.123'
 }
