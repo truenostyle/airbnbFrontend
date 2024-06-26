@@ -1,60 +1,60 @@
 <div class="main">
-    <h1>Confirm and pay</h1>
-    <h2>Your trip</h2>
-    <div class="dates">
-      <h3>Dates</h3>
-      <p>{{ state.dateStart | date: 'MMM d' }} - {{ state.dateEnd | date: 'MMM d' }}</p>
-    </div>
-    <div class="guests">
-      <h3>Guests</h3>
-      <p>{{ state.guests }} guest{{ state.guests > 1 ? 's' : '' }}</p>
-    </div>
+  <h1>Confirm and pay</h1>
+  <h2>Your trip</h2>
+  <div class="dates">
+    <h3>Dates</h3>
+    <p>{{ state.dateStart | date: 'MMM d' }} - {{ state.dateEnd | date: 'MMM d' }}</p>
   </div>
+  <div class="guests">
+    <h3>Guests</h3>
+    <p>{{ state.guests }} guest{{ state.guests > 1 ? 's' : '' }}</p>
+  </div>
+</div>
 
 <div class="info-block">
-    <div class="head">
-        <img [src]="state.stay.imageUrls[0] || '../assets/images/icons/man-user.svg'">
-        <div class="info">
-            <h2>{{ state.stay.title }}</h2>
-            <p class="location">{{ state.stay.location }}</p>
-            <div class="reviews">
-                <img src="../assets/images/icons/star-fill.svg">
-                <h2>{{ state.stay.rating.overall }} · 223 reviews</h2>
-            </div>
-        </div>
-    </div>
-    <div class="price">
-        <div class="sum">
-            <p class="nights">${{ state.stay.price }} per night</p>
-            <p class="res">${{ state.cost }}</p>
-        </div>
-        <div class="services">
-            <p class="fee">Cleaning and service fee</p>
-            <p class="included">Included</p>
-        </div>
-        <div class="taxes">
-            <p class="name">Taxes</p>
-            <p class="included">Included</p>
-        </div>
-        <hr>
-        <div class="result">
-            <p class="total">Total nights stay</p>
-            <p class="itog">${{ state.cost }}</p>
-        </div>
-        <a
-  class="order"
-  [class.disabled]="!areAllConditionsTrue()"
-  [class.inactive]="!areAllConditionsTrue()"
-  (click)="submitBooking()"
-  (click)="openModal(0)"
-  [class.clickable]="areAllConditionsTrue()"
->
-  Order
-</a>
-<p *ngIf="!areAllConditionsTrue()">for order you need to fill in all the required data</p>
-        
-    </div>
+  <div class="head">
+      <img [src]="state.stay.imageUrls[0] || '../assets/images/icons/man-user.svg'">
+      <div class="info">
+          <h2>{{ state.stay.title }}</h2>
+          <p class="location">{{ state.stay.location }}</p>
+          <div class="reviews">
+              <img src="../assets/images/icons/star-fill.svg">
+              <h2>{{ state.stay.rating.overall }} · 223 reviews</h2>
+          </div>
+      </div>
+  </div>
+  <div class="price">
+      <div class="sum">
+          <p class="nights">${{ state.stay.price }} per night</p>
+          <p class="res">${{ state.cost }}</p>
+      </div>
+      <div class="services">
+          <p class="fee">Cleaning and service fee</p>
+          <p class="included">Included</p>
+      </div>
+      <div class="taxes">
+          <p class="name">Taxes</p>
+          <p class="included">Included</p>
+      </div>
+      <hr>
+      <div class="result">
+          <p class="total">Total nights stay</p>
+          <p class="itog">${{ state.cost }}</p>
+      </div>
+      <a
+        class="order"
+        [class.disabled]="!areAllConditionsTrue()"
+        [class.inactive]="!areAllConditionsTrue()"
+        (click)="submitBooking()"
+        (click)="openModal(0)"
+        [class.clickable]="areAllConditionsTrue()"
+      >
+        Order
+      </a>
+      <p *ngIf="!areAllConditionsTrue()">for order you need to fill in all the required data</p>
+  </div>
 </div>
+
 
 <div class="modal-overlay" *ngIf="orderModalOpen">
     <div class="order-modal">
@@ -65,24 +65,24 @@
 </div>
 
 <div class="payment">
-    <hr>
-    <h3>Pay with</h3>
+  <hr>
+  <h3>Pay with</h3>
 
-    <div class="method">
-        <img src="../assets/images/icons/card.svg">
-        <p>Credit or debit card</p>
-    </div>
-    
-    <form [formGroup]="cardForm">
-        <input
-          class="number"
-          type="text"
-          formControlName="cardNumber"
-          placeholder="Card number"
-          [class.invalid]="cardNumber?.invalid && cardNumber?.touched"
-        >
-        <div class="two-inputs">
-            <input
+  <div class="method">
+      <img src="../assets/images/icons/card.svg">
+      <p>Credit or debit card</p>
+  </div>
+  
+  <form [formGroup]="cardForm">
+      <input
+        class="number"
+        type="text"
+        formControlName="cardNumber"
+        placeholder="Card number"
+        [class.invalid]="cardNumber?.invalid && cardNumber?.touched"
+      >
+      <div class="two-inputs">
+          <input
             class="expiration"
             type="text"
             formControlName="expiration"
@@ -97,14 +97,15 @@
             placeholder="CVV"
             [class.invalid]="cvv?.invalid && cvv?.touched"
           >
-        </div>
-        <div *ngIf="isFormInvalid()" class="error-message">
-            Сard entered incorrectly
-        </div>
-      </form>
-    <input class="zip" type="text" placeholder="ZIP code"> 
-    <hr>
+      </div>
+      <div *ngIf="isFormInvalid()" class="error-message">
+          Сard entered incorrectly
+      </div>
+  </form>
+  <input class="zip" type="text" placeholder="ZIP code"> 
+  <hr>
 </div>
+
 
 
 <div class="required">
@@ -130,13 +131,13 @@
 
         </div>
       
-        <div class="item">
+        <div class="item last-item">
           <div class="column">
             <h3>Phone number</h3>
             <p>Add and confirm your phone number to get trip updates.</p>
           </div>
           <a class="btn-add" *ngIf="!phoneSaved" (click)="openModal(3)">Add</a>
-        <a class="btn-edit" *ngIf="phoneSaved" (click)="openModal(3)">Edit</a>
+        <a class="btn-edit " *ngIf="phoneSaved" (click)="openModal(3)">Edit</a>
         </div>
       </div>
 

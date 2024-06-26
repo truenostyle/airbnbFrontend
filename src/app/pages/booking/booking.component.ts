@@ -132,7 +132,7 @@ export class BookingComponent {
     this.modalId = modalId;
     
     this.loadMessage();
-    document.body.style.overflow = 'hidden'; 
+    
   }
 
   closeModal() {

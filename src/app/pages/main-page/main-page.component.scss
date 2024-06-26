@@ -661,7 +661,8 @@ body {
         flex-direction: column;
         align-items: center;
         cursor: pointer;
-        
+        height: 90px;
+        width: 80px;
     
         img {
                 width: 30px;
@@ -991,7 +992,9 @@ cursor: pointer;
         max-height: 90%; /* Ограничиваем максимальную высоту модального окна */
         overflow-y: auto; /* Добавляем прокрутку */
       
-
+        @media (max-width: 766px) {
+            max-width: 100%;
+        }
         .filter-header {
             border-bottom: 2px solid #E0E0E0;
             .close-btn {

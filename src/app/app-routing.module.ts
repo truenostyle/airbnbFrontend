@@ -26,10 +26,10 @@ const routes: Routes = [
   {path: 'helpcenter', component: HelpcenterComponent},
   {path: 'forguests', component: ForguestsComponent},
   {path: 'wishlists', component: WishlistsComponent},
-  {path: 'account-settings', canActivate: [AuthGuard], component: AccountSettingsComponent},
+  {path: 'account-settings',component: AccountSettingsComponent},
   {path: 'booking', component: BookingComponent},
   {path: 'booking/success', canActivate: [AuthGuard], component: BookingSuccessPageComponent},
-  {path: 'personal-settings', canActivate: [AuthGuard], component: PersonalSettingsComponent},
+  {path: 'personal-settings', component: PersonalSettingsComponent},
   { path: 'hosting', canActivate: [AuthGuard], component: HostingPageComponent},
   {path: 'start-host', canActivate: [AuthGuard], component: StarthostPageComponent},
   { path: 'auth-error', component: AuthErrorComponent}
