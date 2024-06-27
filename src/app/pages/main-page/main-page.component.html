@@ -110,7 +110,7 @@
   <div class="filters-carousel">
     <owl-carousel-o [options]="customOptions">
       <ng-template *ngFor="let filter of placeFilters" carouselSlide >
-        <div class="item" style="padding-top: 8px; " [class.selected-filter]="filter.selected" (click)="toggleFilterSelection(filter)">
+        <div  class="item" style="padding-top: 8px; " [class.selected-filter]="filter.selected" (click)="toggleFilterSelection(filter)">
           <img [src]="filter.imgUrl">
           <p>{{ filter.name }}</p>
         </div>

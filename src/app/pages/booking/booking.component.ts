@@ -187,6 +187,7 @@ export class BookingComponent {
   }
 
   submitBooking() {
+    console.log(this.state.dateStart + " === " + this.state.dateEnd);
     if (this.areAllConditionsTrue()) {
       this.bookingService
       .book({
