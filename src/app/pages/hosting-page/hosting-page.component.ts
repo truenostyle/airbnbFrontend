@@ -28,31 +28,7 @@ export class HostingPageComponent {
   ];
   rows: Cell[][] = [
     [
-      {
-        image:
-          'https://cdn.pixabay.com/photo/2019/08/19/13/58/bed-4416515_1280.jpg',
-        text: 'Aura House 2bds Eco Bamboo House',
-      },
-      { text: 'Abiansemal, Indonesia' },
-      { text: 'Completed' },
-    ],
-    [
-      {
-        image:
-          'https://cdn.pixabay.com/photo/2019/08/19/13/58/bed-4416515_1280.jpg',
-        text: 'Aura House 2bds Eco Bamboo House',
-      },
-      { text: 'Abiansemal, Indonesia' },
-      { text: 'Completed' },
-    ],
-    [
-      {
-        image:
-          'https://cdn.pixabay.com/photo/2019/08/19/13/58/bed-4416515_1280.jpg',
-        text: 'Aura House 2bds Eco Bamboo House',
-      },
-      { text: 'Abiansemal, Indonesia' },
-      { text: 'Completed' },
+      
     ],
   ];
 
